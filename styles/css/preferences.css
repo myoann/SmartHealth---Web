@@ -1,0 +1,35 @@
+div#options{
+	box-shadow: 0px 2px 5px #888;
+	display: inline-block;
+
+	position: relative;
+	left: 50%;
+	width: 60%;
+	margin-left: -30%;
+}
+
+div#options table {
+	width: 100%;
+}
+table td:hover{
+	background: #fafafa;
+}
+table td{
+	text-align: center;
+	padding:20px;
+	cursor: pointer;
+}
+table td img{
+	width:150px;
+	height:150px;
+	border-radius:100%;
+}
+
+span.option{
+	width: 100%;
+	padding:10px 20px;
+	background: #458;
+	color: #fff;
+	font-size: 22px;
+	display: inline-block;
+}

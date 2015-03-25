@@ -1,0 +1,31 @@
+div#menu{
+	opacity: 1;
+	z-index: 999;
+
+	/*background: #fafafa;*/
+	background: #458;
+	box-shadow: 0px 1px 10px #333;
+	color: #fff;
+
+	position: fixed;
+	top: 0px;
+	right: -263px;
+	bottom: 0px;
+	width: 263px;
+	transition:0.5s;
+}
+div#menu ul{
+	position: relative;
+	top:95px;
+	list-style: none;
+	border-top:1px solid #3C4A76;
+	border-bottom:1px solid #3C4A76;
+}
+div#menu ul li:hover{
+	background: dodgerblue;
+}
+div#menu ul li{
+	color: #fff;
+	cursor: pointer;
+	padding: 10px;
+}
