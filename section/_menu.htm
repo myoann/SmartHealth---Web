@@ -1,5 +1,5 @@
 <div id="menu">
-    <table id="tabProfil">
+    <table id="tabProfil" onclick="viewMenu()">
         <tr>
             <td id="tdUsername"><span>Talisman Joe</span></td>
             <td rowspan="2"><img src="./data/img/avatar.jpg" /></td>
@@ -9,9 +9,34 @@
         </tr>
     </table>
 	<ul>
-		<li>Modifier votre profil</li>
-		<li>Modifier votre poids</li>
-		<li>Modifier vos objectifs</li>
-		<li>Modifier vos préférences</li>
+        <!-- profil -->
+        <li id="menu_profil">Modifier votre profil</li>
+		<li class="sub_menu profil_1"><input type="email" placeholder="email" value="email@email.com"/></li>
+        <li class="sub_menu profil_2"><input type="password" placeholder="password" value="password"/></li>
+        <!-- physique -->
+		<li id="menu_physique">Modifier vos données physique</li>
+        <li class="sub_menu physique_1"><input type="date" placeholder="date" value=""/></li>
+        <li class="sub_menu physique_2"><input type="text" placeholder="text" value="1m80"/></li>
+        <li class="sub_menu physique_3"><input type="text" placeholder="poids" value="75kg"/></li>
+        <!-- objectifs -->
+		<li id="menu_objectif">Modifier vos objectifs</li>
+        <li class="sub_menu objectif">
+            <select>
+                <option>Course à pied</option>
+                <option>Vélo</option>
+                <option>Marche</option>
+            </select>
+        </li>
+        <li class="sub_menu ss_objectif_1_1"><input type="date" placeholder="date" value="26/04/2015"/></li>
+        <li class="sub_menu ss_objectif_1_2"><input type="text" placeholder="début" value="6h"/></li>
+        <li class="sub_menu ss_objectif_1_3"><input type="text" placeholder="distance (km)" value="10"/></li>
+        <li class="sub_menu ss_objectif_1_4"><input type="text" placeholder="durée (min)" value="55"/></li>
+        <li class="sub_menu ss_objectif_1_5"><button>Nouvel objectif</button></li>
+
+        <!-- préférences -->
+		<!-- li id="menu_preference">Modifier vos préférences</li>
+        <li class="sub_menu preference_1">Ajouter un objetcif</li>
+        <li class="sub_menu preference_2">Vélo</li>
+        <li class="sub_menu preference_3">March</li -->
 	</ul>
 </div>

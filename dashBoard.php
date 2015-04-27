@@ -8,8 +8,28 @@
 		<link rel="stylesheet" href="./styles/css/dashBoard.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
 		<link rel="stylesheet" href="./styles/css/menu.css" />
+
+
+
+        <!-- 4> import des fichiers javascript -->
+        <script src="./styles/js/jquery-1.11.2.min.js"></script>
+        <script src="./styles/js/func.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+        <script src="./styles/js/highcharts-line.js"></script>
+        <script src="./styles/js/highcharts-donuts.js"></script>
+        <script src="./styles/js/highcharts-bar.js"></script>
+        <script src="./styles/js/highcharts.js"></script>
+        <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#example').DataTable({
+
+                });
+            } );
+        </script>
 	</head>
-<body>
+<body id="dashBoard">
     <div id="filter_dark" onclick="viewMenu()"></div>
 
     <?php include("./section/_menu.htm"); ?>
@@ -24,8 +44,8 @@
         </tr>
     </table>
     <div id="displayMap">
-        <button class=" icon-arrow-down-3"></button><br>
-        Afficher la map
+        <iframe id="webmap" src="" width="800" height="600" frameborder="0" style="border:0"></iframe>
+        <button id="viewMap"><span class="icon-arrow-down-3"><br>Afficher la map</span></button>       
     </div>
 
 	<table id="tab_dashBoard">
@@ -50,22 +70,5 @@
             <td><div id="line_poids"></div></td>
         </tr>
 	</table>
-
-	<!-- 4> import des fichiers javascript -->
-	<script src="./styles/js/jquery-1.11.2.min.js"></script>
-	<script src="http://code.highcharts.com/highcharts.js"></script>
-	<script src="http://code.highcharts.com/modules/exporting.js"></script>
-	<script src="./styles/js/highcharts-line.js"></script>
-    <script src="./styles/js/highcharts-donuts.js"></script>
-    <script src="./styles/js/highcharts-bar.js"></script>
-	<script src="./styles/js/highcharts.js"></script>
-    <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable({
-
-            });
-        } );
-    </script>
 </body>
 </html>

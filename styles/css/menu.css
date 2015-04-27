@@ -29,3 +29,18 @@ div#menu ul li{
 	cursor: pointer;
 	padding: 10px;
 }
+
+div#menu ul li.sub_menu{
+	background-color: #143056;
+	display:none;
+  	text-align: right;
+}
+
+div#menu ul li.sub_menu input, div#menu ul li.sub_menu select, div#menu ul li.sub_menu button{
+	padding: 5px;
+  	width: 100%;
+}
+div#menu ul li.sub_menu button{
+	background-color: dodgerblue;
+	color: #fff;
+}

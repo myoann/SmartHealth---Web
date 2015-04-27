@@ -13,7 +13,7 @@ $(function(){
     doBar("line_dureeActivite","dureeActivite");
 })
 
-var _view=false;
+var _view=true;
 function viewMenu(){
 	console.log(_view);
 	var _nb=0;
