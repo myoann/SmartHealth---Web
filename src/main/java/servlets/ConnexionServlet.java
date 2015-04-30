@@ -23,7 +23,7 @@ public class ConnexionServlet extends HttpServlet {
     public static final String ATT_FORM         = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String VUE              = "/connexion.jsp";
-    public static final String DASHBOARD        = "/user/dashBoard.jsp";
+    public static final String DASHBOARD        = "/dashboard";
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Récupération de la session depuis la requête */
@@ -51,7 +51,7 @@ public class ConnexionServlet extends HttpServlet {
          * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
          * Utilisateur à la session, sinon suppression du bean de la session.
          */
-        if ( form.getErreurs().isEmpty() ) {
+        if (form.getErreurs().isEmpty()) {
              MongoClient mongo = (MongoClient) request.getServletContext()
                 .getAttribute("MONGO_CLIENT");
             GestionnaireUtilisateur userDAO = new GestionnaireUtilisateur(mongo);
@@ -60,7 +60,7 @@ public class ConnexionServlet extends HttpServlet {
                 session.setAttribute(ATT_SESSION_USER, u);
                 form.setResultat("Succès de la connexion.");
                 this.getServletContext().getRequestDispatcher(DASHBOARD).forward(request, response);
-                
+                return;
             } else {
                 session.setAttribute(ATT_SESSION_USER, null );
                 form.setResultat("Échec de la connexion.");

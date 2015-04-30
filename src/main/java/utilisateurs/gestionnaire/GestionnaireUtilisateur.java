@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package utilisateurs.gestionnaire;
+import com.mongodb.BasicDBObject;
 import java.util.ArrayList;
 import java.util.List;
  
@@ -39,7 +40,16 @@ public class GestionnaireUtilisateur {
     public void updateUser(Utilisateur u) {
         DBObject query = BasicDBObjectBuilder.start()
                 .append("_id", new ObjectId(u.getId())).get();
-        this.col.update(query, UtilisateurConverter.toDBObject(u));
+        BasicDBObject updateUser = new BasicDBObject();
+        DBObject newUser = new BasicDBObject().append("country", u.getCountry())
+                                              .append("email", u.getEmail())
+                                              .append("naissance", u.getNaissance())
+                                              .append("motdepasse", u.getMotdepasse())
+                                              .append("poids", u.getPoids())
+                                              .append("taille", u.getTaille())
+                                              .append("name", u.getName());
+	updateUser.append("$set", newUser);
+        this.col.update(query, updateUser);
     }
  
     public List<Utilisateur> readAllUsers() {

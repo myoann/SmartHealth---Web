@@ -20,13 +20,16 @@
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-line.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-donuts.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-bar.js"></script>
+        
         <script src="${pageContext.request.contextPath}/styles/js/highcharts.js"></script>
         <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+        <c:set name="myVar" value="${nombrePas}" />
         <script>
             $(document).ready(function() {
                 $('#example').DataTable({
 
                 });
+                doDonut("donutA","${nombrePas} / 10 000 pas");
             } );
         </script>
 	</head>

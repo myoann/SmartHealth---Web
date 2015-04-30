@@ -15,9 +15,9 @@
         <li class="sub_menu profil_2"><input type="password" placeholder="password" value="${sessionScope.sessionUtilisateur.motdepasse}"/></li>
         <!-- physique -->
 		<li id="menu_physique">Modifier vos données physique</li>
-        <li class="sub_menu physique_1"><input type="date" placeholder="date" value=""/></li>
-        <li class="sub_menu physique_2"><input type="text" placeholder="text" value="1m80"/></li>
-        <li class="sub_menu physique_3"><input type="text" placeholder="poids" value="75kg"/></li>
+        <li class="sub_menu physique_1"><input type="date" placeholder="Naissance" value="${sessionScope.sessionUtilisateur.naissance}"/></li>
+        <li class="sub_menu physique_2"><input type="text" placeholder="Taille" value="${sessionScope.sessionUtilisateur.taille}cm"/></li>
+        <li class="sub_menu physique_3"><input type="text" placeholder="poids" value="${sessionScope.sessionUtilisateur.poids}kg"/></li>
         <!-- objectifs -->
 		<li id="menu_objectif">Modifier vos objectifs</li>
         <li class="sub_menu objectif">

@@ -1,6 +1,5 @@
 $(function(){
-
-    doDonut("donutA","6 000 / 10 000 pas");
+    
     doDonut("donutB","75 / 100 min");
     doDonut("donutC","15 / 20 km");
     

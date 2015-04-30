@@ -38,11 +38,9 @@ public class DeleteUserServlet extends HttpServlet {
         userDAO.deleteUser(u);
         System.out.println("Person deleted successfully with id=" + id);
         request.setAttribute("success", "Person deleted successfully");
-        List<Utilisateur> utilisateurs = userDAO.readAllUsers();
-        request.setAttribute("persons", utilisateurs);
  
         RequestDispatcher rd = getServletContext().getRequestDispatcher(
-                "/persons.jsp");
+                    "/gestionUtilisateur");
         rd.forward(request, response);
     }
  

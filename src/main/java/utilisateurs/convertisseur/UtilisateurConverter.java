@@ -21,7 +21,17 @@ public class UtilisateurConverter {
     public static DBObject toDBObject(Utilisateur u) {
  
         BasicDBObjectBuilder builder = BasicDBObjectBuilder.start()
-                .append("name", u.getName()).append("country", u.getCountry()).append("motdepasse", u.getMotdepasse()).append("email", u.getEmail()).append("nombrePas", u.getNombrePas()).append("localisation", u.getLocalisation());
+                .append("name", u.getName()).append("country", u.getCountry())
+                                            .append("motdepasse", u.getMotdepasse())
+                                            .append("email", u.getEmail())
+                                            .append("nombrePas", u.getNombrePas())
+                                            .append("minutes", u.getMinutes())
+                                            .append("metres", u.getMetres())
+                                            .append("taille", u.getTaille())
+                                            .append("naissance", u.getNaissance())
+                                            .append("poids", u.getPoids())
+                                            .append("admin", u.isAdmin())
+                                            .append("localisation", u.getLocalisation());
         if (u.getId() != null)
             builder = builder.append("_id", new ObjectId(u.getId()));
         return builder.get();
@@ -36,6 +46,12 @@ public class UtilisateurConverter {
         u.setEmail((String) doc.get("email"));
         u.setMotdepasse((String) doc.get("motdepasse"));
         u.setNombrePas((HashMap) doc.get("nombrePas"));
+        u.setMinutes((HashMap) doc.get("minutes"));
+        u.setMetres((HashMap) doc.get("metres"));
+        u.setTaille((String) doc.get("taille"));
+        u.setNaissance((String) doc.get("naissance"));
+        u.setPoids((String) doc.get("poids"));
+        u.setAdmin((boolean) doc.get("admin"));
         u.setLocalisation((String) doc.get("localisation"));
         ObjectId id = (ObjectId) doc.get("_id");
         u.setId(id.toString());

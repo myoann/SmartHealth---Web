@@ -24,7 +24,20 @@ public class Utilisateur {
     
     private String motdepasse;
 
-    private HashMap nombrePas;
+    private HashMap<String, Integer> nombrePas;
+    
+    private HashMap minutes;
+    
+    private HashMap metres;
+    
+    private String taille;
+    
+    private String poids;
+    
+    private String naissance;
+    
+    private boolean admin = false;
+
 
     public String getName() {
         return name;
@@ -70,7 +83,7 @@ public class Utilisateur {
         return nombrePas;
     }
     
-    public void setNombrePas(HashMap nombrePas) {
+    public void setNombrePas(HashMap<String, Integer> nombrePas) {
         this.nombrePas = nombrePas;
     }
     
@@ -81,4 +94,53 @@ public class Utilisateur {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    public HashMap getMinutes() {
+        return minutes;
+    }
+
+    public HashMap getMetres() {
+        return metres;
+    }
+
+    public String getTaille() {
+        return taille;
+    }
+
+    public String getPoids() {
+        return poids;
+    }
+
+    public String getNaissance() {
+        return naissance;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+    
+    public void setMinutes(HashMap minutes) {
+        this.minutes = minutes;
+    }
+
+    public void setMetres(HashMap metres) {
+        this.metres = metres;
+    }
+
+    public void setTaille(String taille) {
+        this.taille = taille;
+    }
+
+    public void setPoids(String poids) {
+        this.poids = poids;
+    }
+
+    public void setNaissance(String naissance) {
+        this.naissance = naissance;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
 }

@@ -37,12 +37,12 @@ public class EditUserServlet extends HttpServlet {
         Utilisateur u = new Utilisateur();
         u.setId(id);
         u = userDAO.readUser(u);
-        request.setAttribute("person", u);
+        request.setAttribute("utilisateur", u);
         List<Utilisateur> utilisateurs = userDAO.readAllUsers();
-        request.setAttribute("persons", utilisateurs);
+        request.setAttribute("utilisateurs", utilisateurs);
  
         RequestDispatcher rd = getServletContext().getRequestDispatcher(
-                "/persons.jsp");
+                    "/gestionUtilisateur");
         rd.forward(request, response);
     }
  
@@ -55,6 +55,11 @@ public class EditUserServlet extends HttpServlet {
  
         String name = request.getParameter("name");
         String country = request.getParameter("country");
+        String email = request.getParameter("email");
+        String motdepasse = request.getParameter("motdepasse");
+        String poids = request.getParameter("poids");
+        String taille = request.getParameter("taille");
+        String naissance = request.getParameter("naissance");
  
         if ((name == null || name.equals(""))
                 || (country == null || country.equals(""))) {
@@ -64,14 +69,20 @@ public class EditUserServlet extends HttpServlet {
             GestionnaireUtilisateur userDAO = new GestionnaireUtilisateur(mongo);
             Utilisateur u = new Utilisateur();
             u.setId(id);
-            u.setName(name);
             u.setCountry(country);
-            request.setAttribute("person", u);
+            u.setName(name);
+            u.setEmail(email);
+            u.setMotdepasse(motdepasse);
+            u.setPoids(poids);
+            u.setTaille(taille);
+            u.setNaissance(naissance);
+            u.setMotdepasse(motdepasse);
+            request.setAttribute("utilisateur", u);
             List<Utilisateur> utilisateurs = userDAO.readAllUsers();
-            request.setAttribute("persons", utilisateurs);
+            request.setAttribute("utilisateurs", utilisateurs);
  
             RequestDispatcher rd = getServletContext().getRequestDispatcher(
-                    "/persons.jsp");
+                    "/gestionUtilisateur");
             rd.forward(request, response);
         } else {
             MongoClient mongo = (MongoClient) request.getServletContext()
@@ -79,16 +90,22 @@ public class EditUserServlet extends HttpServlet {
             GestionnaireUtilisateur userDAO = new GestionnaireUtilisateur(mongo);
             Utilisateur u = new Utilisateur();
             u.setId(id);
-            u.setName(name);
             u.setCountry(country);
+            u.setName(name);
+            u.setEmail(email);
+            u.setMotdepasse(motdepasse);
+            u.setPoids(poids);
+            u.setTaille(taille);
+            u.setNaissance(naissance);
+            u.setMotdepasse(motdepasse);
             userDAO.updateUser(u);
             System.out.println("Person edited successfully with id=" + id);
             request.setAttribute("success", "Person edited successfully");
             List<Utilisateur> utilisateurs = userDAO.readAllUsers();
-            request.setAttribute("persons", utilisateurs);
+            request.setAttribute("utilisateurs", utilisateurs);
  
             RequestDispatcher rd = getServletContext().getRequestDispatcher(
-                    "/persons.jsp");
+                    "/gestionUtilisateur");
             rd.forward(request, response);
         }
     }

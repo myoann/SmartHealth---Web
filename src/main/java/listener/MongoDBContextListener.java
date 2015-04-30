@@ -14,7 +14,7 @@ import com.mongodb.MongoClient;
  
 @WebListener
 public class MongoDBContextListener implements ServletContextListener {
- 
+
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         MongoClient mongo = (MongoClient) sce.getServletContext()

@@ -31,11 +31,14 @@ public class AddUserServlet extends HttpServlet {
         String country = request.getParameter("country");
         String email = request.getParameter("email");
         String motdepasse = request.getParameter("motdepasse");
+        String poids = request.getParameter("poids");
+        String taille = request.getParameter("taille");
+        String naissance = request.getParameter("naissance");
         if ((name == null || name.equals(""))
                 || (country == null || country.equals(""))) {
             request.setAttribute("error", "Mandatory Parameters Missing");
             RequestDispatcher rd = getServletContext().getRequestDispatcher(
-                    "/persons.jsp");
+                    "/gestionUtilisateur");
             rd.forward(request, response);
         } else {
             Utilisateur u = new Utilisateur();
@@ -43,21 +46,28 @@ public class AddUserServlet extends HttpServlet {
             u.setName(name);
             u.setEmail(email);
             u.setMotdepasse(motdepasse);
+            u.setPoids(poids);
+            u.setTaille(taille);
+            u.setNaissance(naissance);
+            u.setMotdepasse(motdepasse);
             HashMap<String,Integer> map = new HashMap<String,Integer>();
             map.put("10/02/2015", 1500);
             map.put("11/02/2015", 1300);
             map.put("12/02/2015", 1800);
+            map.put("30/04/2015", 1800);
             u.setNombrePas(map);
+            u.setMetres(map);
+            u.setMinutes(map);
             MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
             GestionnaireUtilisateur userDAO = new GestionnaireUtilisateur(mongo);
             userDAO.createUser(u);
             System.out.println("Person Added Successfully with id="+u.getId());
             request.setAttribute("success", "Person Added Successfully");
             List<Utilisateur> utilisateurs = userDAO.readAllUsers();
-            request.setAttribute("persons", utilisateurs);
+            request.setAttribute("utilisateurs", utilisateurs);
  
             RequestDispatcher rd = getServletContext().getRequestDispatcher(
-                    "/persons.jsp");
+                    "/gestionUtilisateur");
             rd.forward(request, response);
         }
     }
