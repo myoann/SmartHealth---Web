@@ -15,11 +15,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
-import utilisateurs.gestionnaire.GestionnaireUtilisateur;
-import utilisateurs.modeles.Utilisateur;
+import gestionnaire.GestionnaireUtilisateur;
+import modeles.Utilisateur;
 import com.mongodb.MongoClient;
-import java.util.HashMap;
+import gestionnaire.GestionnaireObjectif;
+import javax.ejb.EJB;
 import javax.servlet.http.HttpSession;
+import modeles.Objectif;
  
 @WebServlet("/gestionUtilisateur")
 public class GestionUtilisateurServlet extends HttpServlet {
@@ -28,6 +30,11 @@ public class GestionUtilisateurServlet extends HttpServlet {
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String DASHBOARD        = "/user/dashBoard.jsp";
  
+    @EJB
+    GestionnaireUtilisateur gestionnaireUtilisateur;
+    @EJB
+    GestionnaireObjectif gestionnaireObjectif;
+    
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -36,13 +43,12 @@ public class GestionUtilisateurServlet extends HttpServlet {
         if ( utilisateur == null ) {
             request.getRequestDispatcher(ACCES_CONNEXION).forward( request, response );
         } else {
-             MongoClient mongo = (MongoClient) request.getServletContext()
-                .getAttribute("MONGO_CLIENT");
-            GestionnaireUtilisateur userDAO = new GestionnaireUtilisateur(mongo);
-            Utilisateur u = userDAO.checkUser(utilisateur);
+            Utilisateur u = gestionnaireUtilisateur.checkUser(utilisateur);
             u.setAdmin(true);
             if (u != null && u.isAdmin() == true) {
-                List<Utilisateur> utilisateurs = userDAO.readAllUsers();
+                List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();
+                request.setAttribute("objectifs", objectifs);
+                List<Utilisateur> utilisateurs = gestionnaireUtilisateur.readAllUsers();
                 request.setAttribute("utilisateurs", utilisateurs);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher(
                         "/admin/gestionUtilisateur.jsp");
