@@ -14,9 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import utilisateurs.modeles.Utilisateur;
+import modeles.Utilisateur;
 import forms.ConnexionForm;
-import utilisateurs.gestionnaire.GestionnaireUtilisateur;
+import gestionnaire.GestionnaireUtilisateur;
+import javax.ejb.EJB;
 
 public class ConnexionServlet extends HttpServlet {
     public static final String ATT_USER         = "utilisateur";
@@ -25,6 +26,9 @@ public class ConnexionServlet extends HttpServlet {
     public static final String VUE              = "/connexion.jsp";
     public static final String DASHBOARD        = "/dashboard";
 
+    @EJB
+    GestionnaireUtilisateur gestionnaireUtilisateur;
+    
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
@@ -52,10 +56,7 @@ public class ConnexionServlet extends HttpServlet {
          * Utilisateur à la session, sinon suppression du bean de la session.
          */
         if (form.getErreurs().isEmpty()) {
-             MongoClient mongo = (MongoClient) request.getServletContext()
-                .getAttribute("MONGO_CLIENT");
-            GestionnaireUtilisateur userDAO = new GestionnaireUtilisateur(mongo);
-            Utilisateur u = userDAO.checkUser(utilisateur);
+            Utilisateur u = gestionnaireUtilisateur.checkUser(utilisateur);
             if (u != null && u.getMotdepasse().equals(utilisateur.getMotdepasse())) {
                 session.setAttribute(ATT_SESSION_USER, u);
                 form.setResultat("Succès de la connexion.");
