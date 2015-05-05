@@ -35,9 +35,6 @@ table{
 table td{
     padding: 5px 30px;
 }
-table#tab_new_user td:nth-child(1){
-    width: 250px;
-}
 /* -------------------- END TABLE -------------------- */
 
 /* -------------------- INPUT/BUTTON -------------------- */
@@ -48,7 +45,7 @@ input{
     width: 100%;
 }
 button{
-    background-color: seagreen;
+    background-color: salmon;
     color: #fff;
     float: right;
     cursor: pointer
@@ -68,35 +65,42 @@ fieldset{
 fieldset legend{
     padding: 20px 10px;
     font-size: 30px;
-    color:seagreen;
+    color:salmon;
     float: left;
 }
-/* -- fieldset#fieldset_edit_user -- */
-fieldset#fieldset_edit_user{
-    background-color: seagreen;
+/* -- fieldset#fieldset_edit_objectif -- */
+fieldset#fieldset_edit_objectif{
+    background-color: salmon;
 }
-fieldset#fieldset_edit_user table td,fieldset#fieldset_edit_user legend{
+fieldset#fieldset_edit_objectif table td,fieldset#fieldset_edit_objectif legend{
     color: #fff;
 }
-fieldset#fieldset_edit_user input{
-    background-color:#285F2F;
+fieldset#fieldset_edit_objectif input{
+    background-color:#C74444;
+    border:1px solid #892323;
+    /*text-shadow: 0px 1px 0px #000;*/
     color: #fff;
-    border:1px solid #65A06D;
 }
-fieldset#fieldset_edit_user button:hover{
-    background-color:#65A06D;
+fieldset#fieldset_edit_objectif button:hover{
+    background-color:#F95353;
 }
-fieldset#fieldset_edit_user button{
-    background-color:#103515;
+fieldset#fieldset_edit_objectif button{
+    background-color:#761B1B;
+}
+fieldset#fieldset_edit_objectif table td:nth-child(1){
+    width: 250px;
 }
 /* -- fieldset#fieldset_new_user -- */
-fieldset#fieldset_new_user{}
-fieldset#fieldset_new_user input{
+fieldset#fieldset_new_objectif{}
+fieldset#fieldset_new_objectif table td:nth-child(1){
+    width: 250px;
+}
+fieldset#fieldset_new_objectif input{
     border: 1px solid #ccc;
 }
-fieldset#fieldset_new_user button:hover{
-    background-color: #103515;
+fieldset#fieldset_new_objectif button:hover{
+    background-color: #761B1B;
 }
 /* -- fieldset#fieldset_manage_users -- */
-fieldset#fieldset_manage_users{}
+fieldset#fieldset_manage_objectif{}
 /* -------------------- END FIELDSET -------------------- */
