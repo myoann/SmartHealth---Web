@@ -10,7 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import modeles.Utilisateur;
+import utilisateurs.modeles.Utilisateur;
 
 public final class ConnexionForm {
     private static final String CHAMP_EMAIL  = "email";

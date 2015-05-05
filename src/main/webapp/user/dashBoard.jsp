@@ -1,15 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Smarth Watch</title>
-        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/data/logo.ico"/>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/css.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/dashBoard.css" />
+		<meta charset="UTF-8">
+		<title>Smarth Watch</title>
+		<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/data/logo.ico"/>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/css.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/dashBoard.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/menu.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/menu.css" />
+
+
 
         <!-- 4> import des fichiers javascript -->
         <script src="${pageContext.request.contextPath}/styles/js/jquery-1.11.2.min.js"></script>
@@ -22,6 +23,7 @@
         
         <script src="${pageContext.request.contextPath}/styles/js/highcharts.js"></script>
         <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+        <c:set name="myVar" value="${nombrePas}" />
         <script>
             $(document).ready(function() {
                 $('#example').DataTable({
@@ -61,13 +63,13 @@
             <td><span id="score">98%</span><br>objectifs atteints</td>
             <td><div id="line_cardiaque"></div></td>
         </tr>
+		<tr>
+			<td>activités<br><jsp:include page="./_tabActivites.jsp"/></td>
+			<td><div id="line_historique"></div></td>
+			<td><div id="line_nbPas"></div></td>
+		</tr>
         <tr>
-                <td>Activités recommandées<br><jsp:include page="./_tabActivites.jsp"/></td>
-                <td><div id="line_historique"></div></td>
-                <td><div id="line_nbPas"></div></td>
-        </tr>
-        <tr>
-            <td></td>
+            <td>recommandations<br><jsp:include page="./_tabActivites.jsp"/></td>
             <td><div id="line_dureeActivite"></div></td>
             <td><div id="line_poids"></div></td>
         </tr>

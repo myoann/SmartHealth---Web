@@ -15,27 +15,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
-import gestionnaire.GestionnaireUtilisateur;
-import modeles.Utilisateur;
+import utilisateurs.gestionnaire.GestionnaireUtilisateur;
+import utilisateurs.modeles.Utilisateur;
 import com.mongodb.MongoClient;
-import gestionnaire.GestionnaireObjectif;
 import java.util.HashMap;
-import javax.ejb.EJB;
-import modeles.Objectif;
  
 @WebServlet("/addUser")
 public class AddUserServlet extends HttpServlet {
  
     private static final long serialVersionUID = -7060758261496829905L;
-    
-    @EJB
-    GestionnaireUtilisateur gestionnaireUtilisateur;
-    @EJB
-    GestionnaireObjectif gestionnaireObjectif;
  
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         String country = request.getParameter("country");
         String email = request.getParameter("email");
@@ -43,8 +34,6 @@ public class AddUserServlet extends HttpServlet {
         String poids = request.getParameter("poids");
         String taille = request.getParameter("taille");
         String naissance = request.getParameter("naissance");
-        String objectif = request.getParameter("objectif");
-        
         if ((name == null || name.equals(""))
                 || (country == null || country.equals(""))) {
             request.setAttribute("error", "Mandatory Parameters Missing");
@@ -69,18 +58,13 @@ public class AddUserServlet extends HttpServlet {
             u.setNombrePas(map);
             u.setMetres(map);
             u.setMinutes(map);
-            
-            Objectif o = new Objectif();
-            o.setId(objectif);
-            u.setObjectif(gestionnaireObjectif.readObjectif(o));
-            gestionnaireUtilisateur.createUser(u);
+            MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGO_CLIENT");
+            GestionnaireUtilisateur userDAO = new GestionnaireUtilisateur(mongo);
+            userDAO.createUser(u);
             System.out.println("Person Added Successfully with id="+u.getId());
             request.setAttribute("success", "Person Added Successfully");
-            List<Utilisateur> utilisateurs = gestionnaireUtilisateur.readAllUsers();
+            List<Utilisateur> utilisateurs = userDAO.readAllUsers();
             request.setAttribute("utilisateurs", utilisateurs);
-            
-            List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();
-            request.setAttribute("objectifs", objectifs);
  
             RequestDispatcher rd = getServletContext().getRequestDispatcher(
                     "/gestionUtilisateur");

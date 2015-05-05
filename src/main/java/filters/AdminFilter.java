@@ -17,18 +17,14 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import gestionnaire.GestionnaireUtilisateur;
-import javax.ejb.EJB;
-import modeles.Utilisateur;
+import utilisateurs.gestionnaire.GestionnaireUtilisateur;
+import utilisateurs.modeles.Utilisateur;
 
 public class AdminFilter implements Filter {
     public static final String ACCES_CONNEXION  = "/connexion";
     public static final String DASHBOARD  = "/dashboard";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
 
-    @EJB
-    private GestionnaireUtilisateur gestionnaireUtilisateur;
-    
     public void init( FilterConfig config ) throws ServletException {
     }
 
@@ -50,8 +46,11 @@ public class AdminFilter implements Filter {
             request.getRequestDispatcher(ACCES_CONNEXION).forward( request, response );
         } else {
             /* Affichage de la page restreinte */
-           
-            Utilisateur u = gestionnaireUtilisateur.checkUser(utilisateur);
+            
+             MongoClient mongo = (MongoClient) request.getServletContext()
+                .getAttribute("MONGO_CLIENT");
+            GestionnaireUtilisateur userDAO = new GestionnaireUtilisateur(mongo);
+            Utilisateur u = userDAO.checkUser(utilisateur);
             u.setAdmin(true);
             if (u != null && u.isAdmin() == true) {
                 chain.doFilter( request, response );

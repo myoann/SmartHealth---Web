@@ -15,28 +15,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
-import gestionnaire.GestionnaireUtilisateur;
-import modeles.Utilisateur;
+import utilisateurs.gestionnaire.GestionnaireUtilisateur;
+import utilisateurs.modeles.Utilisateur;
 import com.mongodb.MongoClient;
-import javax.ejb.EJB;
  
 @WebServlet("/deleteUser")
 public class DeleteUserServlet extends HttpServlet {
  
     private static final long serialVersionUID = 6798036766148281767L;
  
-    @EJB
-    GestionnaireUtilisateur gestionnaireUtilisateur;
-    
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         if (id == null || "".equals(id)) {
             throw new ServletException("id missing for delete operation");
         }
+        MongoClient mongo = (MongoClient) request.getServletContext()
+                .getAttribute("MONGO_CLIENT");
+        GestionnaireUtilisateur userDAO = new GestionnaireUtilisateur(mongo);
         Utilisateur u = new Utilisateur();
         u.setId(id);
-        gestionnaireUtilisateur.deleteUser(u);
+        userDAO.deleteUser(u);
         System.out.println("Person deleted successfully with id=" + id);
         request.setAttribute("success", "Person deleted successfully");
  

@@ -5,8 +5,6 @@
  */
 package servlets;
 
-import com.mongodb.MongoClient;
-import gestionnaire.GestionnaireObjectif;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -14,13 +12,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.ejb.EJB;
  
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,9 +24,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
-import modeles.Utilisateur;
+import utilisateurs.modeles.Utilisateur;
 import javax.servlet.http.HttpSession;
-import modeles.Objectif;
  
 @WebServlet("/dashboard")
 public class DashBoardServlet extends HttpServlet {
@@ -38,9 +33,6 @@ public class DashBoardServlet extends HttpServlet {
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String DASHBOARD        = "/user/dashBoard.jsp";
  
-    @EJB
-    GestionnaireObjectif gestionnaireObjectif;
-    
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -52,21 +44,18 @@ public class DashBoardServlet extends HttpServlet {
             Utilisateur u = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
             request.setAttribute("utilisateur", u);
             
-            List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();
-            request.setAttribute("objectifs", objectifs);
-            
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new java.util.Date(); 
             System.out.println(dateFormat.format(date));
-            HashMap<String, Integer> nombrePasTotal = u.getNombrePas();
+                HashMap<String, Integer> nombrePasTotal = u.getNombrePas();
             
-            for (Entry<String, Integer> entry : nombrePasTotal.entrySet()) {
-                if (entry.getKey().equals(dateFormat.format(date))) {
-                    System.out.println(entry.getKey());
-                    Integer nombrePas = entry.getValue();
-                    request.setAttribute("nombrePas", nombrePas);
+                for (Entry<String, Integer> entry : nombrePasTotal.entrySet()) {
+                    if (entry.getKey().equals(dateFormat.format(date))) {
+                        System.out.println(entry.getKey());
+                        Integer nombrePas = entry.getValue();
+                        request.setAttribute("nombrePas", nombrePas);
+                    }
                 }
-            }
             
             /* date 
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -81,4 +70,11 @@ public class DashBoardServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
+    public static <String, Integer> Set<String> getKeysByValue(Map<String, Integer> map, String value) {
+       return map.entrySet()
+                 .stream()
+                 .filter(entry -> Objects.equals(entry.getKey(), value))
+                 .map(Map.Entry::getKey)
+                 .collect(Collectors.toSet());
+   }
 }

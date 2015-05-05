@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div id="menu">
     <table id="tabProfil" onclick="viewMenu()">
         <tr>
@@ -16,20 +15,28 @@
         <li class="sub_menu profil_2"><input type="password" placeholder="password" value="${sessionScope.sessionUtilisateur.motdepasse}"/></li>
         <!-- physique -->
 		<li id="menu_physique">Modifier vos donnÈes physique</li>
-        <li class="sub_menu physique_1"><input type="date" placeholder="Non renseignÈe" value="${sessionScope.sessionUtilisateur.naissance}"/></li>
-        <li class="sub_menu physique_2"><input type="text" placeholder="Non renseignÈe" value="${sessionScope.sessionUtilisateur.taille}cm"/></li>
-        <li class="sub_menu physique_3"><input type="text" placeholder="Non renseignÈ" value="${sessionScope.sessionUtilisateur.poids}kg"/></li>
+        <li class="sub_menu physique_1"><input type="date" placeholder="Naissance" value="${sessionScope.sessionUtilisateur.naissance}"/></li>
+        <li class="sub_menu physique_2"><input type="text" placeholder="Taille" value="${sessionScope.sessionUtilisateur.taille}cm"/></li>
+        <li class="sub_menu physique_3"><input type="text" placeholder="poids" value="${sessionScope.sessionUtilisateur.poids}kg"/></li>
         <!-- objectifs -->
 		<li id="menu_objectif">Modifier vos objectifs</li>
-        <li class="sub_menu ss_objectif_1_1">${sessionScope.sessionUtilisateur.objectif.titre}</li>
-        <li class="sub_menu ss_objectif_1_2">${sessionScope.sessionUtilisateur.objectif.description}</li>
-        <li class="sub_menu ss_objectif_1_3">
-            <select name="objectif">
-              <c:forEach var="objectif" items="${objectifs}">
-                <option value="${objectif.id}" ${objectif.id == sessionScope.sessionUtilisateur.objectif.id ? 'selected="selected"' : ''}>${objectif.titre}</option>
-              </c:forEach>
+        <li class="sub_menu objectif">
+            <select>
+                <option>Course ‡ pied</option>
+                <option>VÈlo</option>
+                <option>Marche</option>
             </select>
         </li>
-        <li class="sub_menu ss_objectif_1_4"><button>Modifier objectif</button></li>
+        <li class="sub_menu ss_objectif_1_1"><input type="date" placeholder="date" value="26/04/2015"/></li>
+        <li class="sub_menu ss_objectif_1_2"><input type="text" placeholder="dÈbut" value="6h"/></li>
+        <li class="sub_menu ss_objectif_1_3"><input type="text" placeholder="distance (km)" value="10"/></li>
+        <li class="sub_menu ss_objectif_1_4"><input type="text" placeholder="durÈe (min)" value="55"/></li>
+        <li class="sub_menu ss_objectif_1_5"><button>Nouvel objectif</button></li>
+
+        <!-- pr√©f√©rences -->
+		<!-- li id="menu_preference">Modifier vos pr√©f√©rences</li>
+        <li class="sub_menu preference_1">Ajouter un objetcif</li>
+        <li class="sub_menu preference_2">V√©lo</li>
+        <li class="sub_menu preference_3">March</li -->
 	</ul>
 </div>

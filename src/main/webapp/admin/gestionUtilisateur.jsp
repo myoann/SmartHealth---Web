@@ -1,9 +1,10 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Persons Manage Page</title>
 <style>
 table,th,td {
@@ -41,12 +42,7 @@ table,th,td {
             Naissance <input type="text" value="${requestScope.utilisateur.naissance}"
                 name="naissance"><br>
             Email <input type="text" value="${requestScope.utilisateur.email}"
-                name="email"><br>
-            Objectif :<select name="objectif">
-              <c:forEach var="objectif" items="${objectifs}">
-                <option value="${objectif.id}" ${objectif.id == utilisateur.objectif.id ? 'selected="selected"' : ''}>${objectif.titre}</option>
-              </c:forEach>
-            </select><input type="submit"
+                name="email"><br> <input type="submit"
                 value="Edit Person">
         </form>
     </c:if>
@@ -57,15 +53,10 @@ table,th,td {
             Name: <input type="text" name="name"><br> Country: <input
                 type="text" name="country"><br> Email : <input
                 type="text" name="email"><br> Mot de passe: <input
-                type="text" name="motdepasse"><br> Taille: <input
-                type="text" name="taille"><br> Poids: <input
-                type="text" name="poids"><br> Naissance: <input
-                type="text" name="naissance"><br>
-                Objectif :<select name="objectif">
-                  <c:forEach var="objectif" items="${objectifs}">
-                    <option value="${objectif.id}">${objectif.titre}</option>
-                  </c:forEach>
-                </select> <input type="submit"
+                type="text" name="motdepasse"><br>  Taille: <input
+                type="text" name="taille"><br>  Poids: <input
+                type="text" name="poids"><br>  Naissance: <input
+                type="text" name="naissance"><br> <input type="submit"
                 value="Add Person">
         </form>
     </c:if>
@@ -83,7 +74,6 @@ table,th,td {
                     <th>Poids</th>
                     <th>Naissance</th>
                     <th>Email</th>
-                    <th>Objectif</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -105,7 +95,6 @@ table,th,td {
                         <td><c:out value="${utilisateur.poids}"></c:out></td>
                         <td><c:out value="${utilisateur.naissance}"></c:out></td>
                         <td><c:out value="${utilisateur.email}"></c:out></td>
-                        <td><c:out value="${utilisateur.objectif.titre}"></c:out></td>
                         <td><a
                             href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Edit</a></td>
                         <td><a
