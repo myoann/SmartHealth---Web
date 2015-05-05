@@ -37,8 +37,7 @@
         <c:if test="${requestScope.objectif ne null}">
             <form action='<c:out value="${editURL}"></c:out>' method="post">
                     <fieldset id="fieldset_edit_objectif">
-                        <legend class="icon-rocket">Editer un objectif</legend>
-
+                        <legend class="icon-rocket"> Editer un objectif</legend>
                         <table>
                             <tr>
                                 <td>ID</td>
