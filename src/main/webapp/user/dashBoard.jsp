@@ -13,6 +13,7 @@
 
         <!-- 4> import des fichiers javascript -->
         <script src="${pageContext.request.contextPath}/styles/js/jquery-1.11.2.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
         <script src="${pageContext.request.contextPath}/styles/js/func.js"></script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
         <script src="http://code.highcharts.com/modules/exporting.js"></script>
@@ -46,7 +47,8 @@
         </tr>
     </table>
     <div id="displayMap">
-        <iframe id="webmap" src="" width="800" height="600" frameborder="0" style="border:0"></iframe>
+        <div id="map_canvas"></div>
+        <!--iframe id="webmap" src="" width="800" height="600" frameborder="0" style="border:0"></iframe-->
         <button id="viewMap"><span class="icon-arrow-down-3"><br>Afficher la map</span></button>       
     </div>
 
