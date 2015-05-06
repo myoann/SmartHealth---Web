@@ -44,3 +44,11 @@ div#menu ul li.sub_menu button{
 	background-color: dodgerblue;
 	color: #fff;
 }
+div#menu ul li.sub_menu select.select_objectif{
+    float: left;
+    width: 80%;
+}
+div#menu ul li.sub_menu button.edit_objectif{
+    width: 15%;
+    padding: 6px;
+}
