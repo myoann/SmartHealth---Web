@@ -88,7 +88,7 @@
                             <td><input type="text" value="${requestScope.objectif.courseTemps}" name="courseTemps"></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><button class="icon-checkmark"> Save</button></td>
+                            <td colspan="2"><button class="icon-checkmark"> Editer</button></td>
                         </tr>
                     </table>
                 </fieldset>
@@ -146,7 +146,7 @@
                                 <td><input type="text" name="courseTemps"></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><button class="icon-checkmark"> Add Objectif</button></td>
+                                <td colspan="2"><button class="icon-checkmark"> Ajouter objectif</button></td>
                             </tr>
                         </table>
                     </fieldset>
@@ -198,9 +198,9 @@
                                 <td><c:out value="${objectif.courseMetres}"></c:out></td>
                                 <td><c:out value="${objectif.courseTemps}"></c:out></td>
                                     <td><a
-                                            href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Edit</a></td>
+                                            href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Editer</a></td>
                                     <td><a
-                                            href='<c:out value="${deleteURL}" escapeXml="true"></c:out>'>Delete</a></td>
+                                            href='<c:out value="${deleteURL}" escapeXml="true"></c:out>'>Supprimer</a></td>
                                 </tr>
                         </c:forEach>
                     </tbody>

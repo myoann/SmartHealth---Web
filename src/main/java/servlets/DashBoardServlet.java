@@ -7,6 +7,7 @@ package servlets;
 
 import com.mongodb.MongoClient;
 import gestionnaire.GestionnaireObjectif;
+import gestionnaire.GestionnaireUtilisateur;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,8 @@ public class DashBoardServlet extends HttpServlet {
  
     @EJB
     GestionnaireObjectif gestionnaireObjectif;
+    @EJB
+    GestionnaireUtilisateur gestionnaireUtilisateur;
     
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -50,14 +53,15 @@ public class DashBoardServlet extends HttpServlet {
             request.getRequestDispatcher(ACCES_CONNEXION).forward( request, response );
         } else {
             Utilisateur u = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
-            request.setAttribute("utilisateur", u);
+            
+            Utilisateur utilisateur = gestionnaireUtilisateur.checkUser(u);
+            request.setAttribute("utilisateur", utilisateur);
             
             List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();
             request.setAttribute("objectifs", objectifs);
             
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Date date = new java.util.Date(); 
-            System.out.println(dateFormat.format(date));
+            Date date = new java.util.Date();
             HashMap<String, Integer> nombrePasTotal = u.getNombrePas();
             
             for (Entry<String, Integer> entry : nombrePasTotal.entrySet()) {
@@ -66,8 +70,33 @@ public class DashBoardServlet extends HttpServlet {
                     Integer nombrePas = entry.getValue();
                     request.setAttribute("nombrePas", nombrePas);
                 }
+                else
+                    request.setAttribute("nombrePas", 500);
             }
             
+            HashMap<String, Integer> nombreMinutesTotal = u.getMinutes();
+            
+            for (Entry<String, Integer> entry : nombreMinutesTotal.entrySet()) {
+                if (entry.getKey().equals(dateFormat.format(date))) {
+                    System.out.println(entry.getKey());
+                    Integer nombreMinutes = entry.getValue();
+                    request.setAttribute("nombreMinutes", nombreMinutes);
+                }
+                else
+                    request.setAttribute("nombreMinutes", 30);
+            }
+            
+            HashMap<String, Integer> nombreMetresTotal = u.getMetres();
+            
+            for (Entry<String, Integer> entry : nombreMetresTotal.entrySet()) {
+                if (entry.getKey().equals(dateFormat.format(date))) {
+                    System.out.println(entry.getKey());
+                    Integer nombreMetres = entry.getValue();
+                    request.setAttribute("nombreMetres", nombreMetres);
+                }
+                else
+                    request.setAttribute("nombreMetres", 300);
+            }
             /* date 
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
             Calendar cal = Calendar.getInstance();

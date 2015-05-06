@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 mai 2015, 13:45:06
+    Author     : EK
+*/
+
+body{
+
+	background-color: #eee;
+}
+div#page_connexion{
+	position: relative;
+	padding: 20px 40px;
+	background-color: #fff;
+	margin: 20px auto;
+	width: 800px;
+	height: 400px;
+}
+div#page_connexion input{
+	padding: 10px;
+	width: 200px;
+	border: 1px solid #ccc;
+}
+
+div#page_connexion button{
+	padding: 10px;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 18px;
+	width: 200px;
+	color: #fff;
+}
+button.bt_fb{
+	background-color: #458;
+}
+button.bt_google{
+	background-color: crimson;
+	
+}
+div.barre_vertical{
+	background-color: #444;
+	position: absolute;
+	top: 60px;
+	bottom: 60px;
+	width: 1px;
+	left: 400px;
+}
+table td{
+	padding: 5px;
+}
+table#tab_connect{
+	position: absolute;
+	top: 140px;
+	left: 80px;
+}
+table#tab_connect button{
+
+	background-color: seagreen;
+}
+table#tab_connect_social{
+	position: absolute;
+	top: 150px;
+	right: 80px;
+}
+table#tab_connect_social td{
+	padding: 5px;
+}

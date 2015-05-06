@@ -23,7 +23,7 @@ public class UtilisateurConverter {
  
         DBObject objectif = ObjectifConverter.toDBObject(u.getObjectif());
         BasicDBObjectBuilder builder = BasicDBObjectBuilder.start()
-                .append("name", u.getName()).append("country", u.getCountry())
+                .append("name", u.getName())//.append("photo", u.getPhoto())
                                             .append("motdepasse", u.getMotdepasse())
                                             .append("email", u.getEmail())
                                             .append("nombrePas", u.getNombrePas())
@@ -45,7 +45,7 @@ public class UtilisateurConverter {
     public static Utilisateur toUtilisateur(DBObject doc) {
         Utilisateur u = new Utilisateur();
         u.setName((String) doc.get("name"));
-        u.setCountry((String) doc.get("country"));
+        //u.setPhoto((String) doc.get("photo"));
         u.setEmail((String) doc.get("email"));
         u.setMotdepasse((String) doc.get("motdepasse"));
         u.setNombrePas((HashMap) doc.get("nombrePas"));

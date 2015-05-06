@@ -7,9 +7,9 @@ $(function(){
 	setInterval(function(){ chgBG() },_speedSilde);
 
 	// ----- PROFIL -----
-	listenMenu("menu_profil",".profil_1,.profil_2");
+	listenMenu("menu_profil",".profil_1,.profil_2,.profil_3");
 	// ----- PHYSIQUE -----
-	listenMenu("menu_physique",".physique_1,.physique_2,.physique_3");
+	listenMenu("menu_physique",".physique_1,.physique_2,.physique_3,.physique_4");
 	// ----- OBJECTIF -----
 	listenMenu("menu_objectif",".objectif,.ss_objectif_1_1,.ss_objectif_1_2,.ss_objectif_1_3,.ss_objectif_1_4,.ss_objectif_1_5");
 	// ----- PREFERENCE -----

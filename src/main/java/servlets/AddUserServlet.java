@@ -17,13 +17,17 @@ import javax.servlet.http.HttpServletResponse;
  
 import gestionnaire.GestionnaireUtilisateur;
 import modeles.Utilisateur;
-import com.mongodb.MongoClient;
 import gestionnaire.GestionnaireObjectif;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import javax.ejb.EJB;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.Part;
 import modeles.Objectif;
  
 @WebServlet("/addUser")
+@MultipartConfig
 public class AddUserServlet extends HttpServlet {
  
     private static final long serialVersionUID = -7060758261496829905L;
@@ -36,24 +40,22 @@ public class AddUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String name = request.getParameter("name");
-        String country = request.getParameter("country");
-        String email = request.getParameter("email");
-        String motdepasse = request.getParameter("motdepasse");
-        String poids = request.getParameter("poids");
-        String taille = request.getParameter("taille");
-        String naissance = request.getParameter("naissance");
-        String objectif = request.getParameter("objectif");
+        String name = getValue(request.getPart("name"));
+        String email = getValue(request.getPart("email"));
+        String motdepasse = getValue(request.getPart("motdepasse"));
+        String poids = getValue(request.getPart("poids"));
+        String taille = getValue(request.getPart("taille"));
+        String naissance = getValue(request.getPart("naissance"));
+        String objectif = getValue(request.getPart("objectif"));
         
-        if ((name == null || name.equals(""))
-                || (country == null || country.equals(""))) {
+        if ((name == null || name.equals(""))) {
             request.setAttribute("error", "Mandatory Parameters Missing");
             RequestDispatcher rd = getServletContext().getRequestDispatcher(
                     "/gestionUtilisateur");
             rd.forward(request, response);
         } else {
             Utilisateur u = new Utilisateur();
-            u.setCountry(country);
+            //u.setPhoto(photo);
             u.setName(name);
             u.setEmail(email);
             u.setMotdepasse(motdepasse);
@@ -75,17 +77,31 @@ public class AddUserServlet extends HttpServlet {
             u.setObjectif(gestionnaireObjectif.readObjectif(o));
             gestionnaireUtilisateur.createUser(u);
             System.out.println("Person Added Successfully with id="+u.getId());
-            request.setAttribute("success", "Person Added Successfully");
+            request.setAttribute("success", "Utilisateur ajouté avec succès");
             List<Utilisateur> utilisateurs = gestionnaireUtilisateur.readAllUsers();
             request.setAttribute("utilisateurs", utilisateurs);
             
             List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();
             request.setAttribute("objectifs", objectifs);
- 
+            
             RequestDispatcher rd = getServletContext().getRequestDispatcher(
                     "/gestionUtilisateur");
             rd.forward(request, response);
         }
+    }
+    
+    private static String getValue(Part part) throws IOException {
+        if(part != null) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(part.getInputStream(), "UTF-8"));
+            StringBuilder value = new StringBuilder();
+            char[] buffer = new char[1024];
+            for (int length = 0; (length = reader.read(buffer)) > 0;) {
+                value.append(buffer, 0, length);
+            }
+            return value.toString();
+        }
+        else
+            return null;
     }
  
 }

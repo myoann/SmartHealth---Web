@@ -1,10 +1,10 @@
 modeles\Objectif.class
-listener\MongoClientProvider.class
 servlets\GestionObjectifServlet.class
 gestionnaire\GestionnaireObjectif.class
 servlets\GestionUtilisateurServlet.class
 filters\AdminFilter.class
 convertisseur\ObjectifConverter.class
+mongo\MongoClientProvider.class
 servlets\AddUserServlet.class
 servlets\DashBoardServlet.class
 servlets\DeconnexionServlet.class
@@ -14,6 +14,7 @@ servlets\AddObjectifServlet.class
 servlets\DeleteObjectifServlet.class
 forms\ConnexionForm.class
 servlets\EditObjectifServlet.class
+forms\PhotoForm.class
 filters\UserFilter.class
 servlets\ConnexionServlet.class
 servlets\TestServlet.class
