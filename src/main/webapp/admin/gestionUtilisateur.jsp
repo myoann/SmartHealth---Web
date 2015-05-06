@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Persons Manage Page</title>
+        <title>Gestion des utilisateurs</title>
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/data/logo.ico"/>
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/css.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
@@ -24,6 +24,12 @@
     <header>
         Admin page
     </header>
+    <table class="menu_admin">
+        <tr>
+            <td><a href="./gestionUtilisateur" class="icon-users"> Gestion des utilisateurs</a></td>
+            <td><a href="./gestionObjectif" class="icon-rocket"> Gestion des objectifs</a></td>
+        </tr>
+    </table>
     <%-- Person Add/Edit logic --%>
     <c:if test="${requestScope.error ne null}">
         <strong style="color: red;"><c:out
@@ -44,7 +50,7 @@
                     <table id="tab_new_user">
                         <tr>                    
                             <td>ID</td>  
-                            <td><input type="text" value="${requestScope.utilisateur.id}" readonly="readonly" name="id"></td>
+                            <td>${requestScope.utilisateur.id}<input type="hidden" value="${requestScope.utilisateur.id}" name="id"></td>
                     </tr>           
                     <tr>
                         <td>Nom</td>  
@@ -56,15 +62,15 @@
                     </tr>--%>
                     <tr>
                         <td>Mot de passe</td> 
-                        <td><input type="text" value="${requestScope.utilisateur.motdepasse}" name="motdepasse"></td> 
+                        <td><input type="password" value="${requestScope.utilisateur.motdepasse}" name="motdepasse"></td> 
                     </tr>
                     <tr>
                         <td>Taille</td> 
-                        <td><input type="text" value="${requestScope.utilisateur.taille}" name="taille"></td> 
+                        <td><input type="number" value="${requestScope.utilisateur.taille}" name="taille"></td> 
                     </tr>
                     <tr>
                         <td>Poids</td> 
-                        <td><input type="text" value="${requestScope.utilisateur.poids}" name="poids"></td> 
+                        <td><input type="number" value="${requestScope.utilisateur.poids}" name="poids"></td> 
                     </tr>
                     <tr>
                         <td>Naissance</td> 
@@ -72,7 +78,7 @@
                     </tr>
                     <tr>
                         <td>Email</td> 
-                        <td><input type="text" value="${requestScope.utilisateur.email}" name="email"></td> 
+                        <td><input type="email" value="${requestScope.utilisateur.email}" name="email"></td> 
                     </tr>
                     <tr>
                         <td>Objectif</td>
@@ -98,10 +104,10 @@
                     <table id="tab_new_user">
                         <tr><td>Nom</td><td><input type="text" name="name"></td></tr>
                         <%--<tr><td>Photo</td><td><input type="file" name="photo"></td></tr>--%>
-                        <tr><td>Email</td><td><input type="text" name="email"></td></tr>
-                        <tr><td>Mot de passe</td><td><input type="text" name="motdepasse"></td></tr>
-                        <tr><td>Taille</td><td><input type="text" name="taille"></td></tr>
-                        <tr><td>Poids</td><td><input type="text" name="poids"></td></tr>
+                        <tr><td>Email</td><td><input type="email" name="email"></td></tr>
+                        <tr><td>Mot de passe</td><td><input type="password" name="motdepasse"></td></tr>
+                        <tr><td>Taille</td><td><input type="number" name="taille"></td></tr>
+                        <tr><td>Poids</td><td><input type="number" name="poids"></td></tr>
                         <tr><td>Naissance</td><td><input type="text" name="naissance"></td></tr>
                         <tr><td>Objectif</td><td><select name="objectif">
                             <c:forEach var="objectif" items="${objectifs}">

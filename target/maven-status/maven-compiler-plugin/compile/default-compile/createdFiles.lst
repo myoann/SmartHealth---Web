@@ -14,7 +14,6 @@ servlets\AddObjectifServlet.class
 servlets\DeleteObjectifServlet.class
 forms\ConnexionForm.class
 servlets\EditObjectifServlet.class
-forms\PhotoForm.class
 filters\UserFilter.class
 servlets\ConnexionServlet.class
 servlets\TestServlet.class

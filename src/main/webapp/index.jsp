@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,9 +15,12 @@
     </head>
     <body>
 	<img id="bg" src="">
-        <jsp:include page="./section/_header.jsp"/>
+        <header>
+            <span id="title">Smart Health</span>
+        </header>
 	<div id="connexion">
-		<button id="logIn">Connexion</button>
+        <c:url value="/connexion" var="connexion"></c:url>
+            <a href='<c:out value="${connexion}"></c:out>'><button id="logIn">Connexion</button></a>
 		<button id="signUp">S'inscrire</button>
 	</div>
 	

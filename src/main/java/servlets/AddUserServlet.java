@@ -48,45 +48,69 @@ public class AddUserServlet extends HttpServlet {
         String naissance = getValue(request.getPart("naissance"));
         String objectif = getValue(request.getPart("objectif"));
         
+        
         if ((name == null || name.equals(""))) {
-            request.setAttribute("error", "Mandatory Parameters Missing");
+            request.setAttribute("error", "Des paramètres sont manquants");
             RequestDispatcher rd = getServletContext().getRequestDispatcher(
                     "/gestionUtilisateur");
             rd.forward(request, response);
         } else {
             Utilisateur u = new Utilisateur();
             //u.setPhoto(photo);
-            u.setName(name);
             u.setEmail(email);
-            u.setMotdepasse(motdepasse);
-            u.setPoids(poids);
-            u.setTaille(taille);
-            u.setNaissance(naissance);
-            u.setMotdepasse(motdepasse);
-            HashMap<String,Integer> map = new HashMap<String,Integer>();
-            map.put("10/02/2015", 1500);
-            map.put("11/02/2015", 1300);
-            map.put("12/02/2015", 1800);
-            map.put("30/04/2015", 1800);
-            u.setNombrePas(map);
-            u.setMetres(map);
-            u.setMinutes(map);
-            
-            Objectif o = new Objectif();
-            o.setId(objectif);
-            u.setObjectif(gestionnaireObjectif.readObjectif(o));
-            gestionnaireUtilisateur.createUser(u);
-            System.out.println("Person Added Successfully with id="+u.getId());
-            request.setAttribute("success", "Utilisateur ajouté avec succès");
-            List<Utilisateur> utilisateurs = gestionnaireUtilisateur.readAllUsers();
-            request.setAttribute("utilisateurs", utilisateurs);
-            
-            List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();
-            request.setAttribute("objectifs", objectifs);
-            
-            RequestDispatcher rd = getServletContext().getRequestDispatcher(
-                    "/gestionUtilisateur");
-            rd.forward(request, response);
+            if(gestionnaireUtilisateur.checkUser(u) != null) {
+                request.setAttribute("error", "Email déjà utilisé");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher(
+                        "/gestionUtilisateur");
+                rd.forward(request, response);
+            }
+            else {
+                u.setName(name);
+                u.setMotdepasse(motdepasse);
+                u.setPoids(poids);
+                u.setTaille(taille);
+                u.setNaissance(naissance);
+                u.setMotdepasse(motdepasse);
+                HashMap<String,Integer> mapP = new HashMap<String,Integer>();
+                mapP.put("02/05/2015", 1800);
+                mapP.put("03/05/2015", 1800);
+                mapP.put("04/05/2015", 1500);
+                mapP.put("05/05/2015", 1300);
+                mapP.put("06/05/2015", 1300);
+
+                HashMap<String,Integer> mapM = new HashMap<String,Integer>();
+                mapM.put("02/05/2015", 1500);
+                mapM.put("03/05/2015", 1400);
+                mapM.put("04/05/2015", 1200);
+                mapM.put("05/05/2015", 1100);
+                mapM.put("06/05/2015", 1100);
+
+                HashMap<String,Integer> mapMin = new HashMap<String,Integer>();
+                mapMin.put("02/05/2015", 30);
+                mapMin.put("03/05/2015", 40);
+                mapMin.put("04/05/2015", 50);
+                mapMin.put("05/05/2015", 20);
+                mapMin.put("06/05/2015", 30);
+                u.setNombrePas(mapP);
+                u.setMetres(mapM);
+                u.setMinutes(mapMin);
+
+                Objectif o = new Objectif();
+                o.setId(objectif);
+                u.setObjectif(gestionnaireObjectif.readObjectif(o));
+                gestionnaireUtilisateur.createUser(u);
+                System.out.println("Person Added Successfully with id="+u.getId());
+                request.setAttribute("success", "Utilisateur ajouté avec succès");
+                List<Utilisateur> utilisateurs = gestionnaireUtilisateur.readAllUsers();
+                request.setAttribute("utilisateurs", utilisateurs);
+
+                List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();
+                request.setAttribute("objectifs", objectifs);
+
+                RequestDispatcher rd = getServletContext().getRequestDispatcher(
+                        "/gestionUtilisateur");
+                rd.forward(request, response);
+            }
         }
     }
     

@@ -29,7 +29,7 @@ function doBar(_id,_title) {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Population (millions)',
+                    text: 'Nombre',
                     align: 'high'
                 },
                 labels: {
@@ -37,7 +37,7 @@ function doBar(_id,_title) {
                 }
             },
             tooltip: {
-                valueSuffix: ' millions'
+                valueSuffix: ''
             },
             plotOptions: {
                 bar: {
@@ -61,10 +61,10 @@ function doBar(_id,_title) {
                 enabled: false
             },
             series: [{
-                name: 'Year 1800',
+                name: 'Effectué',
                 data: [107, 31, 635]
             }, {
-                name: 'Year 1900',
+                name: 'Restant',
                 data: [133, 156, 947]
             }]
         });

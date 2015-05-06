@@ -27,8 +27,8 @@
                 
         <form method="post" action='<c:out value="${editURL}"></c:out>' enctype="multipart/form-data">
             <li class="sub_menu physique_1"><input type="date" name="naissance" placeholder="Non renseignée" value="${utilisateur.naissance}"/></li>
-            <li class="sub_menu physique_2"><input type="text" name="taille" placeholder="Non renseignée" value="${utilisateur.taille}cm"/></li>
-            <li class="sub_menu physique_3"><input type="text" name="poids" placeholder="Non renseigné" value="${utilisateur.poids}kg"/></li>
+            <li class="sub_menu physique_2"><input type="number" class="phy_taille" name="taille" placeholder="Non renseignée" value="${utilisateur.taille}"/>cm</li>
+            <li class="sub_menu physique_3"><input type="number" class="phy_poids" name="poids" placeholder="Non renseigné" value="${utilisateur.poids}"/>kg</li>
             <input type="hidden" name="id" value="${utilisateur.id}"/>
             <input type="hidden" name="type" value="modifierDonnees"/>
             <li class="sub_menu physique_4"><button>Modifier données</button></li>
@@ -51,4 +51,6 @@
             <li class="sub_menu ss_objectif_1_4"><button>Modifier objectif</button></li>
         </form>
 	</ul>
+        <c:url value="/deconnexion" var="deconnexion"></c:url>
+        <a class="bt_deconnexion" href='<c:out value="${deconnexion}"></c:out>'>Deconnexion</a>
 </div>

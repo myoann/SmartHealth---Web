@@ -56,7 +56,7 @@ function doDonut(_id,_user,_objectif,_type){
     $('#'+_id).highcharts({
         chart: {
          //   backgroundColor:'rgba(255, 255, 255, 0.1)',
-            height:200,
+            height:190,
             type: 'pie',
             spacingTop:0,
             spacingBottom:0,

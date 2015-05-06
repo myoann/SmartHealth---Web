@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset=UTF-8">
-        <title>Objectifs Manage Page</title>
+        <title>Gestion des objectifs</title>
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/data/logo.ico"/>
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/css.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
@@ -21,6 +21,12 @@
     </head>
     <body>
         <header>Admin page</header>
+            <table class="menu_admin">
+                <tr>
+                    <td><a href="./gestionUtilisateur" class="icon-users"> Gestion des utilisateurs</a></td>
+                    <td><a href="./gestionObjectif" class="icon-rocket"> Gestion des objectifs</a></td>
+                </tr>
+            </table>
             <%-- Person Add/Edit logic --%>
             <c:if test="${requestScope.error ne null}">
             <strong style="color: red;"><c:out
@@ -41,7 +47,7 @@
                         <table>
                             <tr>
                                 <td>ID</td>
-                                <td><input type="text" value="${requestScope.objectif.id}" readonly="readonly" name="id"></td>
+                                <td>${requestScope.objectif.id}<input type="hidden" value="${requestScope.objectif.id}" name="id"></td>
                         </tr>
                         <tr>
                             <td>Titre</td>
@@ -53,39 +59,39 @@
                         </tr>
                         <tr>
                             <td>Nombre de pas</td>
-                            <td><input type="text" value="${requestScope.objectif.nombrePas}" name="nombrePas"></td>
+                            <td><input type="number" value="${requestScope.objectif.nombrePas}" name="nombrePas"></td>
                         </tr>
                         <tr>
                             <td>Minutes</td>
-                            <td><input type="text" value="${requestScope.objectif.minutes}" name="minutes"></td>
+                            <td><input type="number" value="${requestScope.objectif.minutes}" name="minutes"></td>
                         </tr>
                         <tr>
                             <td>Mètres</td>
-                            <td><input type="text" value="${requestScope.objectif.metres}" name="metres"></td>
+                            <td><input type="number" value="${requestScope.objectif.metres}" name="metres"></td>
                         </tr>
                         <tr>
                             <td>Mètres à faire en vélo</td>
-                            <td><input type="text" value="${requestScope.objectif.veloMetres}" name="veloMetres"></td>
+                            <td><input type="number" value="${requestScope.objectif.veloMetres}" name="veloMetres"></td>
                         </tr>
                         <tr>
                             <td>Temps à faire en vélo</td>
-                            <td><input type="text" value="${requestScope.objectif.veloTemps}" name="veloTemps"></td>
+                            <td><input type="number" value="${requestScope.objectif.veloTemps}" name="veloTemps"></td>
                         </tr>
                         <tr>
                             <td>Mètres à faire en marchant</td>
-                            <td><input type="text" value="${requestScope.objectif.marcheMetres}" name="marcheMetres"></td>
+                            <td><input type="number" value="${requestScope.objectif.marcheMetres}" name="marcheMetres"></td>
                         </tr>
                         <tr>
                             <td>Temps à faire en marchant</td>
-                            <td><input type="text" value="${requestScope.objectif.marcheTemps}" name="marcheTemps"></td>
+                            <td><input type="number" value="${requestScope.objectif.marcheTemps}" name="marcheTemps"></td>
                         </tr>
                         <tr>
                             <td>Mètres à faire en courant</td>
-                            <td><input type="text" value="${requestScope.objectif.courseMetres}" name="courseMetres"></td>
+                            <td><input type="number" value="${requestScope.objectif.courseMetres}" name="courseMetres"></td>
                         </tr>
                         <tr>
                             <td>Temps à faire en courant</td>
-                            <td><input type="text" value="${requestScope.objectif.courseTemps}" name="courseTemps"></td>
+                            <td><input type="number" value="${requestScope.objectif.courseTemps}" name="courseTemps"></td>
                         </tr>
                         <tr>
                             <td colspan="2"><button class="icon-checkmark"> Editer</button></td>
@@ -111,39 +117,39 @@
                             </tr>
                             <tr>
                                 <td>Nombre de Pas</td>
-                                <td><input type="text" name="nombrePas"></td>
+                                <td><input type="number" name="nombrePas"></td>
                             </tr>
                             <tr>
                                 <td>Minutes</td>
-                                <td><input type="text" name="minutes"></td>
+                                <td><input type="number" name="minutes"></td>
                             </tr>
                             <tr>
                                 <td>Mètres</td>
-                                <td><input type="text" name="metres"></td>
+                                <td><input type="number" name="metres"></td>
                             </tr>
                             <tr>
                                 <td>Mètres à faire en vélo</td>
-                                <td><input type="text" name="veloMetres"></td>
+                                <td><input type="number" name="veloMetres"></td>
                             </tr>
                             <tr>
                                 <td>Temps à faire en vélo</td>
-                                <td><input type="text" name="veloTemps"></td>
+                                <td><input type="number" name="veloTemps"></td>
                             </tr>
                             <tr>
                                 <td>Mètres à faire en marchant</td>
-                                <td><input type="text" name="marcheMetres"></td>
+                                <td><input type="number" name="marcheMetres"></td>
                             </tr>
                             <tr>
                                 <td>Temps à faire en marchant</td>
-                                <td><input type="text" name="marcheTemps"></td>
+                                <td><input type="number" name="marcheTemps"></td>
                             </tr>
                             <tr>
                                 <td>Mètres à faire en courant</td>
-                                <td><input type="text" name="courseMetres"></td>
+                                <td><input type="number" name="courseMetres"></td>
                             </tr>
                             <tr>
                                 <td>Temps à faire en courant</td>
-                                <td><input type="text" name="courseTemps"></td>
+                                <td><input type="number" name="courseTemps"></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><button class="icon-checkmark"> Ajouter objectif</button></td>

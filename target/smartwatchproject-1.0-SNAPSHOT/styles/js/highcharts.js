@@ -3,13 +3,13 @@ $(function(){
     doDonut("donutB","75 / 100 min");
     doDonut("donutC","15 / 20 km");
     
-    doLine("line_cardiaque","cardiaque");
-    doLine("line_historique","historique");
-    doLine("line_nbPas","nb pas");
-    doLine("line_poids","poids");
+    doLine("line_cardiaque","Cardiaque");
+    doLine("line_historique","Historique");
+    doLine("line_nbPas","Nombre de pas");
+    doLine("line_poids","Poids");
 
 
-    doBar("line_dureeActivite","dureeActivite");
+    doBar("line_dureeActivite","Durée de l'activité");
 })
 
 var _view=true;

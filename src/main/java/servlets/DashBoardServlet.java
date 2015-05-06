@@ -54,7 +54,7 @@ public class DashBoardServlet extends HttpServlet {
         } else {
             Utilisateur u = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
             
-            Utilisateur utilisateur = gestionnaireUtilisateur.checkUser(u);
+            Utilisateur utilisateur = gestionnaireUtilisateur.readUser(u);
             request.setAttribute("utilisateur", utilisateur);
             
             List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();
@@ -63,6 +63,8 @@ public class DashBoardServlet extends HttpServlet {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new java.util.Date();
             HashMap<String, Integer> nombrePasTotal = u.getNombrePas();
+            
+            request.setAttribute("date", dateFormat.format(date));
             
             for (Entry<String, Integer> entry : nombrePasTotal.entrySet()) {
                 if (entry.getKey().equals(dateFormat.format(date))) {
