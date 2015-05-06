@@ -30,10 +30,20 @@ public class TestServlet extends HttpServlet {
     }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        System.out.println(request.getParameter("nom"));
-        String params = request.getParameter("latitude");
-        String paramsL = request.getParameter("longitude");
-        System.out.println(params);
+        if(request.getParameter("useFunctionServer").equals("modificationProfil")){
+            System.out.println(request.getParameter("userId"));
+            System.out.println(request.getParameter("dateDuJour"));
+            System.out.println(request.getParameter("userEmail"));
+            System.out.println(request.getParameter("userDateNaissance"));
+            System.out.println(request.getParameter("userPoids"));
+            System.out.println(request.getParameter("userTaille"));
+        }
+        else{
+            System.out.println(request.getParameter("nom"));
+            String params = request.getParameter("latitude");
+            String paramsL = request.getParameter("longitude");
+            System.out.println(params);
+        }
         this.getServletContext().getRequestDispatcher("/dashboard").forward(request, response);
     }
 }
