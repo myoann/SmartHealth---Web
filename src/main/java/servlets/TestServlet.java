@@ -20,16 +20,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.servlet.annotation.WebServlet;
 import gestionnaire.GestionnaireUtilisateur;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import javax.servlet.ServletInputStream;
 
 @WebServlet("/test")
 public class TestServlet extends HttpServlet {
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        request.setAttribute("utilisateur", "fabrice");
-        this.getServletContext().getRequestDispatcher("/").forward(request, response);
+        response.setContentType("application/json");
+        System.out.println("Dans le doGet");
+
+        if(request.getParameter("useFunctionServer").equals("getProfil")){
+            PrintWriter out = response.getWriter();
+            //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
+            out.print("{"
+                    + "\"mail\": \"fjauvat@gmail.com\","
+                    + "\"dateNaissance\": \"28/04/1991\","
+                    +"\"taille\":\"187\","
+                    +"\"poids\":\"85\""
+                    + "}");
+        }
     }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        System.out.println("Dans le doPost");
         if(request.getParameter("useFunctionServer").equals("modificationProfil")){
             System.out.println(request.getParameter("userId"));
             System.out.println(request.getParameter("dateDuJour"));
@@ -40,10 +55,9 @@ public class TestServlet extends HttpServlet {
         }
         else{
             System.out.println(request.getParameter("nom"));
-            String params = request.getParameter("latitude");
-            String paramsL = request.getParameter("longitude");
-            System.out.println(params);
+            System.out.println(request.getParameter("latitude"));
+            System.out.println(request.getParameter("longitude"));
         }
-        this.getServletContext().getRequestDispatcher("/dashboard").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/").forward(request, response);
     }
 }
