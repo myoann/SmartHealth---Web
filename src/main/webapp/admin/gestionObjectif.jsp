@@ -21,6 +21,12 @@
     </head>
     <body>
         <header>Admin page</header>
+    <table class="menu_admin">
+        <tr>
+            <td><a href="./gestionUtilisateur" class="icon-users"> Gestion des utilisateurs</a></td>
+            <td><a href="./gestionObjectif" class="icon-rocket"> Gestion des objectifs</a></td>
+        </tr>
+    </table>
             <%-- Person Add/Edit logic --%>
             <c:if test="${requestScope.error ne null}">
             <strong style="color: red;"><c:out

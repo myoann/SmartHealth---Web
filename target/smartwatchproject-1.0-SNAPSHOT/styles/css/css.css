@@ -89,6 +89,10 @@ div#connexion button#signUp{
 div#connexion button#logIn{
 	right: 130px;
 }
+div#connexion button#logIn a{
+    text-decoration: none;
+    
+}
 
 footer{
 	position: absolute;

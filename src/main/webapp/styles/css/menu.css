@@ -44,6 +44,10 @@ div#menu ul li.sub_menu button{
 	background-color: dodgerblue;
 	color: #fff;
 }
+div#menu ul li.sub_menu input.phy_taille,div#menu ul li.sub_menu input.phy_poids{
+    float: left;
+    width: 85%;
+}
 div#menu ul li.sub_menu select.select_objectif{
     float: left;
     width: 80%;
@@ -51,4 +55,21 @@ div#menu ul li.sub_menu select.select_objectif{
 div#menu ul li.sub_menu button.edit_objectif{
     width: 15%;
     padding: 6px;
+}
+
+div#menu a.bt_deconnexion:hover{
+    background-color: #232A45;
+}
+div#menu a.bt_deconnexion{
+    background-color: #2D3859;
+    display: inline-block;
+    text-decoration: none;
+    color:#fff;
+    position: absolute;
+    right: 0%;
+    left:0%;
+    bottom: 0px;
+    width:100%;
+    padding:10px 0px;
+    text-align: center;
 }

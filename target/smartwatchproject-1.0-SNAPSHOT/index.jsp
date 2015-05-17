@@ -16,7 +16,7 @@
 	<img id="bg" src="">
         <jsp:include page="./section/_header.jsp"/>
 	<div id="connexion">
-		<button id="logIn">Connexion</button>
+            <button id="logIn"><a href="./connexion">Connexion</a></button>
 		<button id="signUp">S'inscrire</button>
 	</div>
 	

@@ -18,8 +18,8 @@
         <!-- physique -->
 		<li id="menu_physique">Modifier vos données physique</li>
         <li class="sub_menu physique_1"><input type="date" placeholder="Non renseignée" value="${sessionScope.sessionUtilisateur.naissance}"/></li>
-        <li class="sub_menu physique_2"><input type="text" placeholder="Non renseignée" value="${sessionScope.sessionUtilisateur.taille}cm"/></li>
-        <li class="sub_menu physique_3"><input type="text" placeholder="Non renseigné" value="${sessionScope.sessionUtilisateur.poids}kg"/></li>
+        <li class="sub_menu physique_2"><input type="text" class="phy_taille" placeholder="Non renseignée" value="${sessionScope.sessionUtilisateur.taille}"/>cm</li>
+        <li class="sub_menu physique_3"><input type="text" class="phy_poids" placeholder="Non renseigné" value="${sessionScope.sessionUtilisateur.poids}"/>kg</li>
         <li class="sub_menu physique_4"><button class="icon-disk"> Enregistrer</button></li>
         <!-- objectifs -->
 	<li id="menu_objectif">Modifier vos objectifs</li>
@@ -35,4 +35,5 @@
         </li>
         <li class="sub_menu ss_objectif_1_4"><button class="icon-disk"> Enregistrer</button></li>
 	</ul>
+        <a class="bt_deconnexion" href="/deconnexion">Deconnexion</a>
 </div>

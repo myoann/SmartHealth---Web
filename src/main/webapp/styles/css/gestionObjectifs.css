@@ -104,3 +104,21 @@ fieldset#fieldset_new_objectif button:hover{
 /* -- fieldset#fieldset_manage_users -- */
 fieldset#fieldset_manage_objectif{}
 /* -------------------- END FIELDSET -------------------- */
+
+
+table.menu_admin td a:hover{
+    background-color: dodgerblue;
+}
+table.menu_admin td a{
+    background-color: #458;
+    display: inline-block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+table.menu_admin td:nth-child(1) a{
+    float: right;
+}
+table.menu_admin td:nth-child(2) a{
+    float: left;
+}

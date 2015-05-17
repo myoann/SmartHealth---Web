@@ -1,0 +1,119 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 mai 2015, 14:02:42
+    Author     : EK
+*/
+/* -------------------- BODY -------------------- */
+body{
+    background-color: #fafafa;
+}
+/* -------------------- END BODY -------------------- */
+
+/* -------------------- HEADER -------------------- */
+header{
+    /*background-color: seagreen;
+    color:#fff;*/
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    
+    font-size: 40px;
+    font-weight: bold;
+    
+    margin-bottom: 30px;
+    padding: 20px;
+}
+/* -------------------- END HEADER -------------------- */
+
+/* -------------------- TABLE -------------------- */
+table{
+    width: 100%;
+}
+table td{
+    padding: 5px 30px;
+}
+table#tab_new_user td:nth-child(1){
+    width: 250px;
+}
+/* -------------------- END TABLE -------------------- */
+
+/* -------------------- INPUT/BUTTON -------------------- */
+input,button{
+    padding:10px;
+}
+input{
+    width: 100%;
+}
+button{
+    background-color: seagreen;
+    color: #fff;
+    float: right;
+    cursor: pointer
+}
+/* -------------------- END INPUT/BUTTON -------------------- */
+
+/* -------------------- FIELDSET -------------------- */
+fieldset{
+    background-color: #fff;
+    padding: 30px;
+    position: relative;
+    width:100%;
+    left: 50%;
+    margin-left: -50%;
+    margin-bottom: 30px;
+}
+fieldset legend{
+    padding: 20px 10px;
+    font-size: 30px;
+    color:seagreen;
+    float: left;
+}
+/* -- fieldset#fieldset_edit_user -- */
+fieldset#fieldset_edit_user{
+    background-color: seagreen;
+}
+fieldset#fieldset_edit_user table td,fieldset#fieldset_edit_user legend{
+    color: #fff;
+}
+fieldset#fieldset_edit_user input{
+    background-color:#285F2F;
+    color: #fff;
+    border:1px solid #65A06D;
+}
+fieldset#fieldset_edit_user button:hover{
+    background-color:#65A06D;
+}
+fieldset#fieldset_edit_user button{
+    background-color:#103515;
+}
+/* -- fieldset#fieldset_new_user -- */
+fieldset#fieldset_new_user{}
+fieldset#fieldset_new_user input{
+    border: 1px solid #ccc;
+}
+fieldset#fieldset_new_user button:hover{
+    background-color: #103515;
+}
+/* -- fieldset#fieldset_manage_users -- */
+fieldset#fieldset_manage_users{}
+/* -------------------- END FIELDSET -------------------- */
+
+table.menu_admin td a:hover{
+    background-color: dodgerblue;
+}
+table.menu_admin td a{
+    background-color: #458;
+    display: inline-block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+table.menu_admin td:nth-child(1) a{
+    float: right;
+}
+table.menu_admin td:nth-child(2) a{
+    float: left;
+}
