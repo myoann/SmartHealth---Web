@@ -41,7 +41,7 @@ table#tab_new_user td:nth-child(1){
 /* -------------------- END TABLE -------------------- */
 
 /* -------------------- INPUT/BUTTON -------------------- */
-input,button{
+input,button,select{
     padding:10px;
 }
 input{

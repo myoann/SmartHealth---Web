@@ -28,7 +28,9 @@
                 $('#example').DataTable({
 
                 });
-                doDonut("donutA","${nombrePas} / 10 000 pas");
+                doDonut("donutA","${nombrePas}","${utilisateur.objectif.nombrePas}","pas");
+                doDonut("donutB","${nombreMinutes}","${utilisateur.objectif.minutes}","minutes");
+                doDonut("donutC","${nombreMetres}","${utilisateur.objectif.metres}","mètres");
             } );
         </script>
 	</head>
@@ -39,11 +41,11 @@
     <jsp:include page="../section/_header.jsp"/>
     <table id="tabProfil" onclick="viewMenu()">
         <tr>
-            <td id="tdUsername"><span>${sessionScope.sessionUtilisateur.name}</span></td>
+            <td id="tdUsername"><span>${utilisateur.name}</span></td>
             <td rowspan="2"><img src="${pageContext.request.contextPath}/data/img/avatar.jpg" /></td>
         </tr>
         <tr>
-            <td id="tdEmail"><span>${sessionScope.sessionUtilisateur.email}</span></td>
+            <td id="tdEmail"><span>${utilisateur.email}</span></td>
         </tr>
     </table>
     <div id="displayMap">
@@ -60,7 +62,7 @@
 		</tr>
         <tr>
             <td id="donuts"><div id="donutA"></div><div id="donutB"></div><div id="donutC"></div></td>
-            <td><span id="score">98%</span><br>objectifs atteints</td>
+            <td><span id="score">35%</span><br>objectifs atteints</td>
             <td><div id="line_cardiaque"></div></td>
         </tr>
         <tr>

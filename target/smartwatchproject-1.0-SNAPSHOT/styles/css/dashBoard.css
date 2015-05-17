@@ -34,6 +34,7 @@ table#tabProfil:hover{
     background: #eee;
 }
 table#tabProfil{
+<<<<<<< HEAD
     background: #fafafa;
     cursor: pointer;
     position: absolute;
@@ -43,6 +44,17 @@ table#tabProfil{
     display: inline-block;
     width: 263px;
     /*border-left: 1px solid #455;*/
+=======
+	background: #fafafa;
+	cursor: pointer;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	padding: 4px 20px;
+	display: inline-block;
+        width: 263px;
+	/*border-left: 1px solid #455;*/
+>>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
 }
 table#tabProfil td{
 }
@@ -55,9 +67,15 @@ table#tabProfil td span{
     display: inline-block;
 }
 table#tabProfil td#tdUsername{
+<<<<<<< HEAD
     width: 183px;
     vertical-align: bottom;
 
+=======
+  width: 183px;
+ vertical-align: bottom;
+	
+>>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
 }
 table#tabProfil td#tdUsername span{
     font-size: 20px;

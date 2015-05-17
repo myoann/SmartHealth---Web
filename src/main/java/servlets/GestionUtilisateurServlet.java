@@ -43,7 +43,7 @@ public class GestionUtilisateurServlet extends HttpServlet {
         if ( utilisateur == null ) {
             request.getRequestDispatcher(ACCES_CONNEXION).forward( request, response );
         } else {
-            Utilisateur u = gestionnaireUtilisateur.checkUser(utilisateur);
+            Utilisateur u = gestionnaireUtilisateur.readUser(utilisateur);
             u.setAdmin(true);
             if (u != null && u.isAdmin() == true) {
                 List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();

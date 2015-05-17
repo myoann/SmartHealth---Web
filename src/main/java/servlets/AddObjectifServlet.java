@@ -65,7 +65,7 @@ public class AddObjectifServlet extends HttpServlet {
             o.setCourseTemps(courseTemps);
             gestionnaireObjectif.createObjectif(o);
             System.out.println("Objectif Added Successfully with id="+o.getId());
-            request.setAttribute("success", "Person Added Successfully");
+            request.setAttribute("success", "Objectif ajouté avec succès");
             List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();
             request.setAttribute("objectifs", objectifs);
  

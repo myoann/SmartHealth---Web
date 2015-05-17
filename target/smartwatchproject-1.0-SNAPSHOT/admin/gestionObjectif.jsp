@@ -4,7 +4,11 @@
 <html>
     <head>
         <meta charset=UTF-8">
+<<<<<<< HEAD
         <title>Objectifs Manage Page</title>
+=======
+        <title>Gestion des objectifs</title>
+>>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/data/logo.ico"/>
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/css.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
@@ -21,12 +25,21 @@
     </head>
     <body>
         <header>Admin page</header>
+<<<<<<< HEAD
     <table class="menu_admin">
         <tr>
             <td><a href="./gestionUtilisateur" class="icon-users"> Gestion des utilisateurs</a></td>
             <td><a href="./gestionObjectif" class="icon-rocket"> Gestion des objectifs</a></td>
         </tr>
     </table>
+=======
+            <table class="menu_admin">
+                <tr>
+                    <td><a href="./gestionUtilisateur" class="icon-users"> Gestion des utilisateurs</a></td>
+                    <td><a href="./gestionObjectif" class="icon-rocket"> Gestion des objectifs</a></td>
+                </tr>
+            </table>
+>>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
             <%-- Person Add/Edit logic --%>
             <c:if test="${requestScope.error ne null}">
             <strong style="color: red;"><c:out
@@ -47,7 +60,11 @@
                         <table>
                             <tr>
                                 <td>ID</td>
+<<<<<<< HEAD
                                 <td><input type="text" value="${requestScope.objectif.id}" readonly="readonly" name="id"></td>
+=======
+                                <td>${requestScope.objectif.id}<input type="hidden" value="${requestScope.objectif.id}" name="id"></td>
+>>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
                         </tr>
                         <tr>
                             <td>Titre</td>
@@ -59,6 +76,7 @@
                         </tr>
                         <tr>
                             <td>Nombre de pas</td>
+<<<<<<< HEAD
                             <td><input type="text" value="${requestScope.objectif.nombrePas}" name="nombrePas"></td>
                         </tr>
                         <tr>
@@ -95,6 +113,44 @@
                         </tr>
                         <tr>
                             <td colspan="2"><button class="icon-checkmark"> Save</button></td>
+=======
+                            <td><input type="number" value="${requestScope.objectif.nombrePas}" name="nombrePas"></td>
+                        </tr>
+                        <tr>
+                            <td>Minutes</td>
+                            <td><input type="number" value="${requestScope.objectif.minutes}" name="minutes"></td>
+                        </tr>
+                        <tr>
+                            <td>Mètres</td>
+                            <td><input type="number" value="${requestScope.objectif.metres}" name="metres"></td>
+                        </tr>
+                        <tr>
+                            <td>Mètres à faire en vélo</td>
+                            <td><input type="number" value="${requestScope.objectif.veloMetres}" name="veloMetres"></td>
+                        </tr>
+                        <tr>
+                            <td>Temps à faire en vélo</td>
+                            <td><input type="number" value="${requestScope.objectif.veloTemps}" name="veloTemps"></td>
+                        </tr>
+                        <tr>
+                            <td>Mètres à faire en marchant</td>
+                            <td><input type="number" value="${requestScope.objectif.marcheMetres}" name="marcheMetres"></td>
+                        </tr>
+                        <tr>
+                            <td>Temps à faire en marchant</td>
+                            <td><input type="number" value="${requestScope.objectif.marcheTemps}" name="marcheTemps"></td>
+                        </tr>
+                        <tr>
+                            <td>Mètres à faire en courant</td>
+                            <td><input type="number" value="${requestScope.objectif.courseMetres}" name="courseMetres"></td>
+                        </tr>
+                        <tr>
+                            <td>Temps à faire en courant</td>
+                            <td><input type="number" value="${requestScope.objectif.courseTemps}" name="courseTemps"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button class="icon-checkmark"> Editer</button></td>
+>>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
                         </tr>
                     </table>
                 </fieldset>
@@ -117,6 +173,7 @@
                             </tr>
                             <tr>
                                 <td>Nombre de Pas</td>
+<<<<<<< HEAD
                                 <td><input type="text" name="nombrePas"></td>
                             </tr>
                             <tr>
@@ -153,6 +210,44 @@
                             </tr>
                             <tr>
                                 <td colspan="2"><button class="icon-checkmark"> Add Objectif</button></td>
+=======
+                                <td><input type="number" name="nombrePas"></td>
+                            </tr>
+                            <tr>
+                                <td>Minutes</td>
+                                <td><input type="number" name="minutes"></td>
+                            </tr>
+                            <tr>
+                                <td>Mètres</td>
+                                <td><input type="number" name="metres"></td>
+                            </tr>
+                            <tr>
+                                <td>Mètres à faire en vélo</td>
+                                <td><input type="number" name="veloMetres"></td>
+                            </tr>
+                            <tr>
+                                <td>Temps à faire en vélo</td>
+                                <td><input type="number" name="veloTemps"></td>
+                            </tr>
+                            <tr>
+                                <td>Mètres à faire en marchant</td>
+                                <td><input type="number" name="marcheMetres"></td>
+                            </tr>
+                            <tr>
+                                <td>Temps à faire en marchant</td>
+                                <td><input type="number" name="marcheTemps"></td>
+                            </tr>
+                            <tr>
+                                <td>Mètres à faire en courant</td>
+                                <td><input type="number" name="courseMetres"></td>
+                            </tr>
+                            <tr>
+                                <td>Temps à faire en courant</td>
+                                <td><input type="number" name="courseTemps"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button class="icon-checkmark"> Ajouter objectif</button></td>
+>>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
                             </tr>
                         </table>
                     </fieldset>
@@ -204,9 +299,15 @@
                                 <td><c:out value="${objectif.courseMetres}"></c:out></td>
                                 <td><c:out value="${objectif.courseTemps}"></c:out></td>
                                     <td><a
+<<<<<<< HEAD
                                             href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Edit</a></td>
                                     <td><a
                                             href='<c:out value="${deleteURL}" escapeXml="true"></c:out>'>Delete</a></td>
+=======
+                                            href='<c:out value="${editURL}" escapeXml="true"></c:out>'>Editer</a></td>
+                                    <td><a
+                                            href='<c:out value="${deleteURL}" escapeXml="true"></c:out>'>Supprimer</a></td>
+>>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
                                 </tr>
                         </c:forEach>
                     </tbody>

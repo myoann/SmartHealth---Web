@@ -49,6 +49,7 @@ body#dashBoard header{
 }
 header{
 	position: relative;
+        padding: 3px;
 }
 header,div#connexion {
 	text-align: center;
@@ -147,5 +148,20 @@ div#message span{
 	font-weight: bold;
 }
 
-span#msgB{
+header button#bt_calendar:hover{
+background-color: #eee;
+}
+header button#bt_calendar{
+background-color: #fafafa;
+color: #333;
+
+font-weight: bold;
+   text-transform: capitalize;
+
+position: absolute;
+top: 0px;
+left: 0px;
+padding: 33px;
+font-size: 20px;
+cursor: pointer;
 }

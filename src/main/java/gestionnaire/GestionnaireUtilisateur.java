@@ -20,7 +20,7 @@ import com.mongodb.MongoClient;
 import convertisseur.ObjectifConverter;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import listener.MongoClientProvider;
+import mongo.MongoClientProvider;
 /**
  *
  * @author user
@@ -47,7 +47,7 @@ public class GestionnaireUtilisateur {
                 .append("_id", new ObjectId(u.getId())).get();
         BasicDBObject updateUser = new BasicDBObject();
         DBObject objectif = ObjectifConverter.toDBObject(u.getObjectif());
-        DBObject newUser = new BasicDBObject().append("country", u.getCountry())
+        DBObject newUser = new BasicDBObject()//.append("photo", u.getPhoto())
                                               .append("email", u.getEmail())
                                               .append("naissance", u.getNaissance())
                                               .append("motdepasse", u.getMotdepasse())
@@ -59,6 +59,45 @@ public class GestionnaireUtilisateur {
         col.update(query, updateUser);
     }
  
+    public void updateProfil(Utilisateur u) {
+        MongoClient mongoClient = mongoClientProvider.getMongoClient();
+        DBCollection col = mongoClient.getDB("miage").getCollection("Utilisateurs");
+        DBObject query = BasicDBObjectBuilder.start()
+                .append("_id", new ObjectId(u.getId())).get();
+        BasicDBObject updateUser = new BasicDBObject();
+        DBObject newUser = new BasicDBObject().append("motdepasse", u.getMotdepasse())
+                                              .append("email", u.getEmail());
+	updateUser.append("$set", newUser);
+        col.update(query, updateUser);
+    }
+    
+    public void updateDonnees(Utilisateur u) {
+        
+        System.out.println(u.getPoids());
+        MongoClient mongoClient = mongoClientProvider.getMongoClient();
+        DBCollection col = mongoClient.getDB("miage").getCollection("Utilisateurs");
+        DBObject query = BasicDBObjectBuilder.start()
+                .append("_id", new ObjectId(u.getId())).get();
+        BasicDBObject updateUser = new BasicDBObject();
+        DBObject newUser = new BasicDBObject().append("naissance", u.getNaissance())
+                                              .append("poids", u.getPoids())
+                                              .append("taille", u.getTaille());
+	updateUser.append("$set", newUser);
+        col.update(query, updateUser);
+    }
+    
+    public void updateObjectif(Utilisateur u) {
+        MongoClient mongoClient = mongoClientProvider.getMongoClient();
+        DBCollection col = mongoClient.getDB("miage").getCollection("Utilisateurs");
+        DBObject query = BasicDBObjectBuilder.start()
+                .append("_id", new ObjectId(u.getId())).get();
+        BasicDBObject updateUser = new BasicDBObject();
+        DBObject objectif = ObjectifConverter.toDBObject(u.getObjectif());
+        DBObject newUser = new BasicDBObject().append("objectif", objectif);
+	updateUser.append("$set", newUser);
+        col.update(query, updateUser);
+    }
+    
     public List<Utilisateur> readAllUsers() {
         MongoClient mongoClient = mongoClientProvider.getMongoClient();
         DBCollection col = mongoClient.getDB("miage").getCollection("Utilisateurs");

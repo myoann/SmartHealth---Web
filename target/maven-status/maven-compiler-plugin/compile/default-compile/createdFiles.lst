@@ -1,8 +1,18 @@
 modeles\Objectif.class
+<<<<<<< HEAD
 listener\MongoClientProvider.class
 gestionnaire\GestionnaireObjectif.class
 servlets\GestionUtilisateurServlet.class
 filters\AdminFilter.class
+=======
+servlets\GestionObjectifServlet.class
+gestionnaire\GestionnaireObjectif.class
+servlets\GestionUtilisateurServlet.class
+filters\AdminFilter.class
+convertisseur\ObjectifConverter.class
+mongo\MongoClientProvider.class
+servlets\AddUserServlet.class
+>>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
 servlets\DashBoardServlet.class
 servlets\DeconnexionServlet.class
 convertisseur\UtilisateurConverter.class

@@ -69,7 +69,7 @@ public class EditObjectifServlet extends HttpServlet {
  
         if ((titre == null || titre.equals(""))
                 || (description == null || description.equals(""))) {
-            request.setAttribute("error", "Titre and Description Can't be empty");
+            request.setAttribute("error", "Le titre et la description ne peuvent pas être vide");
             Objectif o = new Objectif();
             o.setId(id);
             o.setTitre(titre);
@@ -106,7 +106,7 @@ public class EditObjectifServlet extends HttpServlet {
             o.setCourseTemps(courseTemps);
             gestionnaireObjectif.updateObjectif(o);
             System.out.println("Objectif edited successfully with id=" + id);
-            request.setAttribute("success", "Objectif edited successfully");
+            request.setAttribute("success", "Objectif édité avec succès");
             List<Objectif> objectifs = gestionnaireObjectif.readAllObjectifs();
             request.setAttribute("objectifs", objectifs);
  

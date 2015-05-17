@@ -18,7 +18,7 @@ import com.mongodb.MongoClient;
 import convertisseur.ObjectifConverter;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import listener.MongoClientProvider;
+import mongo.MongoClientProvider;
 import modeles.Objectif;
 /**
  *
