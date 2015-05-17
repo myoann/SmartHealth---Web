@@ -16,7 +16,7 @@ public class Utilisateur implements Serializable {
     
     private String email;
 
-    private String country;
+    //private String photo;
     
     private String localisation;
     
@@ -54,15 +54,15 @@ public class Utilisateur implements Serializable {
     public void setLocalisation(String localisation) {
         this.localisation = localisation;
     }
- 
-    public String getCountry() {
-        return country;
+    /*
+    public String getPhoto() {
+        return photo;
     }
  
-    public void setCountry(String country) {
-        this.country = country;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
- 
+    */
     public String getId() {
         return id;
     }

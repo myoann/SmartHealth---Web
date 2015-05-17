@@ -1,8 +1,24 @@
 modeles\Objectif.class
+<<<<<<< HEAD
 listener\MongoClientProvider.class
+<<<<<<< HEAD
 gestionnaire\GestionnaireObjectif.class
 servlets\GestionUtilisateurServlet.class
 filters\AdminFilter.class
+=======
+gestionnaire\GestionnaireObjectif.class
+servlets\GestionUtilisateurServlet.class
+filters\AdminFilter.class
+=======
+servlets\GestionObjectifServlet.class
+gestionnaire\GestionnaireObjectif.class
+servlets\GestionUtilisateurServlet.class
+filters\AdminFilter.class
+convertisseur\ObjectifConverter.class
+mongo\MongoClientProvider.class
+servlets\AddUserServlet.class
+>>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
+>>>>>>> 2b0e3ffce2a1931c67c745cfab631ac33b95d456
 servlets\DashBoardServlet.class
 servlets\DeconnexionServlet.class
 convertisseur\UtilisateurConverter.class
@@ -11,6 +27,7 @@ servlets\AddObjectifServlet.class
 servlets\EditObjectifServlet.class
 servlets\ConnexionServlet.class
 servlets\EditUserServlet.class
+<<<<<<< HEAD
 utilisateurs\convertisseur\UtilisateurConverter.class
 servlets\GestionObjectifServlet.class
 utilisateurs\modeles\Objectif.class
@@ -19,6 +36,11 @@ convertisseur\ObjectifConverter.class
 servlets\AddUserServlet.class
 listener\MongoDBContextListener.class
 utilisateurs\modeles\Utilisateur.class
+=======
+servlets\GestionObjectifServlet.class
+convertisseur\ObjectifConverter.class
+servlets\AddUserServlet.class
+>>>>>>> 2b0e3ffce2a1931c67c745cfab631ac33b95d456
 servlets\DeleteObjectifServlet.class
 forms\ConnexionForm.class
 filters\UserFilter.class

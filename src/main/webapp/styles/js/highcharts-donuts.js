@@ -1,14 +1,24 @@
-function doDonut(_id,_title){
+function doDonut(_id,_user,_objectif,_type){
+    var restant = parseInt(_objectif) - parseInt(_user);
     var colors = Highcharts.getOptions().colors,
-        categories = ['50%'],
+        categories = [''],
         data = [{
-            y: 100,
+            y: 55.11,
             color: colors[0],
             drilldown: {
-                name: 'd',
-                categories: [''],
-                data: [100],
+                name: 'Effectué',
+                categories: ['Effectué'],
+                data: [parseInt(_user)],
                 color: colors[0]
+            }
+        }, {
+            y: 21.63,
+            color: colors[1],
+            drilldown: {
+                name: 'Restant',
+                categories: ['Restant'],
+                data: [parseInt(restant)],
+                color: colors[1]
             }
         }],
         browserData = [],
@@ -46,14 +56,14 @@ function doDonut(_id,_title){
     $('#'+_id).highcharts({
         chart: {
          //   backgroundColor:'rgba(255, 255, 255, 0.1)',
-            height:200,
+            height:190,
             type: 'pie',
             spacingTop:0,
             spacingBottom:0,
             spacingRight:0,
             spacingLeft:0,
-            marginTop:0,
-            marginBottom:0,
+            marginTop:-15,
+            marginBottom:-10,
             marginLeft:0,
             marginRight:0
         },
@@ -64,7 +74,7 @@ function doDonut(_id,_title){
             enabled: false
         },
         title: {
-            text: _title,
+            text: _user+' / '+_objectif+' '+_type,
             verticalAlign: 'bottom', 
             y: -10,
             style: {
@@ -83,24 +93,13 @@ function doDonut(_id,_title){
             }
         },
         tooltip: {
-            valueSuffix: '%'
+            valueSuffix: ''
         },
         series: [{
-            name: 'Browsers',
-            data: browserData,
-            size: '40%',
-            dataLabels: {
-                color: 'black',
-                style: {
-                    fontSize:"22px"
-                },
-                distance: -45
-            }
-        }, {
-            name: 'Versions',
+            name: 'Nombre de '+_type,
             data: versionsData,
-            size: '100%',
-            innerSize: '80%',
+            size: '80%',
+            innerSize: '60%',
             dataLabels: {
                 connectorWidth: 0
             }

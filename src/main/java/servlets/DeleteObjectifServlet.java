@@ -35,7 +35,7 @@ public class DeleteObjectifServlet extends HttpServlet {
         o.setId(id);
         gestionnaireObjectif.deleteObjectif(o);
         System.out.println("Objectif deleted successfully with id=" + id);
-        request.setAttribute("success", "Objectif deleted successfully");
+        request.setAttribute("success", "Objectif supprimé avec succès");
  
         RequestDispatcher rd = getServletContext().getRequestDispatcher(
                     "/gestionObjectif");

@@ -38,7 +38,7 @@ public class DeleteUserServlet extends HttpServlet {
         u.setId(id);
         gestionnaireUtilisateur.deleteUser(u);
         System.out.println("Person deleted successfully with id=" + id);
-        request.setAttribute("success", "Person deleted successfully");
+        request.setAttribute("success", "Utilisateur supprimé avec succès");
  
         RequestDispatcher rd = getServletContext().getRequestDispatcher(
                     "/gestionUtilisateur");

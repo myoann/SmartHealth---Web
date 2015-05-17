@@ -26,7 +26,7 @@
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: 'Nombre'
             },
             plotLines: [{
                 value: 0,
