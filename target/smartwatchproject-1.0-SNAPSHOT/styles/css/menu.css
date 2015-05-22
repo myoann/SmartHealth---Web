@@ -1,79 +1,3 @@
-<<<<<<< HEAD
-div#menu{
-	opacity: 1;
-	z-index: 999;
-
-	/*background: #fafafa;*/
-	background: #458;
-	box-shadow: 0px 1px 10px #333;
-	color: #fff;
-
-	position: fixed;
-	top: 0px;
-	right: -263px;
-	bottom: 0px;
-	width: 263px;
-	transition:0.5s;
-}
-div#menu ul{
-	position: relative;
-	top:95px;
-	list-style: none;
-	border-top:1px solid #3C4A76;
-	border-bottom:1px solid #3C4A76;
-}
-div#menu ul li:hover{
-	background: dodgerblue;
-}
-div#menu ul li{
-	color: #fff;
-	cursor: pointer;
-	padding: 10px;
-}
-
-div#menu ul li.sub_menu{
-	background-color: #143056;
-	display:none;
-  	text-align: right;
-}
-
-div#menu ul li.sub_menu input, div#menu ul li.sub_menu select, div#menu ul li.sub_menu button{
-	padding: 5px;
-  	width: 100%;
-}
-div#menu ul li.sub_menu button{
-	background-color: dodgerblue;
-	color: #fff;
-}
-div#menu ul li.sub_menu input.phy_taille,div#menu ul li.sub_menu input.phy_poids{
-    float: left;
-    width: 85%;
-}
-div#menu ul li.sub_menu select.select_objectif{
-    float: left;
-    width: 80%;
-}
-div#menu ul li.sub_menu button.edit_objectif{
-    width: 15%;
-    padding: 6px;
-}
-
-div#menu a.bt_deconnexion:hover{
-    background-color: #232A45;
-}
-div#menu a.bt_deconnexion{
-    background-color: #2D3859;
-    display: inline-block;
-    text-decoration: none;
-    color:#fff;
-    position: absolute;
-    right: 0%;
-    left:0%;
-    bottom: 0px;
-    width:100%;
-    padding:10px 0px;
-    text-align: center;
-=======
 div#menu{
 	opacity: 1;
 	z-index: 999;
@@ -152,5 +76,4 @@ div#menu ul li.sub_menu input.phy_taille,div#menu ul li.sub_menu input.phy_poids
 .ss_objectif_1_2 {
     font-size:12px;
     color:#777;
->>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
 }

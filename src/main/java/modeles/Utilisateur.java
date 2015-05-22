@@ -6,6 +6,7 @@
 package modeles;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Utilisateur implements Serializable {
@@ -22,12 +23,6 @@ public class Utilisateur implements Serializable {
     
     private String motdepasse;
 
-    private HashMap<String, Integer> nombrePas;
-    
-    private HashMap minutes;
-    
-    private HashMap metres;
-    
     private String taille;
     
     private String poids;
@@ -35,6 +30,8 @@ public class Utilisateur implements Serializable {
     private String naissance;
     
     private Objectif objectif;
+    
+    private ArrayList<Activite> activites;
     
     private boolean admin = false;
 
@@ -79,28 +76,12 @@ public class Utilisateur implements Serializable {
         this.motdepasse = motdepasse;
     }
 
-    public HashMap getNombrePas() {
-        return nombrePas;
-    }
-    
-    public void setNombrePas(HashMap<String, Integer> nombrePas) {
-        this.nombrePas = nombrePas;
-    }
-    
     public String getEmail() {
         return email;
     }
  
     public void setEmail(String email) {
         this.email = email;
-    }
-    
-    public HashMap getMinutes() {
-        return minutes;
-    }
-
-    public HashMap getMetres() {
-        return metres;
     }
 
     public String getTaille() {
@@ -119,14 +100,6 @@ public class Utilisateur implements Serializable {
         return admin;
     }
     
-    public void setMinutes(HashMap minutes) {
-        this.minutes = minutes;
-    }
-
-    public void setMetres(HashMap metres) {
-        this.metres = metres;
-    }
-
     public void setTaille(String taille) {
         this.taille = taille;
     }
@@ -151,4 +124,12 @@ public class Utilisateur implements Serializable {
         this.objectif = objectif;
     }
 
+    public ArrayList<Activite> getActivites() {
+        return activites;
+    }
+
+    public void setActivites(ArrayList<Activite> activites) {
+        this.activites = activites;
+    }
+    
 }
