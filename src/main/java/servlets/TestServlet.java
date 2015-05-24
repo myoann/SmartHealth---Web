@@ -44,7 +44,6 @@ public class TestServlet extends HttpServlet {
     }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-<<<<<<< HEAD
         System.out.println("Dans le doPost");
         if(request.getParameter("useFunctionServer").equals("modificationProfil")){
             System.out.println(request.getParameter("userId"));
@@ -61,14 +60,7 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("longitude"));
             System.out.println(request.getParameter("rythmeCardiaque"));
             System.out.println(request.getParameter("podometre"));
-
-
-                        
         }
-=======
-        System.out.println(request.getParameter("latitude"));
-        System.out.println(request.getParameter("longitude"));
->>>>>>> 403da902583d377408abbec7ee359dd4f3b4b449
         this.getServletContext().getRequestDispatcher("/").forward(request, response);
     }
 }
