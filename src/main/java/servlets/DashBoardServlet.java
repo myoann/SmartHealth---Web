@@ -62,6 +62,7 @@ public class DashBoardServlet extends HttpServlet {
             
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new java.util.Date();
+            /*
             HashMap<String, Integer> nombrePasTotal = u.getNombrePas();
             
             request.setAttribute("date", dateFormat.format(date));
@@ -99,6 +100,7 @@ public class DashBoardServlet extends HttpServlet {
                 else
                     request.setAttribute("nombreMetres", 300);
             }
+            */
             /* date 
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
             Calendar cal = Calendar.getInstance();

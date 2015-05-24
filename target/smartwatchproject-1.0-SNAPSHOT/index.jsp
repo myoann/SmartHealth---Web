@@ -19,12 +19,8 @@
             <span id="title">Smart Health</span>
         </header>
 	<div id="connexion">
-<<<<<<< HEAD
-            <button id="logIn"><a href="./connexion">Connexion</a></button>
-=======
         <c:url value="/connexion" var="connexion"></c:url>
             <a href='<c:out value="${connexion}"></c:out>'><button id="logIn">Connexion</button></a>
->>>>>>> f09ef9bfc15e5de26cc8bf4eef173afb6ae2207e
 		<button id="signUp">S'inscrire</button>
 	</div>
 	

@@ -20,10 +20,13 @@ import modeles.Utilisateur;
 import gestionnaire.GestionnaireObjectif;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
+import modeles.Activite;
 import modeles.Objectif;
  
 @WebServlet("/addUser")
@@ -71,29 +74,30 @@ public class AddUserServlet extends HttpServlet {
                 u.setTaille(taille);
                 u.setNaissance(naissance);
                 u.setMotdepasse(motdepasse);
-                HashMap<String,Integer> mapP = new HashMap<String,Integer>();
-                mapP.put("02/05/2015", 1800);
-                mapP.put("03/05/2015", 1800);
-                mapP.put("04/05/2015", 1500);
-                mapP.put("05/05/2015", 1300);
-                mapP.put("06/05/2015", 1300);
-
-                HashMap<String,Integer> mapM = new HashMap<String,Integer>();
-                mapM.put("02/05/2015", 1500);
-                mapM.put("03/05/2015", 1400);
-                mapM.put("04/05/2015", 1200);
-                mapM.put("05/05/2015", 1100);
-                mapM.put("06/05/2015", 1100);
-
-                HashMap<String,Integer> mapMin = new HashMap<String,Integer>();
-                mapMin.put("02/05/2015", 30);
-                mapMin.put("03/05/2015", 40);
-                mapMin.put("04/05/2015", 50);
-                mapMin.put("05/05/2015", 20);
-                mapMin.put("06/05/2015", 30);
-                u.setNombrePas(mapP);
-                u.setMetres(mapM);
-                u.setMinutes(mapMin);
+                
+                Date date = new java.util.Date();
+                ArrayList<Activite> activites = new ArrayList<Activite>();
+                Activite a = new Activite();
+                a.setDate(date);
+                a.setFrequenceCardiaque(60);
+                a.setNombrePas(1800);
+                a.setMetres(1000);
+                a.setMinutes(15);
+                a.setType("marche");
+                String[] itineraire= {"47.26545","47.26545","47.26545","47.26545"};
+                a.setItineraire(itineraire);
+                activites.add(a);
+                
+                Activite a2 = new Activite();
+                a2.setDate(date);
+                a2.setFrequenceCardiaque(60);
+                a2.setNombrePas(1800);
+                a2.setMetres(1000);
+                a2.setMinutes(15);
+                a2.setType("marche");
+                a2.setItineraire(itineraire);
+                activites.add(a2);
+                u.setActivites(activites);
 
                 Objectif o = new Objectif();
                 o.setId(objectif);

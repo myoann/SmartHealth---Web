@@ -9,7 +9,9 @@ import org.bson.types.ObjectId;
 import modeles.Utilisateur;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
+import java.util.ArrayList;
 import java.util.HashMap;
+import modeles.Activite;
 import modeles.Objectif;
 
 /**
@@ -22,13 +24,16 @@ public class UtilisateurConverter {
     public static DBObject toDBObject(Utilisateur u) {
  
         DBObject objectif = ObjectifConverter.toDBObject(u.getObjectif());
+        
+        ArrayList<DBObject> activites = new ArrayList<>();
+        for(int i = 0; i < u.getActivites().size(); i++) {
+            activites.add(ActiviteConverter.toDBObject(u.getActivites().get(i)));
+        }
         BasicDBObjectBuilder builder = BasicDBObjectBuilder.start()
                 .append("name", u.getName())//.append("photo", u.getPhoto())
                                             .append("motdepasse", u.getMotdepasse())
                                             .append("email", u.getEmail())
-                                            .append("nombrePas", u.getNombrePas())
-                                            .append("minutes", u.getMinutes())
-                                            .append("metres", u.getMetres())
+                                            .append("activites", activites)
                                             .append("taille", u.getTaille())
                                             .append("naissance", u.getNaissance())
                                             .append("poids", u.getPoids())
@@ -48,9 +53,6 @@ public class UtilisateurConverter {
         //u.setPhoto((String) doc.get("photo"));
         u.setEmail((String) doc.get("email"));
         u.setMotdepasse((String) doc.get("motdepasse"));
-        u.setNombrePas((HashMap) doc.get("nombrePas"));
-        u.setMinutes((HashMap) doc.get("minutes"));
-        u.setMetres((HashMap) doc.get("metres"));
         u.setTaille((String) doc.get("taille"));
         u.setNaissance((String) doc.get("naissance"));
         u.setPoids((String) doc.get("poids"));
@@ -58,6 +60,14 @@ public class UtilisateurConverter {
         DBObject objectif = (DBObject) doc.get("objectif");
         if(objectif != null) {
             u.setObjectif(ObjectifConverter.toObjectif(objectif));
+        }
+        ArrayList<DBObject> activitesObject = (ArrayList<DBObject>) doc.get("activites");
+        ArrayList<Activite> activites = new ArrayList<Activite>();
+        if(activitesObject != null) {
+            for(int i = 0; i<activitesObject.size();i++){
+                activites.add(ActiviteConverter.toActivite(activitesObject.get(i)));
+            }
+            u.setActivites(activites);
         }
         u.setLocalisation((String) doc.get("localisation"));
         ObjectId id = (ObjectId) doc.get("_id");

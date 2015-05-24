@@ -20,9 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.servlet.annotation.WebServlet;
 import gestionnaire.GestionnaireUtilisateur;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import javax.servlet.ServletInputStream;
 
 @WebServlet("/test")
 public class TestServlet extends HttpServlet {
@@ -46,6 +44,7 @@ public class TestServlet extends HttpServlet {
     }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+<<<<<<< HEAD
         System.out.println("Dans le doPost");
         if(request.getParameter("useFunctionServer").equals("modificationProfil")){
             System.out.println(request.getParameter("userId"));
@@ -66,6 +65,10 @@ public class TestServlet extends HttpServlet {
 
                         
         }
+=======
+        System.out.println(request.getParameter("latitude"));
+        System.out.println(request.getParameter("longitude"));
+>>>>>>> 403da902583d377408abbec7ee359dd4f3b4b449
         this.getServletContext().getRequestDispatcher("/").forward(request, response);
     }
 }
