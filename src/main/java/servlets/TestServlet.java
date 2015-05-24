@@ -30,15 +30,17 @@ public class TestServlet extends HttpServlet {
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         response.setContentType("application/json");
         System.out.println("Dans le doGet");
-
+        System.out.println("request.getParameter(\"useFunctionServer\")"+request.getParameter("useFunctionServer"));
         if(request.getParameter("useFunctionServer").equals("getProfil")){
             PrintWriter out = response.getWriter();
-            //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
+            //les valeurs doivent Ãªtre reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
+                    +"\"nom\": \"Jauvat\","
+                    +"\"prenom\": \"Fabrice\","
                     + "\"mail\": \"fjauvat@gmail.com\","
                     + "\"dateNaissance\": \"28/04/1991\","
                     +"\"taille\":\"187\","
-                    +"\"poids\":\"85\""
+                    +"\"poids\":\"83\""
                     + "}");
         }
     }
@@ -47,16 +49,22 @@ public class TestServlet extends HttpServlet {
         System.out.println("Dans le doPost");
         if(request.getParameter("useFunctionServer").equals("modificationProfil")){
             System.out.println(request.getParameter("userId"));
-            System.out.println(request.getParameter("dateDuJour"));
             System.out.println(request.getParameter("userEmail"));
             System.out.println(request.getParameter("userDateNaissance"));
             System.out.println(request.getParameter("userPoids"));
             System.out.println(request.getParameter("userTaille"));
         }
-        else{
-            System.out.println(request.getParameter("nom"));
+        else if(request.getParameter("useFunctionServer").equals("sauvegardeActivitee")){
+            System.out.println(request.getParameter("userId"));
+            System.out.println(request.getParameter("timeDebutActivite"));
+            System.out.println(request.getParameter("timeFinActivite"));
             System.out.println(request.getParameter("latitude"));
             System.out.println(request.getParameter("longitude"));
+            System.out.println(request.getParameter("rythmeCardiaque"));
+            System.out.println(request.getParameter("podometre"));
+
+
+                        
         }
         this.getServletContext().getRequestDispatcher("/").forward(request, response);
     }
