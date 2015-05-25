@@ -31,7 +31,7 @@ public class TestServlet extends HttpServlet {
         System.out.println("request.getParameter(\"useFunctionServer\")"+request.getParameter("useFunctionServer"));
         if(request.getParameter("useFunctionServer").equals("getProfil")){
             PrintWriter out = response.getWriter();
-            //les valeurs doivent Ãªtre reprisent de la classe utilisateurs.modeles.utilisateur.java
+            //les valeurs doivent ÃƒÂªtre reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
                     +"\"nom\": \"Jauvat\","
                     +"\"prenom\": \"Fabrice\","
@@ -51,6 +51,9 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("userDateNaissance"));
             System.out.println(request.getParameter("userPoids"));
             System.out.println(request.getParameter("userTaille"));
+            System.out.println(request.getParameter("userNom"));
+            System.out.println(request.getParameter("userPrenom"));
+
         }
         else if(request.getParameter("useFunctionServer").equals("sauvegardeActivitee")){
             System.out.println(request.getParameter("userId"));
@@ -61,6 +64,6 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("rythmeCardiaque"));
             System.out.println(request.getParameter("podometre"));
         }
-        this.getServletContext().getRequestDispatcher("/").forward(request, response);
+        //this.getServletContext().getRequestDispatcher("/").forward(request, response);
     }
 }
