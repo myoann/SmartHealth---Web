@@ -45,10 +45,7 @@ public class TestServlet extends HttpServlet {
         
         if(request.getParameter("useFunctionServer").equals("getProfil")){
             PrintWriter out = response.getWriter();
-<<<<<<< HEAD
-=======
             //les valeurs doivent ÃƒÂªtre reprisent de la classe utilisateurs.modeles.utilisateur.java
->>>>>>> 5214287efdd0d9eff2dd042ebbc23efa88709baa
             //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
                     +"\"nom\": \"Jauvat\","
@@ -85,7 +82,6 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("metres"));
             
         }
-<<<<<<< HEAD
 //        //this.getServletContext().getRequestDispatcher("/").forward(request, response);
 //        Utilisateur u = new Utilisateur();
 //        u.setId(request.getParameter("id"));
@@ -110,7 +106,6 @@ public class TestServlet extends HttpServlet {
 //        utilisateur.getActivites().add(a);
 //        
         //this.getServletContext().getRequestDispatcher("/").forward(request, response);
-=======
         
         //this.getServletContext().getRequestDispatcher("/").forward(request, response);
         Utilisateur u = new Utilisateur();
@@ -136,6 +131,5 @@ public class TestServlet extends HttpServlet {
         utilisateur.getActivites().add(a);
         
         this.getServletContext().getRequestDispatcher("/").forward(request, response);
->>>>>>> 5214287efdd0d9eff2dd042ebbc23efa88709baa
     }
 }

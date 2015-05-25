@@ -39,7 +39,6 @@ function viewCalendarActivities(){
     $('iframe#iframe_calendar').toggleClass('off');
     var _hasClass=$('iframe#iframe_calendar').hasClass('off');
     if (_hasClass){
-<<<<<<< HEAD
         $('iframe#iframe_calendar').css({
             transition:'0.4s',
             webkitTransform:'scale(0.1)'
@@ -64,18 +63,6 @@ function viewCalendarActivities(){
                 transition:'0.3s',
                 webkitTransform:'scale(1)'
             })
-=======
-        $('iframe#iframe_calendar').animate({
-            top:'-500px'
-        })
-        $('iframe#iframe_calendar').fadeOut();
-	$("div#filter_dark").fadeOut();
-    }else{
-        $('iframe#iframe_calendar').fadeIn();
-	$("div#filter_dark").fadeIn();
-        $('iframe#iframe_calendar').animate({
-            top:'0px'
->>>>>>> 56dc6094cb3a39e003037552b03f18e645514949
         })
     }
 }
