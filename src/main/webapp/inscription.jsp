@@ -11,14 +11,11 @@
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/inscription.css" />
 
         <script src="${pageContext.request.contextPath}/styles/js/jquery-1.11.2.min.js"></script>
-        
+
     </head>
     <body>
-    <header>
-        Inscription
-    </header>
-    <%-- Person Add/Edit logic --%>
-    <c:if test="${requestScope.error ne null}">
+        <%-- Person Add/Edit logic --%>
+        <c:if test="${requestScope.error ne null}">
         <strong style="color: red;"><c:out
                 value="${requestScope.error}"></c:out></strong>
         </c:if>
@@ -29,26 +26,36 @@
         <c:url value="/addUser" var="addURL"></c:url>
         <c:url value="/editUser" var="editURL"></c:url>
 
-  
 
-    <%-- Add Request --%>
-    <c:if test="${requestScope.utilisateur eq null}">
-        <form action='<c:out value="${addURL}"></c:out>' method="post" enctype="multipart/form-data">
-                <fieldset id="fieldset_new_user">
-                    <legend class="icon-user"> Nouvel utilisateur</legend>
-                    <table id="tab_new_user">
-                        <tr><td class="icon-user"><input type="text" name="name" placeholder="Nom"></td></tr>
-                        <%--<tr><td>Photo</td><td><input type="file" name="photo"></td></tr>--%>
-                        <tr><td class="icon-user"><input type="email" name="email" placeholder="Email"></td></tr>
-                        <tr><td class="icon-user"><input type="password" name="motdepasse" placeholder="Mot de passe"></td></tr>
-                        <tr><td class="icon-user"><input type="number" name="taille" placeholder="Taille"></td></tr>
-                        <tr><td class="icon-user"><input type="number" name="poids" placeholder="Poids"></td></tr>
-                        <tr><td class="icon-user"><input type="text" name="naissance" placeholder="Naissance"></td></tr>
-                        <tr><td><button type="submit" class="icon-plus"> S'inscrire</button></td></tr>
+
+        <%-- Add Request --%>
+        <c:if test="${requestScope.utilisateur eq null}">
+            <form action='<c:out value="${addURL}"></c:out>' method="post" enctype="multipart/form-data">
+                <div id="page_connexion">
+                    <div class="filter_white"></div>
+                    <h1>S'inscrire</h1>
+                    <span class="slogan">Prêt à vous lancer ? Un nouveau départ s'offre à vous.</span>
+                    <table id="tab_connect">
+                        <tr>
+                            <td colspan="3"><input type="text" name="name" placeholder="Nom"></td>
+                            <td colspan="3"><input type="text" name="prenom" placeholder="Prénom"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="text" name="naissance" placeholder="Naissance"></td>
+                            <td colspan="2"><input type="text" name="taille" placeholder="Taille"></td>
+                            <td colspan="2"><input type="text" name="poids" placeholder="Poids"></td>
+                        </tr>
+                            <%--<tr><td>Photo</td><td><input type="file" name="photo"></td></tr>--%>
+                        <tr><td colspan="6"><input type="email" name="email" placeholder="Email"></td></tr>
+                        <tr>
+                            <td colspan="3"><input type="text" name="motdepasse" placeholder="Mot de passe"></td>
+                            <td colspan="3"><input type="text" name="motdepasse2" placeholder="Confirmer le mot de passe"></td>
+                        </tr>
+                        <tr><td colspan="6"><button type="submit"> S'inscrire</button></td></tr>
                     </table>
-                </fieldset>
+                </div>
             </form>
-    </c:if>
+        </c:if>
 
-</body>
+    </body>
 </html>

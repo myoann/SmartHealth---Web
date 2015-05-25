@@ -57,8 +57,11 @@ table#tab_connect{
 	top: 140px;
 	left: 80px;
 }
+table#tab_connect button:hover{
+	background-color: #27ae60;
+}
 table#tab_connect button{
-
+        cursor:pointer;
 	background-color: seagreen;
 }
 table#tab_connect_social{
