@@ -1,4 +1,4 @@
-function doBar(_id,_title) {
+function doBar(_id,_title,o_marche,o_course,o_velo,e_marche,e_course,e_velo) {
         $('#'+_id).highcharts({
             chart: {
                 type: 'bar',
@@ -21,7 +21,7 @@ function doBar(_id,_title) {
                 text: _title
             },
             xAxis: {
-                categories: ['Course à pieds', 'Vélo', 'Marche'],
+                categories: ['Marche', 'Course à pieds', 'Vélo'],
                 title: {
                     text: null
                 }
@@ -61,11 +61,11 @@ function doBar(_id,_title) {
                 enabled: false
             },
             series: [{
-                name: 'Effectué',
-                data: [107, 31, 635]
+                name: 'Objectif',
+                data: [o_marche,o_course,o_velo]
             }, {
-                name: 'Restant',
-                data: [133, 156, 947]
+                name: 'Effectué',
+                data: [e_marche,e_course,e_velo]
             }]
         });
 }

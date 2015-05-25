@@ -17,6 +17,8 @@ public class Activite {
     
     private Date date;
     
+    private Date dateFin;
+    
     private Integer nombrePas;
     
     private Integer frequenceCardiaque;
@@ -26,6 +28,8 @@ public class Activite {
     private Integer metres;
     
     private Integer vitesse;
+    
+    private Integer duree;
     
     private String type;
     
@@ -102,6 +106,20 @@ public class Activite {
     public void setVitesse(Integer vitesse) {
         this.vitesse = vitesse;
     }
-    
-    
+
+    public Integer getDuree() {
+        return duree;
+    }
+
+    public void setDuree(Integer duree) {
+        this.duree = duree;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
 }

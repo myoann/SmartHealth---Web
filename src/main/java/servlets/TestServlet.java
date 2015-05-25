@@ -45,7 +45,10 @@ public class TestServlet extends HttpServlet {
         
         if(request.getParameter("useFunctionServer").equals("getProfil")){
             PrintWriter out = response.getWriter();
+<<<<<<< HEAD
             //les valeurs doivent ÃƒÂªtre reprisent de la classe utilisateurs.modeles.utilisateur.java
+=======
+>>>>>>> 233452cd887ff2f94783a2e0a29767c998ca25e7
             //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
                     + "\"mail\": \"fjauvat@gmail.com\","
@@ -68,6 +71,10 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("userTaille"));
             System.out.println(request.getParameter("userNom"));
             System.out.println(request.getParameter("userPrenom"));
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 233452cd887ff2f94783a2e0a29767c998ca25e7
         }
         else if(request.getParameter("useFunctionServer").equals("sauvegardeActivitee")){
             System.out.println(request.getParameter("userId"));
@@ -79,7 +86,10 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("podometre"));
                         
         }
+<<<<<<< HEAD
         //this.getServletContext().getRequestDispatcher("/").forward(request, response);
+=======
+>>>>>>> 233452cd887ff2f94783a2e0a29767c998ca25e7
         Utilisateur u = new Utilisateur();
         u.setId(request.getParameter("id"));
         Utilisateur utilisateur = gestionnaireUtilisateur.readUser(u);
@@ -101,7 +111,10 @@ public class TestServlet extends HttpServlet {
         a.setType(request.getParameter("type"));
         a.setItineraire(itineraire);
         utilisateur.getActivites().add(a);
+<<<<<<< HEAD
         
         this.getServletContext().getRequestDispatcher("/").forward(request, response);
+=======
+>>>>>>> 233452cd887ff2f94783a2e0a29767c998ca25e7
     }
 }

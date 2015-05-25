@@ -84,6 +84,7 @@ public class DashBoardServlet extends HttpServlet {
             a.setNombrePas(1500);
             a.setMetres(1200);
             a.setMinutes(30);
+            a.setDuree(30);
             a.setVitesse(12);
             a.setType("marche");
             a.setItineraire(itineraire);
@@ -100,27 +101,30 @@ public class DashBoardServlet extends HttpServlet {
             }
             String[][] itineraireb= {{"43.6980876","43.6980876","43.6980876","43.6980876"},{"7.215362199999999","7.225365199999999","7.235372199999999","7.255375199999999"}};
             b.setFrequenceCardiaque(30);
-            b.setNombrePas(1800);
-            b.setMetres(1200);
+            b.setNombrePas(4800);
+            b.setMetres(3200);
             b.setMinutes(30);
+            b.setDuree(20);
             b.setVitesse(12);
-            b.setType("marche");
+            b.setType("course");
             b.setItineraire(itineraireb);
             utilisateur.getActivites().add(b);
             
             Date datec;
             Activite c = new Activite();
             try {
-                datec = dateFormat.parse("25/05/2015");
+                datec = dateFormat.parse("23/05/2015");
                 c.setDate(datec);
             } catch (ParseException ex) {
                 Logger.getLogger(TestServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             String[][] itinerairec= {{"43.7980876","43.7980876","43.7980876","43.7980876"},{"7.315362199999999","7.325365199999999","7.335372199999999","7.355375199999999"}};
             c.setFrequenceCardiaque(45);
-            c.setNombrePas(1800);
-            c.setMetres(1200);
+            c.setNombrePas(5800);
+            c.setMetres(3200);
             c.setMinutes(30);
+            c.setDuree(40);
             c.setVitesse(12);
             c.setType("marche");
             c.setItineraire(itinerairec);
@@ -130,6 +134,10 @@ public class DashBoardServlet extends HttpServlet {
             int nombrePas = 0;
             int nombreMinutes = 0;
             int nombreMetres = 0;
+            int dureeVelo = 0;
+            int dureeMarche = 0;
+            int dureeCourse = 0;
+            float objectifPerCent = 0;
             String jourS = "";
             String pasParJourS = "";
             String minutesParJourS = "";
@@ -145,6 +153,10 @@ public class DashBoardServlet extends HttpServlet {
             ArrayList<Integer> activiteParJour = new ArrayList<>();
             ArrayList<String> latitudeParJour = new ArrayList<>();
             ArrayList<String> longitudeParJour = new ArrayList<>();
+            ArrayList<Integer> dureeVeloParJour = new ArrayList<>();
+            ArrayList<Integer> dureeMarcheParJour = new ArrayList<>();
+            ArrayList<Integer> dureeCourseParJour = new ArrayList<>();
+            
             if(!utilisateur.getActivites().isEmpty()) {
                 ArrayList<Activite> activites = utilisateur.getActivites();
                 for(int i=0; i<activites.size(); i++) {
@@ -154,6 +166,16 @@ public class DashBoardServlet extends HttpServlet {
                         metreParJour.set(metreParJour.size()-1, metreParJour.get(metreParJour.size()-1)+activites.get(i).getMetres());
                         activiteParJour.set(activiteParJour.size()-1, activiteParJour.get(pasParJour.size()-1)+1);
                         String[][] latLngTab = activites.get(i).getItineraire();
+                        
+                        if(activites.get(i).getType() == "marche") {
+                            dureeMarcheParJour.set(dureeMarcheParJour.size()-1, dureeMarcheParJour.get(dureeMarcheParJour.size()-1)+activites.get(i).getDuree());
+                        }
+                        else if(activites.get(i).getType() == "velo") {
+                            dureeVeloParJour.set(dureeVeloParJour.size()-1, dureeVeloParJour.get(dureeVeloParJour.size()-1)+activites.get(i).getDuree());
+                        }
+                        else if(activites.get(i).getType() == "course") {
+                            dureeCourseParJour.set(dureeCourseParJour.size()-1, dureeCourseParJour.get(dureeCourseParJour.size()-1)+activites.get(i).getDuree());
+                        }
                         
                         for(int indice = 0; indice < latLngTab[0].length; indice++)
                         {
@@ -174,8 +196,24 @@ public class DashBoardServlet extends HttpServlet {
                         minutesParJour.add(activites.get(i).getMinutes());
                         metreParJour.add(activites.get(i).getMetres());
                         freqCardiaqueParJour.add(activites.get(i).getFrequenceCardiaque());
-                        String[][] latLngTab = activites.get(i).getItineraire();
                         
+                        if(activites.get(i).getType() == "marche") {
+                            dureeVeloParJour.add(0);
+                            dureeMarcheParJour.add(activites.get(i).getDuree());
+                            dureeCourseParJour.add(0);
+                        }
+                        else if(activites.get(i).getType() == "velo") {
+                            dureeVeloParJour.add(activites.get(i).getDuree());
+                            dureeMarcheParJour.add(0);
+                            dureeCourseParJour.add(0);
+                        }
+                        else if(activites.get(i).getType() == "course") {
+                            dureeVeloParJour.add(0);
+                            dureeMarcheParJour.add(0);
+                            dureeCourseParJour.add(activites.get(i).getDuree());
+                        }
+                        
+                        String[][] latLngTab = activites.get(i).getItineraire();
                         for(int indice = 0; indice < latLngTab[0].length; indice++)
                         {
                             if(indice == 0) {
@@ -197,6 +235,17 @@ public class DashBoardServlet extends HttpServlet {
                         nombreMetres = metreParJour.get(i);
                         latitudeS = latitudeParJour.get(i);
                         longitudeS = longitudeParJour.get(i);
+                        dureeVelo = dureeVeloParJour.get(i);
+                        dureeMarche = dureeMarcheParJour.get(i);
+                        dureeCourse = dureeCourseParJour.get(i);
+                        float nombrePasO = ((float)nombrePas/(float)utilisateur.getObjectif().getNombrePas())*100;
+                        if(nombrePasO > 100) nombrePasO = 100;
+                        float nombreMinutesO = ((float)nombreMinutes/(float)utilisateur.getObjectif().getMinutes())*100;
+                        if(nombreMinutesO > 100) nombreMinutesO = 100;
+                        float nombreMetresO = ((float)nombreMetres/(float)utilisateur.getObjectif().getMetres())*100;
+                        if(nombreMetresO > 100) nombreMetresO = 100;
+                        objectifPerCent = (nombrePasO + nombreMinutesO + nombreMetresO)/3;
+                        if(objectifPerCent > 100) objectifPerCent = 100;
                     }
                     jourS += jour.get(i)+",";
                     pasParJourS += pasParJour.get(i)+",";
@@ -217,6 +266,10 @@ public class DashBoardServlet extends HttpServlet {
             request.setAttribute("freqCardiaque", freqCardiaqueS);
             request.setAttribute("latitude", latitudeS);
             request.setAttribute("longitude", longitudeS);
+            request.setAttribute("dureeVelo", dureeVelo);
+            request.setAttribute("dureeMarche", dureeMarche);
+            request.setAttribute("dureeCourse", dureeCourse);
+            request.setAttribute("objectifPerCent", (int)objectifPerCent);
             
             request.setAttribute("nombrePas", nombrePas);
             request.setAttribute("nombreMinutes", nombreMinutes);

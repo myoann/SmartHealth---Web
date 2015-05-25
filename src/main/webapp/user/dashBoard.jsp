@@ -6,13 +6,11 @@
         <meta charset="UTF-8">
         <title>Smarth Watch</title>
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/data/logo.ico"/>
-        
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/css.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/dashBoard.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/menu.css" />
 
-        
         <!-- 4> import des fichiers javascript -->
         <script src="${pageContext.request.contextPath}/styles/js/jquery-1.11.2.min.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/func.js"></script>
@@ -22,10 +20,8 @@
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-line.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-donuts.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-bar.js"></script>
-        
-        <script src="${pageContext.request.contextPath}/styles/js/highcharts.js"></script>
+       
         <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-        
         <script>
             $(document).ready(function() {
                 $('#example').DataTable({
@@ -39,6 +35,8 @@
                 doLine("line_cardiaque","Distance","${activiteJour}","${metresParJour}","Mètres");
                 doLine("line_historique","Minutes","${activiteJour}","${minutesParJour}","Minutes");
                 doLine("line_poids","Fréquence Cardiaque","${activiteJour}","${freqCardiaque}","Fréquence Cardiaque");
+
+                doBar("line_dureeActivite","Durée de l'activité",${utilisateur.objectif.marcheTemps},${utilisateur.objectif.courseTemps},${utilisateur.objectif.veloTemps},${dureeMarche},${dureeCourse},${dureeVelo});
                 
                 viewMap("${latitude}","${longitude}");
             } );
@@ -71,7 +69,7 @@
 		</tr>
         <tr>
             <td id="donuts"><div id="donutA"></div><div id="donutB"></div><div id="donutC"></div></td>
-            <td><span id="score">35%</span><br>objectifs atteints</td>
+            <td><span id="score">${objectifPerCent}%</span><br>objectifs atteints</td>
             <td><div id="line_cardiaque"></div></td>
         </tr>
         <tr>
@@ -85,6 +83,6 @@
             <td><div id="line_poids"></div></td>
         </tr>
 	</table>
-    <iframe id='iframe_calendar' frameborder=0 class='off' src="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/calendar.jsp"></iframe>
+        <iframe id='iframe_calendar' frameborder=0 class='off' src="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/calendar.jsp"></iframe>
 </body>
 </html>
