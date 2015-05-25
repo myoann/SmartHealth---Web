@@ -16,9 +16,7 @@ $(function(){
 	// ----- PREFERENCE -----
 	//listenMenu("menu_preference",".preference_1,.preference_2,.preference_3");
         
-        
-})
-
+});
 var _view=true;
 function viewMenu(){
 	//console.log(_view);
@@ -56,7 +54,7 @@ function viewCalendarActivities(){
 }
 function chgBG(){
 	if (_numIMG>3) _numIMG=1;
-	//console.log(_numIMG);
+	console.log(_numIMG);
 	if (_numIMG==1){
 		chgMSG("Votre programme d'entrainement individuel sur votre poignet.","Parfaitement adapté à vos objectifs.");
 	} else if (_numIMG==2) {
@@ -84,7 +82,6 @@ function listenMenu(_id,_class){
 	})
 }
 
-
 function viewMap(latitude, longitude){
 	$("button#viewMap").unbind("click").bind("click",function(){
 		if ($(this).hasClass("map_open")){
@@ -95,8 +92,6 @@ function viewMap(latitude, longitude){
 			//$("div#map_canvas").removeAttr("src");
 		}else{
 			$("div#map_canvas").slideDown(500,function(){
-                            alert(latitude);
-                            alert(longitude);
 				drawMap(latitude, longitude);
 				//put_Marker(43.6961876,7.285362199999999);
 			});
