@@ -6,14 +6,13 @@
         <meta charset="UTF-8">
         <title>Smarth Watch</title>
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/data/logo.ico"/>
+        
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/css.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/dashBoard.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/menu.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/fullcalendar.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/fullcalendar.print.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/calendar.css" />
 
+        
         <!-- 4> import des fichiers javascript -->
         <script src="${pageContext.request.contextPath}/styles/js/jquery-1.11.2.min.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/func.js"></script>
@@ -23,12 +22,10 @@
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-line.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-donuts.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-bar.js"></script>
-        <script src="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/moment.min.js"></script>
-        <script src="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/fullcalendar.min.js"></script>
-        <script src="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/lang-all.js"></script>
         
         <script src="${pageContext.request.contextPath}/styles/js/highcharts.js"></script>
         <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+        
         <script>
             $(document).ready(function() {
                 $('#example').DataTable({
@@ -48,8 +45,7 @@
         </script>
 	</head>
 <body id="dashBoard">
-    <div id='calendar'></div>
-    <div id="filter_dark" onclick="viewMenu()"></div>
+    <div id="filter_dark" onclick=""></div>
 
     <jsp:include page="./_menu.jsp"/>
     <jsp:include page="../section/_header.jsp"/>
@@ -89,5 +85,6 @@
             <td><div id="line_poids"></div></td>
         </tr>
 	</table>
+    <iframe id='iframe_calendar' frameborder=0 class='off' src="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/calendar.jsp"></iframe>
 </body>
 </html>

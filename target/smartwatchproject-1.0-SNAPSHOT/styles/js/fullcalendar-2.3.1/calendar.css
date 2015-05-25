@@ -1,69 +1,76 @@
+*{
+    margin: 0px;
+    padding:0px;
+    border:0px;
+	border-collapse: collapse;
+	box-sizing: border-box;
+}
 div#calendar {
-  background: #fafafa;
-	box-shadow: 0px 2px 5px #888;
+    background: #fafafa;
 
-	font-family: "helvetica" !important;
-	font-size: 14px;
-	max-width: 800px;
-	margin: 20px auto;
+    font-family: "helvetica" !important;
+    font-size: 14px;
+    margin:1px;
+    /*max-width: 95%;
+    margin: 5px auto;*/
 }
-.fc-day-header{
-	background-color: #458;
-	padding: 10px !important;
-	color: #fff;
+div#calendar .fc-day-header{
+    background-color: #458;
+    padding: 10px !important;
+    color: #fff;
 }
-span.fc-title{
-	padding: 3px;
-	font-size: 12px;
-	color: #fff !important;
+div#calendar span.fc-title{
+    padding: 3px;
+    font-size: 12px;
+    color: #fff !important;
 }
 
-.fc-left h2{
-  float: left;
-  font-size: 30px !important;
+div#calendar .fc-left h2{
+    float: left;
+    font-size: 30px !important;
 }
-.fc-event{
-	/*background-color:crimson;*/
-	border-radius: 0px;
+div#calendar .fc-event{
+    /*background-color:crimson;*/
+    border-radius: 0px;
 }
-.fc-state-default {
-	top: 5px;
+div#calendar .fc-state-default {
+    top: 5px;
 }
-.fc th{
-	border-style: none !important;
+div#calendar .fc th{
+    border-style: none !important;
 }
-.fc-view table td{
-	border:1px solid #eee;
-  background: #fff;
+div#calendar .fc-view table td{
+    border:1px solid #eee;
+    background: #fff;
 }
-.fc-view table td.fc-widget-header{
-	border:0px solid #ddd;
+div#calendar .fc-view table td.fc-widget-header{
+    border:0px solid #ddd;
 
 }/*
 .fc-unthemed thead {  
-	background-color: #EDF0F2;
-	border:1px solid #111;
+        background-color: #EDF0F2;
+        border:1px solid #111;
 }*/
 
-.fc-toolbar {
-	background-color: #1B8BDA;
-	/* text-align: center; */
-	margin-bottom: 0em !important;
-	padding: 20px;
-	color: #fff;
+div#calendar .fc-toolbar {
+    background-color: #1B8BDA;
+    /* text-align: center; */
+    margin-bottom: 0em !important;
+    padding: 20px;
+    color: #fff;
 }
 
-header{
-	padding: 10px;
-	background-color: #fafafa;
+div#calendar header{
+    padding: 10px;
+    background-color: #fafafa;
 }
-button#removeEvents{
-	color: #fff;
-	cursor: pointer;
-	padding: 10px;
-	background-color: seagreen;
+div#calendar button#removeEvents{
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    background-color: seagreen;
 }
 
-input#events{
-	padding: 10px;
+div#calendar input#events{
+    padding: 10px;
 }

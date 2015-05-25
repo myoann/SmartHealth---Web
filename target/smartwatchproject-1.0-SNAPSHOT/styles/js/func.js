@@ -16,77 +16,47 @@ $(function(){
 	// ----- PREFERENCE -----
 	//listenMenu("menu_preference",".preference_1,.preference_2,.preference_3");
         
-        $('#calendar').fullCalendar({
-            lang: 'fr',
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,basicWeek,basicDay'
-            },
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            events: [
-                {
-                    title: 'All Day Event',
-                    start: '2015-05-01'
-                },
-                {
-                    title: 'Long Event',
-                    start: '2015-05-07',
-                    end: '2015-05-10'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2015-05-09T16:00:00'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2015-05-16T16:00:00'
-                },
-                {
-                    title: 'Conference',
-                    start: '2015-05-11',
-                    end: '2015-05-13'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2015-05-12T10:30:00',
-                    end: '2015-05-12T12:30:00'
-                },
-                {
-                    title: 'Lunch',
-                    start: '2015-05-12T12:00:00'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2015-05-12T14:30:00'
-                },
-                {
-                    title: 'Happy Hour',
-                    start: '2015-05-12T17:30:00'
-                },
-                {
-                    title: 'Dinner',
-                    start: '2015-05-12T20:00:00'
-                },
-                {
-                    title: 'Birthday Party',
-                    start: '2015-05-13T07:00:00'
-                },
-                {
-                    title: 'Click for Google',
-                    url: 'http://google.com/',
-                    start: '2015-05-28'
-                }
-            ]
-        });
+        
 })
 
+var _view=true;
+function viewMenu(){
+	//console.log(_view);
+        $("div#filter_dark").attr('onclick','viewMenu()');
+	var _nb=0;
+	if (!_view){
+		$("div#filter_dark").fadeOut();
+		_nb=-263;
+	}else{
+		$("div#filter_dark").show();
+		_nb=0;
+	}
+	$("div#menu").css({
+		right:_nb+"px"
+	})
+	_view=!_view;
+}
+function viewCalendarActivities(){
+    $("div#filter_dark").attr('onclick','viewCalendarActivities()');
+    $('iframe#iframe_calendar').toggleClass('off');
+    var _hasClass=$('iframe#iframe_calendar').hasClass('off');
+    if (_hasClass){
+        $('iframe#iframe_calendar').animate({
+            top:'-500px'
+        })
+        $('iframe#iframe_calendar').fadeOut();
+	$("div#filter_dark").fadeOut();
+    }else{
+        $('iframe#iframe_calendar').fadeIn();
+	$("div#filter_dark").fadeIn();
+        $('iframe#iframe_calendar').animate({
+            top:'0px'
+        })
+    }
+}
 function chgBG(){
 	if (_numIMG>3) _numIMG=1;
-	console.log(_numIMG);
+	//console.log(_numIMG);
 	if (_numIMG==1){
 		chgMSG("Votre programme d'entrainement individuel sur votre poignet.","Parfaitement adapté à vos objectifs.");
 	} else if (_numIMG==2) {
@@ -113,6 +83,7 @@ function listenMenu(_id,_class){
 		$("#"+_id).toggleClass("menu_open");
 	})
 }
+
 
 function viewMap(latitude, longitude){
 	$("button#viewMap").unbind("click").bind("click",function(){
