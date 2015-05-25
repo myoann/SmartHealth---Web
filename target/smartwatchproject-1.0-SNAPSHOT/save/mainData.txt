@@ -1,8 +1,0 @@
-DATA 
-
-DATA COLLECTEES TOUTES LES MINUTES :
-	"latitude" : 43.6980876,
-	"longitude" : 7.225362199999999,
-	"fqCardiaque":55,
-	"nbPas":855,
-	
