@@ -17,6 +17,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import convertisseur.ActiviteConverter;
 import convertisseur.ObjectifConverter;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -94,6 +95,21 @@ public class GestionnaireUtilisateur {
         BasicDBObject updateUser = new BasicDBObject();
         DBObject objectif = ObjectifConverter.toDBObject(u.getObjectif());
         DBObject newUser = new BasicDBObject().append("objectif", objectif);
+	updateUser.append("$set", newUser);
+        col.update(query, updateUser);
+    }
+    
+    public void addActivite(Utilisateur u) {
+        MongoClient mongoClient = mongoClientProvider.getMongoClient();
+        DBCollection col = mongoClient.getDB("miage").getCollection("Utilisateurs");
+        DBObject query = BasicDBObjectBuilder.start()
+                .append("_id", new ObjectId(u.getId())).get();
+        BasicDBObject updateUser = new BasicDBObject();
+        ArrayList<DBObject> activites = new ArrayList<>();
+        for(int i = 0; i < u.getActivites().size(); i++) {
+            activites.add(ActiviteConverter.toDBObject(u.getActivites().get(i)));
+        }
+        DBObject newUser = new BasicDBObject().append("activites", activites);
 	updateUser.append("$set", newUser);
         col.update(query, updateUser);
     }

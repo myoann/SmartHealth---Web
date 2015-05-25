@@ -1,4 +1,15 @@
- function doLine(_id,_title){
+ function doLine(_id,_title,data_title,data_values,nom){
+     
+    var array = data_values.split(",");
+    var array2 = data_title.split(",");
+    var mySeries = [];
+    for (var i = 0; i < array.length; i++) {
+        mySeries.push([parseInt(array[i])]);
+    }
+    var categories = [];
+    for (var i = 0; i < array2.length; i++) {
+        categories.push([array2[i]]);
+    }
     $('#'+_id).highcharts({
         chart:{
             height: 200,
@@ -21,21 +32,17 @@
             x: -20 //center
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: categories
         },
         yAxis: {
             title: {
-                text: 'Nombre'
+                text: ''
             },
             plotLines: [{
                 value: 0,
                 width: 1,
                 color: '#808080'
             }]
-        },
-        tooltip: {
-            valueSuffix: '°C'
         },
         legend: {
             layout: 'vertical',
@@ -44,8 +51,8 @@
             borderWidth: 0
         },
         series: [{
-            name: 'test',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            name: nom,
+            data: mySeries
         }]
     })
 }

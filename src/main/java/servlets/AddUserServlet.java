@@ -20,13 +20,10 @@ import modeles.Utilisateur;
 import gestionnaire.GestionnaireObjectif;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
-import modeles.Activite;
 import modeles.Objectif;
  
 @WebServlet("/addUser")
@@ -74,30 +71,6 @@ public class AddUserServlet extends HttpServlet {
                 u.setTaille(taille);
                 u.setNaissance(naissance);
                 u.setMotdepasse(motdepasse);
-                
-                Date date = new java.util.Date();
-                ArrayList<Activite> activites = new ArrayList<Activite>();
-                Activite a = new Activite();
-                a.setDate(date);
-                a.setFrequenceCardiaque(60);
-                a.setNombrePas(1800);
-                a.setMetres(1000);
-                a.setMinutes(15);
-                a.setType("marche");
-                String[] itineraire= {"47.26545","47.26545","47.26545","47.26545"};
-                a.setItineraire(itineraire);
-                activites.add(a);
-                
-                Activite a2 = new Activite();
-                a2.setDate(date);
-                a2.setFrequenceCardiaque(60);
-                a2.setNombrePas(1800);
-                a2.setMetres(1000);
-                a2.setMinutes(15);
-                a2.setType("marche");
-                a2.setItineraire(itineraire);
-                activites.add(a2);
-                u.setActivites(activites);
 
                 Objectif o = new Objectif();
                 o.setId(objectif);

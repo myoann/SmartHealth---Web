@@ -10,16 +10,22 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/dashBoard.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/menu.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/fullcalendar.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/fullcalendar.print.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/calendar.css" />
 
         <!-- 4> import des fichiers javascript -->
         <script src="${pageContext.request.contextPath}/styles/js/jquery-1.11.2.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
         <script src="${pageContext.request.contextPath}/styles/js/func.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
         <script src="http://code.highcharts.com/modules/exporting.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-line.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-donuts.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-bar.js"></script>
+        <script src="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/moment.min.js"></script>
+        <script src="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/fullcalendar.min.js"></script>
+        <script src="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/lang-all.js"></script>
         
         <script src="${pageContext.request.contextPath}/styles/js/highcharts.js"></script>
         <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
@@ -31,10 +37,18 @@
                 doDonut("donutA","${nombrePas}","${utilisateur.objectif.nombrePas}","pas");
                 doDonut("donutB","${nombreMinutes}","${utilisateur.objectif.minutes}","minutes");
                 doDonut("donutC","${nombreMetres}","${utilisateur.objectif.metres}","mètres");
+                
+                doLine("line_nbPas","Nombre de pas","${activiteJour}","${pasParJour}","Nombre de pas");
+                doLine("line_cardiaque","Distance","${activiteJour}","${metresParJour}","Mètres");
+                doLine("line_historique","Minutes","${activiteJour}","${minutesParJour}","Minutes");
+                doLine("line_poids","Fréquence Cardiaque","${activiteJour}","${freqCardiaque}","Fréquence Cardiaque");
+                
+                viewMap("${latitude}","${longitude}");
             } );
         </script>
 	</head>
 <body id="dashBoard">
+    <div id='calendar'></div>
     <div id="filter_dark" onclick="viewMenu()"></div>
 
     <jsp:include page="./_menu.jsp"/>

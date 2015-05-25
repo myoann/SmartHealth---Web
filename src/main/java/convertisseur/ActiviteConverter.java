@@ -27,6 +27,7 @@ public class ActiviteConverter {
                                             .append("metres", a.getMetres())
                                             .append("frequenceCardiaque", a.getFrequenceCardiaque())
                                             .append("itineraire", a.getItineraire())
+                                            .append("vitesse", a.getVitesse())
                                             .append("type", a.getType());
         if (a.getId() != null)
             builder = builder.append("_id", new ObjectId(a.getId()));
@@ -42,7 +43,8 @@ public class ActiviteConverter {
         a.setMinutes((Integer) doc.get("minutes"));
         a.setMetres((Integer) doc.get("metres"));
         a.setFrequenceCardiaque((Integer) doc.get("frequenceCardiaque"));
-        a.setItineraire((String[]) doc.get("itineraire"));
+        a.setVitesse((Integer) doc.get("vitesse"));
+        a.setItineraire((String[][]) doc.get("itineraire"));
         a.setType((String) doc.get("type"));
         ObjectId id = (ObjectId) doc.get("_id");
         a.setId(id.toString());

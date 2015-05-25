@@ -37,6 +37,7 @@ public class UtilisateurConverter {
                                             .append("taille", u.getTaille())
                                             .append("naissance", u.getNaissance())
                                             .append("poids", u.getPoids())
+                                            .append("avtivites", activites)
                                             .append("admin", u.isAdmin())
                                             .append("objectif", objectif)
                                             .append("localisation", u.getLocalisation());
