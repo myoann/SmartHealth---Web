@@ -39,16 +39,30 @@ function viewCalendarActivities(){
     $('iframe#iframe_calendar').toggleClass('off');
     var _hasClass=$('iframe#iframe_calendar').hasClass('off');
     if (_hasClass){
-        $('iframe#iframe_calendar').animate({
-            top:'-500px'
+        $('iframe#iframe_calendar').css({
+            transition:'0.4s',
+            webkitTransform:'scale(0.1)'
+        }).promise().done(function(){  
+            $('iframe#iframe_calendar').animate({
+                top:'-1000px',
+            },500,function(){ 
+                $('iframe#iframe_calendar').fadeOut();
+                $("div#filter_dark").fadeOut();
+            })         
         })
-        $('iframe#iframe_calendar').fadeOut();
-	$("div#filter_dark").fadeOut();
     }else{
-        $('iframe#iframe_calendar').fadeIn();
+        $('iframe#iframe_calendar').css({
+            transition:'0s'
+        })
 	$("div#filter_dark").fadeIn();
+        $('iframe#iframe_calendar').fadeIn();
         $('iframe#iframe_calendar').animate({
-            top:'0px'
+            top:'0px',
+        },800,function(){
+            $('iframe#iframe_calendar').css({
+                transition:'0.3s',
+                webkitTransform:'scale(1)'
+            })
         })
     }
 }
