@@ -38,6 +38,7 @@ public class TestServlet extends HttpServlet {
     GestionnaireUtilisateur gestionnaireUtilisateur;
     
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        
         response.setContentType("application/json");
         System.out.println("Dans le doGet");
         
@@ -106,11 +107,22 @@ public class TestServlet extends HttpServlet {
 //        utilisateur.getActivites().add(a);
 //        
         //this.getServletContext().getRequestDispatcher("/").forward(request, response);
+
+//        Utilisateur utilisateur = new Utilisateur();
+//        utilisateur.setEmail(email);
+//        Utilisateur user = gestionnaireUtilisateur.checkUser(utilisateur);
+//        if (user != null && user.getMotdepasse().equals(utilisateur.getMotdepasse())) {
+//
+//            this.getServletContext().getRequestDispatcher(DASHBOARD).forward(request, response);
+//            return;
+//        } else {
+//
+//        }
         
-        //this.getServletContext().getRequestDispatcher("/").forward(request, response);
-        Utilisateur u = new Utilisateur();
-        u.setId(request.getParameter("id"));
-        Utilisateur utilisateur = gestionnaireUtilisateur.readUser(u);
+        
+        Utilisateur utilisateur1 = new Utilisateur();
+        utilisateur1.setId(request.getParameter("id"));
+        Utilisateur user1 = gestionnaireUtilisateur.readUser(utilisateur1);
         DateFormat format = new SimpleDateFormat("dd/mm/yyyy", Locale.FRENCH);
         Date date;
         Activite a = new Activite();
@@ -128,8 +140,10 @@ public class TestServlet extends HttpServlet {
         a.setVitesse(Integer.parseInt(request.getParameter("vitesse")));
         a.setType(request.getParameter("type"));
         a.setItineraire(itineraire);
-        utilisateur.getActivites().add(a);
+        //utilisateur.getActivites().add(a);
         
         this.getServletContext().getRequestDispatcher("/").forward(request, response);
+
+//        this.getServletContext().getRequestDispatcher("/").forward(request, response);
     }
 }
