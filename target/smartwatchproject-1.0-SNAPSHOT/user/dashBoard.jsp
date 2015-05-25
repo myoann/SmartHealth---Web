@@ -48,6 +48,7 @@
         </script>
 	</head>
 <body id="dashBoard">
+    <div id='calendar'></div>
     <div id="filter_dark" onclick="viewMenu()"></div>
 
     <jsp:include page="./_menu.jsp"/>
