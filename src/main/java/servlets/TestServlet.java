@@ -45,11 +45,8 @@ public class TestServlet extends HttpServlet {
         
         if(request.getParameter("useFunctionServer").equals("getProfil")){
             PrintWriter out = response.getWriter();
-<<<<<<< HEAD
             //les valeurs doivent ÃƒÂªtre reprisent de la classe utilisateurs.modeles.utilisateur.java
-=======
             //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
->>>>>>> ea87036f0f94ad12496e656d71b3ebddfc4da27b
             out.print("{"
                     + "\"mail\": \"fjauvat@gmail.com\","
                     + "\"dateNaissance\": \"28/04/1991\","
@@ -69,13 +66,8 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("userDateNaissance"));
             System.out.println(request.getParameter("userPoids"));
             System.out.println(request.getParameter("userTaille"));
-<<<<<<< HEAD
             System.out.println(request.getParameter("userNom"));
             System.out.println(request.getParameter("userPrenom"));
-
-=======
-            
->>>>>>> ea87036f0f94ad12496e656d71b3ebddfc4da27b
         }
         else if(request.getParameter("useFunctionServer").equals("sauvegardeActivitee")){
             System.out.println(request.getParameter("userId"));
@@ -87,9 +79,7 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("podometre"));
                         
         }
-<<<<<<< HEAD
         //this.getServletContext().getRequestDispatcher("/").forward(request, response);
-=======
         Utilisateur u = new Utilisateur();
         u.setId(request.getParameter("id"));
         Utilisateur utilisateur = gestionnaireUtilisateur.readUser(u);
@@ -113,6 +103,5 @@ public class TestServlet extends HttpServlet {
         utilisateur.getActivites().add(a);
         
         this.getServletContext().getRequestDispatcher("/").forward(request, response);
->>>>>>> ea87036f0f94ad12496e656d71b3ebddfc4da27b
     }
 }
