@@ -38,6 +38,7 @@ public class TestServlet extends HttpServlet {
     GestionnaireUtilisateur gestionnaireUtilisateur;
     
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        
         response.setContentType("application/json");
         System.out.println("Dans le doGet");
         
@@ -45,10 +46,6 @@ public class TestServlet extends HttpServlet {
         
         if(request.getParameter("useFunctionServer").equals("getProfil")){
             PrintWriter out = response.getWriter();
-<<<<<<< HEAD
-=======
-            //les valeurs doivent ÃƒÂªtre reprisent de la classe utilisateurs.modeles.utilisateur.java
->>>>>>> 5214287efdd0d9eff2dd042ebbc23efa88709baa
             //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
                     +"\"nom\": \"Jauvat\","
@@ -85,37 +82,22 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("metres"));
             
         }
-<<<<<<< HEAD
-//        //this.getServletContext().getRequestDispatcher("/").forward(request, response);
-//        Utilisateur u = new Utilisateur();
-//        u.setId(request.getParameter("id"));
-//        Utilisateur utilisateur = gestionnaireUtilisateur.readUser(u);
-//        DateFormat format = new SimpleDateFormat("dd/mm/yyyy", Locale.FRENCH);
-//        Date date;
-//        Activite a = new Activite();
-//        try {
-//            date = format.parse(request.getParameter("date"));
-//            a.setDate(date);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(TestServlet.class.getName()).log(Level.SEVERE, null, ex);
+
+//        Utilisateur utilisateur = new Utilisateur();
+//        utilisateur.setEmail(email);
+//        Utilisateur user = gestionnaireUtilisateur.checkUser(utilisateur);
+//        if (user != null && user.getMotdepasse().equals(utilisateur.getMotdepasse())) {
+//
+//            this.getServletContext().getRequestDispatcher(DASHBOARD).forward(request, response);
+//            return;
+//        } else {
+//
 //        }
-//        String[][] itineraire= {{"43.6980876","43.6980876","43.6980876","43.6980876"},{"7.215362199999999","7.225365199999999","7.235372199999999","7.255375199999999"}};
-//        a.setFrequenceCardiaque(Integer.parseInt(request.getParameter("frequenceCardiaque")));
-//        a.setNombrePas(Integer.parseInt(request.getParameter("nombrePas")));
-//        a.setMetres(Integer.parseInt(request.getParameter("metres")));
-//        a.setMinutes(Integer.parseInt(request.getParameter("minutes")));
-//        a.setVitesse(Integer.parseInt(request.getParameter("vitesse")));
-//        a.setType(request.getParameter("type"));
-//        a.setItineraire(itineraire);
-//        utilisateur.getActivites().add(a);
-//        
-        //this.getServletContext().getRequestDispatcher("/").forward(request, response);
-=======
         
-        //this.getServletContext().getRequestDispatcher("/").forward(request, response);
-        Utilisateur u = new Utilisateur();
-        u.setId(request.getParameter("id"));
-        Utilisateur utilisateur = gestionnaireUtilisateur.readUser(u);
+        
+        Utilisateur utilisateur1 = new Utilisateur();
+        utilisateur1.setId(request.getParameter("id"));
+        Utilisateur user1 = gestionnaireUtilisateur.readUser(utilisateur1);
         DateFormat format = new SimpleDateFormat("dd/mm/yyyy", Locale.FRENCH);
         Date date;
         Activite a = new Activite();
@@ -133,9 +115,9 @@ public class TestServlet extends HttpServlet {
         a.setVitesse(Integer.parseInt(request.getParameter("vitesse")));
         a.setType(request.getParameter("type"));
         a.setItineraire(itineraire);
-        utilisateur.getActivites().add(a);
+        //utilisateur.getActivites().add(a);
         
-        this.getServletContext().getRequestDispatcher("/").forward(request, response);
->>>>>>> 5214287efdd0d9eff2dd042ebbc23efa88709baa
+
+//        this.getServletContext().getRequestDispatcher("/").forward(request, response);
     }
 }
