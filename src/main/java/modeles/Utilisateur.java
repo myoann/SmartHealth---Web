@@ -31,7 +31,7 @@ public class Utilisateur implements Serializable {
     
     private Objectif objectif;
     
-    private ArrayList<Activite> activites;
+    private ArrayList<Activite> activites = new ArrayList<>();
     
     private boolean admin = false;
 

@@ -1,6 +1,6 @@
 <header>
     <button id="bt_calendar" class="icon-calendar">
-        Mercredi 06 Mai 2015
+        ${date}
     </button>
 	<span id="title">Smart Health</span>
 </header>

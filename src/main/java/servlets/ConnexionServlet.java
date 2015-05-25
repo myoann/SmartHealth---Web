@@ -4,25 +4,30 @@
  * and open the template in the editor.
  */
 package servlets;
+
 import com.mongodb.MongoClient;
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import modeles.Utilisateur;
 import forms.ConnexionForm;
 import gestionnaire.GestionnaireObjectif;
 import gestionnaire.GestionnaireUtilisateur;
 import javax.ejb.EJB;
 import modeles.Objectif;
+
 public class ConnexionServlet extends HttpServlet {
     public static final String ATT_USER         = "utilisateur";
     public static final String ATT_FORM         = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String VUE              = "/connexion.jsp";
     public static final String DASHBOARD        = "/dashboard";
+
     @EJB
     GestionnaireUtilisateur gestionnaireUtilisateur;
     @EJB
@@ -39,13 +44,17 @@ public class ConnexionServlet extends HttpServlet {
             this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
         }
     }
+
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Préparation de l'objet formulaire */
         ConnexionForm form = new ConnexionForm();
+
         /* Traitement de la requête et récupération du bean en résultant */
         Utilisateur utilisateur = form.connecterUtilisateur(request);
+
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
+
         if(gestionnaireUtilisateur.readAllUsers().isEmpty()) {
             Utilisateur u = new Utilisateur();
                 u.setName("admin");
@@ -54,6 +63,7 @@ public class ConnexionServlet extends HttpServlet {
                 u.setTaille("0");
                 u.setNaissance("00/00/00");
                 u.setEmail("admin@admin.fr");
+
                 Objectif o = new Objectif();
                 o.setTitre("Défaut");
                 o.setDescription("Défaut");
@@ -92,9 +102,11 @@ public class ConnexionServlet extends HttpServlet {
                 session.setAttribute(ATT_SESSION_USER, null );
                 form.setResultat("Échec de la connexion.");
             }
+
             /* Stockage du formulaire et du bean dans l'objet request */
             request.setAttribute(ATT_FORM, form );
             request.setAttribute(ATT_USER, utilisateur );
+
             this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
         }
     }

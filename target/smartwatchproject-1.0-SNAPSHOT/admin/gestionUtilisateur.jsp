@@ -131,7 +131,6 @@
                         <th>ID</th>
                         <th>Nom</th>
                         <%--<th>Photo</th>--%>
-                        <th>Nombre de pas</th>
                         <th>Taille</th>
                         <th>Poids</th>
                         <th>Naissance</th>
@@ -153,11 +152,6 @@
                             <td><c:out value="${utilisateur.id}"></c:out></td>
                             <td><c:out value="${utilisateur.name}"></c:out></td>
                             <%--<td><c:out value="${utilisateur.photo}"></c:out></td>--%>
-                                <td>
-                                <c:forEach items="${utilisateur.nombrePas}" var="entry">
-                                    Pour le ${entry.key} : ${entry.value}<br>
-                                </c:forEach>
-                            </td>
                             <td><c:out value="${utilisateur.taille}"></c:out></td>
                             <td><c:out value="${utilisateur.poids}"></c:out></td>
                             <td><c:out value="${utilisateur.naissance}"></c:out></td>

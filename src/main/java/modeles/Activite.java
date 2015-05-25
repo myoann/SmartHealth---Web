@@ -25,9 +25,11 @@ public class Activite {
     
     private Integer metres;
     
+    private Integer vitesse;
+    
     private String type;
     
-    private String[] itineraire;
+    private String[][] itineraire;
 
     public String getId() {
         return id;
@@ -85,12 +87,21 @@ public class Activite {
         this.type = type;
     }
 
-    public String[] getItineraire() {
+    public String[][] getItineraire() {
         return itineraire;
     }
 
-    public void setItineraire(String[] itineraire) {
+    public void setItineraire(String[][] itineraire) {
         this.itineraire = itineraire;
     }
+
+    public Integer getVitesse() {
+        return vitesse;
+    }
+
+    public void setVitesse(Integer vitesse) {
+        this.vitesse = vitesse;
+    }
+    
     
 }

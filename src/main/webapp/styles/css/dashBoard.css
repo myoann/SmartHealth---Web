@@ -107,6 +107,7 @@ div#filter_dark{
 	right: 0%;
 	left: 0%;
 }
+
 div#displayMap iframe#webmap,div#map_canvas{
 	display: none;
 	width: 100%;
