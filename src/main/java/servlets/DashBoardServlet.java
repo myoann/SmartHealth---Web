@@ -107,14 +107,16 @@ public class DashBoardServlet extends HttpServlet {
                         activiteParJour.set(activiteParJour.size()-1, activiteParJour.get(pasParJour.size()-1)+1);
                         String[][] latLngTab = activites.get(i).getItineraire();
                         
-                        if(activites.get(i).getType() == "marche") {
-                            dureeMarcheParJour.set(dureeMarcheParJour.size()-1, dureeMarcheParJour.get(dureeMarcheParJour.size()-1)+activites.get(i).getDuree());
-                        }
-                        else if(activites.get(i).getType() == "velo") {
-                            dureeVeloParJour.set(dureeVeloParJour.size()-1, dureeVeloParJour.get(dureeVeloParJour.size()-1)+activites.get(i).getDuree());
-                        }
-                        else if(activites.get(i).getType() == "course") {
-                            dureeCourseParJour.set(dureeCourseParJour.size()-1, dureeCourseParJour.get(dureeCourseParJour.size()-1)+activites.get(i).getDuree());
+                        switch (activites.get(i).getType()) {
+                            case "marche":
+                                dureeMarcheParJour.set(dureeMarcheParJour.size()-1, dureeMarcheParJour.get(dureeMarcheParJour.size()-1)+activites.get(i).getDuree());
+                                break;
+                            case "velo":
+                                dureeVeloParJour.set(dureeVeloParJour.size()-1, dureeVeloParJour.get(dureeVeloParJour.size()-1)+activites.get(i).getDuree());
+                                break;
+                            case "course":
+                                dureeCourseParJour.set(dureeCourseParJour.size()-1, dureeCourseParJour.get(dureeCourseParJour.size()-1)+activites.get(i).getDuree());
+                                break;
                         }
                         
                         for(int indice = 0; indice < latLngTab[0].length; indice++)
@@ -137,20 +139,22 @@ public class DashBoardServlet extends HttpServlet {
                         metreParJour.add(activites.get(i).getMetres());
                         freqCardiaqueParJour.add(activites.get(i).getFrequenceCardiaque());
                         
-                        if(activites.get(i).getType().equals("marche")) {
-                            dureeVeloParJour.add(0);
-                            dureeMarcheParJour.add(activites.get(i).getDuree());
-                            dureeCourseParJour.add(0);
-                        }
-                        else if(activites.get(i).getType().equals("velo")) {
-                            dureeVeloParJour.add(activites.get(i).getDuree());
-                            dureeMarcheParJour.add(0);
-                            dureeCourseParJour.add(0);
-                        }
-                        else if(activites.get(i).getType().equals("course")) {
-                            dureeVeloParJour.add(0);
-                            dureeMarcheParJour.add(0);
-                            dureeCourseParJour.add(activites.get(i).getDuree());
+                        switch (activites.get(i).getType()) {
+                            case "marche":
+                                dureeVeloParJour.add(0);
+                                dureeMarcheParJour.add(activites.get(i).getDuree());
+                                dureeCourseParJour.add(0);
+                                break;
+                            case "velo":
+                                dureeVeloParJour.add(activites.get(i).getDuree());
+                                dureeMarcheParJour.add(0);
+                                dureeCourseParJour.add(0);
+                                break;
+                            case "course":
+                                dureeVeloParJour.add(0);
+                                dureeMarcheParJour.add(0);
+                                dureeCourseParJour.add(activites.get(i).getDuree());
+                                break;
                         }
                         
                         String[][] latLngTab = activites.get(i).getItineraire();
@@ -194,11 +198,13 @@ public class DashBoardServlet extends HttpServlet {
                     freqCardiaqueS += (freqCardiaqueParJour.get(i)/activiteParJour.get(i))+",";
                 }
             }
+            if(!jourS.equals("")) {
             jourS = jourS.substring(0, jourS.length()-1);
             pasParJourS = pasParJourS.substring(0, pasParJourS.length()-1);
             minutesParJourS = minutesParJourS.substring(0, minutesParJourS.length()-1);
             metreParJourS = metreParJourS.substring(0, metreParJourS.length()-1);
             freqCardiaqueS = freqCardiaqueS.substring(0, freqCardiaqueS.length()-1);
+            }
             request.setAttribute("activiteJour", jourS);
             request.setAttribute("pasParJour", pasParJourS);
             request.setAttribute("minutesParJour", minutesParJourS);

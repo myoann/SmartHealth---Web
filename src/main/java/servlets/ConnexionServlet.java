@@ -30,8 +30,6 @@ public class ConnexionServlet extends HttpServlet {
 
     @EJB
     GestionnaireUtilisateur gestionnaireUtilisateur;
-    @EJB
-    GestionnaireObjectif gestionnaireObjectif;
     
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Récupération de la session depuis la requête */
@@ -55,59 +53,30 @@ public class ConnexionServlet extends HttpServlet {
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
 
-        if(gestionnaireUtilisateur.readAllUsers().isEmpty()) {
-            Utilisateur u = new Utilisateur();
-                u.setName("admin");
-                u.setMotdepasse("admin");
-                u.setPoids("0");
-                u.setTaille("0");
-                u.setNaissance("00/00/00");
-                u.setEmail("admin@admin.fr");
-
-                Objectif o = new Objectif();
-                o.setTitre("Défaut");
-                o.setDescription("Défaut");
-                o.setNombrePas(0);
-                o.setMinutes(0);
-                o.setMetres(0);
-                o.setVeloMetres(0);
-                o.setVeloTemps(0);
-                o.setMarcheMetres(0);
-                o.setMarcheTemps(0);
-                o.setCourseMetres(0);
-                o.setCourseTemps(0);
-                gestionnaireObjectif.createObjectif(o);
-                u.setObjectif(gestionnaireObjectif.readObjectif(o));
-                
-                gestionnaireUtilisateur.createUser(u);
-                this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-        }
-        else {
-            /**
-             * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
-             * Utilisateur à la session, sinon suppression du bean de la session.
-             */
-            if (form.getErreurs().isEmpty()) {
-                Utilisateur u = gestionnaireUtilisateur.checkUser(utilisateur);
-                if (u != null && u.getMotdepasse().equals(utilisateur.getMotdepasse())) {
-                    session.setAttribute(ATT_SESSION_USER, u);
-                    form.setResultat("Succès de la connexion.");
-                    this.getServletContext().getRequestDispatcher(DASHBOARD).forward(request, response);
-                    return;
-                } else {
-                    session.setAttribute(ATT_SESSION_USER, null );
-                    form.setResultat("Échec de la connexion.");
-                }
+        /**
+         * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
+         * Utilisateur à la session, sinon suppression du bean de la session.
+         */
+        if (form.getErreurs().isEmpty()) {
+            Utilisateur u = gestionnaireUtilisateur.checkUser(utilisateur);
+            if (u != null && u.getMotdepasse().equals(utilisateur.getMotdepasse())) {
+                session.setAttribute(ATT_SESSION_USER, u);
+                form.setResultat("Succès de la connexion.");
+                this.getServletContext().getRequestDispatcher(DASHBOARD).forward(request, response);
+                return;
             } else {
                 session.setAttribute(ATT_SESSION_USER, null );
                 form.setResultat("Échec de la connexion.");
             }
-
-            /* Stockage du formulaire et du bean dans l'objet request */
-            request.setAttribute(ATT_FORM, form );
-            request.setAttribute(ATT_USER, utilisateur );
-
-            this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+        } else {
+            session.setAttribute(ATT_SESSION_USER, null );
+            form.setResultat("Échec de la connexion.");
         }
+
+        /* Stockage du formulaire et du bean dans l'objet request */
+        request.setAttribute(ATT_FORM, form );
+        request.setAttribute(ATT_USER, utilisateur );
+
+        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }
 }

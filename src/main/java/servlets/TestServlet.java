@@ -47,10 +47,8 @@ public class TestServlet extends HttpServlet {
         
         if(request.getParameter("useFunctionServer").equals("getProfil")){
             PrintWriter out = response.getWriter();
-            //les valeurs doivent Ãªtre reprisent de la classe utilisateurs.modeles.utilisateur.java
+            //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
-                    + "\"nom\": \"Jauvat\","
-                    + "\"prenom\": \"Fabrice\","
                     + "\"mail\": \"fjauvat@gmail.com\","
                     + "\"dateNaissance\": \"28/04/1991\","
                     +"\"taille\":\"187\","
@@ -64,6 +62,7 @@ public class TestServlet extends HttpServlet {
         
         if(request.getParameter("useFunctionServer").equals("modificationProfil")){
             System.out.println(request.getParameter("userId"));
+            System.out.println(request.getParameter("dateDuJour"));
             System.out.println(request.getParameter("userEmail"));
             System.out.println(request.getParameter("userDateNaissance"));
             System.out.println(request.getParameter("userPoids"));
@@ -80,9 +79,6 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("longitude"));
             System.out.println(request.getParameter("rythmeCardiaque"));
             System.out.println(request.getParameter("podometre"));
-            System.out.println(request.getParameter("metres"));
-            System.out.println(request.getParameter("vitesse"));
-
             DateFormat df = new SimpleDateFormat("dd:MM:yy:HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             cal.setTimeInMillis(Long.parseLong(request.getParameter("timeDebutActivite")));
@@ -120,43 +116,5 @@ public class TestServlet extends HttpServlet {
             
             gestionnaireUtilisateur.addActivite(utilisateur);
         }
-
-//        Utilisateur utilisateur = new Utilisateur();
-//        utilisateur.setEmail(email);
-//        Utilisateur user = gestionnaireUtilisateur.checkUser(utilisateur);
-//        if (user != null && user.getMotdepasse().equals(utilisateur.getMotdepasse())) {
-//
-//            this.getServletContext().getRequestDispatcher(DASHBOARD).forward(request, response);
-//            return;
-//        } else {
-//
-//        }
-        
-        
-//        Utilisateur utilisateur1 = new Utilisateur();
-//        utilisateur1.setId(request.getParameter("id"));
-//        Utilisateur user1 = gestionnaireUtilisateur.readUser(utilisateur1);
-//        DateFormat format = new SimpleDateFormat("dd/mm/yyyy", Locale.FRENCH);
-//        Date date;
-//        Activite a = new Activite();
-//        try {
-//            date = format.parse(request.getParameter("date"));
-//            a.setDate(date);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(TestServlet.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        String[][] itineraire= {{"43.6980876","43.6980876","43.6980876","43.6980876"},{"7.215362199999999","7.225365199999999","7.235372199999999","7.255375199999999"}};
-//        a.setFrequenceCardiaque(Integer.parseInt(request.getParameter("frequenceCardiaque")));
-//        a.setNombrePas(Integer.parseInt(request.getParameter("nombrePas")));
-//        a.setMetres(Integer.parseInt(request.getParameter("metres")));
-//        a.setMinutes(Integer.parseInt(request.getParameter("minutes")));
-//        a.setVitesse(Integer.parseInt(request.getParameter("vitesse")));
-//        a.setType(request.getParameter("type"));
-//        a.setItineraire(itineraire);
-        //utilisateur.getActivites().add(a);
-        
-
-//        this.getServletContext().getRequestDispatcher("/").forward(request, response);
-
     }
 }
