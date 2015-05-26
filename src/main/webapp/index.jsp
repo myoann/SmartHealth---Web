@@ -14,14 +14,15 @@
         <script src="./styles/js/func.js"></script>
     </head>
     <body>
+        <c:url value="/connexion" var="connexion"></c:url>
+        <c:url value="/inscription" var="inscription"></c:url>
 	<img id="bg" src="">
         <header>
             <span id="title">Smart Health</span>
         </header>
 	<div id="connexion">
-        <c:url value="/connexion" var="connexion"></c:url>
             <a href='<c:out value="${connexion}"></c:out>'><button id="logIn">Connexion</button></a>
-		<button id="signUp">S'inscrire</button>
+            <a href='<c:out value="${inscription}"></c:out>'><button id="signUp">S'inscrire</button></a>
 	</div>
 	
 	<div id="message">
