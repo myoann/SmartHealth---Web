@@ -23,33 +23,31 @@
         <strong style="color: green;"><c:out
                 value="${requestScope.success}"></c:out></strong>
         </c:if>
-        <c:url value="/addUser" var="addURL"></c:url>
-        <c:url value="/editUser" var="editURL"></c:url>
+        <c:url value="/newUser" var="newUser"></c:url>
 
 
 
         <%-- Add Request --%>
         <c:if test="${requestScope.utilisateur eq null}">
-            <form action='<c:out value="${addURL}"></c:out>' method="post" enctype="multipart/form-data">
+            <form action='<c:out value="${newUser}"></c:out>' method="post" enctype="multipart/form-data">
                 <div id="page_connexion">
                     <div class="filter_white"></div>
                     <h1>S'inscrire</h1>
                     <span class="slogan">Prêt à vous lancer ? Un nouveau départ s'offre à vous.</span>
                     <table id="tab_connect">
                         <tr>
-                            <td colspan="3"><input type="text" name="name" placeholder="Nom"></td>
-                            <td colspan="3"><input type="text" name="prenom" placeholder="Prénom"></td>
+                            <td colspan="6"><input type="text" name="name" placeholder="Nom d'utilisateur"></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="text" name="naissance" placeholder="Naissance"></td>
-                            <td colspan="2"><input type="text" name="taille" placeholder="Taille"></td>
-                            <td colspan="2"><input type="text" name="poids" placeholder="Poids"></td>
+                            <td colspan="2"><input type="date" name="naissance" placeholder="Naissance"></td>
+                            <td colspan="2"><input type="number" name="taille" placeholder="Taille (cm)"></td>
+                            <td colspan="2"><input type="number" name="poids" placeholder="Poids (kg)"></td>
                         </tr>
                             <%--<tr><td>Photo</td><td><input type="file" name="photo"></td></tr>--%>
                         <tr><td colspan="6"><input type="email" name="email" placeholder="Email"></td></tr>
                         <tr>
-                            <td colspan="3"><input type="text" name="motdepasse" placeholder="Mot de passe"></td>
-                            <td colspan="3"><input type="text" name="motdepasse2" placeholder="Confirmer le mot de passe"></td>
+                            <td colspan="3"><input type="password" name="motdepasse" placeholder="Mot de passe"></td>
+                            <td colspan="3"><input type="password" name="motdepasse2" placeholder="Confirmer le mot de passe"></td>
                         </tr>
                         <tr><td colspan="6"><button type="submit"> S'inscrire</button></td></tr>
                     </table>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Yoann\Documents\SmartHealth---Web-App\src\main\java\utilisateurs\modeles\Objectif.java
 C:\Users\Yoann\Documents\SmartHealth---Web-App\src\main\java\servlets\AddUserServlet.java
 C:\Users\Yoann\Documents\SmartHealth---Web-App\src\main\java\mongo\MongoClientProvider.java
@@ -28,3 +29,36 @@ C:\Users\Yoann\Documents\SmartHealth---Web-App\src\main\java\forms\ConnexionForm
 C:\Users\Yoann\Documents\SmartHealth---Web-App\src\main\java\gestionnaire\GestionnaireObjectif.java
 C:\Users\Yoann\Documents\SmartHealth---Web-App\src\main\java\servlets\GestionUtilisateurServlet.java
 C:\Users\Yoann\Documents\SmartHealth---Web-App\src\main\java\filters\AdminFilter.java
+=======
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\listener\MongoDBContextListener.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\AddUserServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\ConnexionServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\DeleteObjectifServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\GestionUtilisateurServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\convertisseur\UtilisateurConverter.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\utilisateurs\gestionnaire\GestionnaireUtilisateur.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\gestionnaire\GestionnaireObjectif.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\utilisateurs\modeles\Objectif.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\utilisateurs\modeles\Utilisateur.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\mongo\MongoClientProvider.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\DeconnexionServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\EditObjectifServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\modeles\Activite.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\modeles\Utilisateur.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\DashBoardServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\utilisateurs\convertisseur\UtilisateurConverter.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\gestionnaire\GestionnaireUtilisateur.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\listener\MongoClientProvider.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\modeles\Objectif.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\convertisseur\ActiviteConverter.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\GestionObjectifServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\EditUserServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\DeleteUserServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\filters\AdminFilter.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\AddObjectifServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\filters\UserFilter.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\TestServlet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\servlets\InscriptionSerlvet.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\convertisseur\ObjectifConverter.java
+C:\Users\EK\Documents\GitHub\SmartHealth---Web-App\src\main\java\forms\ConnexionForm.java
+>>>>>>> 7a0b35aa5c001026f5117314d8b14c0606ebe927
