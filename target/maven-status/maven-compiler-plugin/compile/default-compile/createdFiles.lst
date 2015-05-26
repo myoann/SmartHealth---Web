@@ -6,6 +6,7 @@ filters\AdminFilter.class
 mongo\MongoClientProvider.class
 servlets\DashBoardServlet.class
 servlets\DeconnexionServlet.class
+servlets\InscriptionSerlvet.class
 convertisseur\UtilisateurConverter.class
 servlets\DeleteUserServlet.class
 servlets\AddObjectifServlet.class
