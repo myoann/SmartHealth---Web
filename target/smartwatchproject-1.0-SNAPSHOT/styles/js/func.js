@@ -57,7 +57,7 @@ function viewCalendarActivities(){
 	$("div#filter_dark").fadeIn();
         $('iframe#iframe_calendar').fadeIn();
         $('iframe#iframe_calendar').animate({
-            top:'0px',
+            top:'0px'
         },800,function(){
             $('iframe#iframe_calendar').css({
                 transition:'0.3s',

@@ -52,13 +52,13 @@ div.barre_vertical{
 table td{
 	padding: 5px;
 }
+table#tab_connect button:hover{
+	background-color: #27ae60;
+}
 table#tab_connect{
 	position: absolute;
 	top: 140px;
 	left: 80px;
-}
-table#tab_connect button:hover{
-	background-color: #27ae60;
 }
 table#tab_connect button{
         cursor:pointer;
