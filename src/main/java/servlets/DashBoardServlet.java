@@ -70,67 +70,7 @@ public class DashBoardServlet extends HttpServlet {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date dateJour = new java.util.Date();
             request.setAttribute("date", dateFormat.format(dateJour));
-            
-            Date date;
-            Activite a = new Activite();
-            try {
-                date = dateFormat.parse("24/05/2015");
-                a.setDate(date);
-            } catch (ParseException ex) {
-                Logger.getLogger(TestServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            String[][] itineraire= {{"43.6980876","43.6980876","43.6980876","43.6980876"},{"7.215362199999999","7.225365199999999","7.235372199999999","7.255375199999999"}};
-            a.setFrequenceCardiaque(60);
-            a.setNombrePas(1500);
-            a.setMetres(1200);
-            a.setMinutes(30);
-            a.setDuree(30);
-            a.setVitesse(12);
-            a.setType("marche");
-            a.setItineraire(itineraire);
-            utilisateur.getActivites().add(a);
-            
-            
-            Date dateb;
-            Activite b = new Activite();
-            try {
-                dateb = dateFormat.parse("25/05/2015");
-                b.setDate(dateb);
-            } catch (ParseException ex) {
-                Logger.getLogger(TestServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            String[][] itineraireb= {{"43.6980876","43.6980876","43.6980876","43.6980876"},{"7.215362199999999","7.225365199999999","7.235372199999999","7.255375199999999"}};
-            b.setFrequenceCardiaque(30);
-            b.setNombrePas(4800);
-            b.setMetres(3200);
-            b.setMinutes(30);
-            b.setDuree(20);
-            b.setVitesse(12);
-            b.setType("course");
-            b.setItineraire(itineraireb);
-            utilisateur.getActivites().add(b);
-            
-            Date datec;
-            Activite c = new Activite();
-            try {
-                datec = dateFormat.parse("23/05/2015");
-                c.setDate(datec);
-            } catch (ParseException ex) {
-                Logger.getLogger(TestServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            String[][] itinerairec= {{"43.7980876","43.7980876","43.7980876","43.7980876"},{"7.315362199999999","7.325365199999999","7.335372199999999","7.355375199999999"}};
-            c.setFrequenceCardiaque(45);
-            c.setNombrePas(5800);
-            c.setMetres(3200);
-            c.setMinutes(30);
-            c.setDuree(40);
-            c.setVitesse(12);
-            c.setType("marche");
-            c.setItineraire(itinerairec);
-            utilisateur.getActivites().add(c);
-            
-            
+                        
             int nombrePas = 0;
             int nombreMinutes = 0;
             int nombreMetres = 0;
@@ -197,17 +137,17 @@ public class DashBoardServlet extends HttpServlet {
                         metreParJour.add(activites.get(i).getMetres());
                         freqCardiaqueParJour.add(activites.get(i).getFrequenceCardiaque());
                         
-                        if(activites.get(i).getType() == "marche") {
+                        if(activites.get(i).getType().equals("marche")) {
                             dureeVeloParJour.add(0);
                             dureeMarcheParJour.add(activites.get(i).getDuree());
                             dureeCourseParJour.add(0);
                         }
-                        else if(activites.get(i).getType() == "velo") {
+                        else if(activites.get(i).getType().equals("velo")) {
                             dureeVeloParJour.add(activites.get(i).getDuree());
                             dureeMarcheParJour.add(0);
                             dureeCourseParJour.add(0);
                         }
-                        else if(activites.get(i).getType() == "course") {
+                        else if(activites.get(i).getType().equals("course")) {
                             dureeVeloParJour.add(0);
                             dureeMarcheParJour.add(0);
                             dureeCourseParJour.add(activites.get(i).getDuree());

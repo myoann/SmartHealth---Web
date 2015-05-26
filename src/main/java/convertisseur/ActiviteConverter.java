@@ -5,8 +5,10 @@
  */
 package convertisseur;
 
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
+import java.util.Arrays;
 import java.util.Date;
 import modeles.Activite;
 import modeles.Objectif;
@@ -31,8 +33,6 @@ public class ActiviteConverter {
                                             .append("duree", a.getDuree())
                                             .append("dateFin", a.getDateFin())
                                             .append("type", a.getType());
-        if (a.getId() != null)
-            builder = builder.append("_id", new ObjectId(a.getId()));
         return builder.get();
     }
  
@@ -48,10 +48,16 @@ public class ActiviteConverter {
         a.setVitesse((Integer) doc.get("vitesse"));
         a.setDuree((Integer) doc.get("duree"));
         a.setDateFin((Date) doc.get("dateFin"));
-        a.setItineraire((String[][]) doc.get("itineraire"));
+        BasicDBList listItineraire = (BasicDBList)doc.get("itineraire");
+        String lat = (listItineraire.get(0).toString().replace("\"", ""));
+        lat = lat.substring(1, lat.length()-1);
+        String lng = (listItineraire.get(1).toString().replace("\"", ""));
+        lng = lng.substring(1, lng.length()-1);
+        String[] latitude = lat.split(",");
+        String[] longitude = lng.split(",");
+        String[][] itineraire = {latitude,longitude};
+        a.setItineraire(itineraire);
         a.setType((String) doc.get("type"));
-        ObjectId id = (ObjectId) doc.get("_id");
-        a.setId(id.toString());
         return a;
  
     }

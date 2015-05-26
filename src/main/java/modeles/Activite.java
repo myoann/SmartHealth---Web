@@ -13,8 +13,6 @@ import java.util.Date;
  */
 public class Activite {
     
-    private String id;
-    
     private Date date;
     
     private Date dateFin;
@@ -34,14 +32,6 @@ public class Activite {
     private String type;
     
     private String[][] itineraire;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Date getDate() {
         return date;

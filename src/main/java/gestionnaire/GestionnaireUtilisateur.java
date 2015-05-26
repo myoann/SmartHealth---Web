@@ -21,6 +21,7 @@ import convertisseur.ActiviteConverter;
 import convertisseur.ObjectifConverter;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import modeles.Activite;
 import mongo.MongoClientProvider;
 /**
  *
@@ -102,13 +103,13 @@ public class GestionnaireUtilisateur {
     public void addActivite(Utilisateur u) {
         MongoClient mongoClient = mongoClientProvider.getMongoClient();
         DBCollection col = mongoClient.getDB("miage").getCollection("Utilisateurs");
-        DBObject query = BasicDBObjectBuilder.start()
-                .append("_id", new ObjectId(u.getId())).get();
         BasicDBObject updateUser = new BasicDBObject();
         ArrayList<DBObject> activites = new ArrayList<>();
         for(int i = 0; i < u.getActivites().size(); i++) {
             activites.add(ActiviteConverter.toDBObject(u.getActivites().get(i)));
         }
+        DBObject query = BasicDBObjectBuilder.start()
+                .append("_id", new ObjectId(u.getId())).get();
         DBObject newUser = new BasicDBObject().append("activites", activites);
 	updateUser.append("$set", newUser);
         col.update(query, updateUser);
