@@ -5,29 +5,22 @@
  */
 package servlets;
 
-import com.mongodb.MongoClient;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import modeles.Utilisateur;
-import forms.ConnexionForm;
-import java.util.ArrayList;
-import java.util.HashMap;
 import javax.servlet.annotation.WebServlet;
 import gestionnaire.GestionnaireUtilisateur;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -49,10 +42,7 @@ public class TestServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
-<<<<<<< HEAD
                     + "\"nom\": \"Jauvat\","
-=======
->>>>>>> b526e9125c02439dbce37d8bf95824f65781bac5
                     + "\"mail\": \"fjauvat@gmail.com\","
                     + "\"dateNaissance\": \"28/04/1991\","
                     +"\"taille\":\"187\","
