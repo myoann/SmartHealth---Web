@@ -14,12 +14,18 @@
         <script src="./styles/js/func.js"></script>
     </head>
     <body>
+        <!-- img de background : animation de transition avec changement des slogans -->
+	<img class='bg' id="bg_1" src="./data/1.jpg">
+	<img class='bg' id="bg_2" src="./data/2.jpg">
+	<img class='bg' id="bg_3" src="./data/3.jpg">
+        
         <c:url value="/connexion" var="connexion"></c:url>
         <c:url value="/inscription" var="inscription"></c:url>
-	<img id="bg" src="">
+        
         <header>
             <span id="title">Smart Health</span>
         </header>
+        
 	<div id="connexion">
             <a href='<c:out value="${connexion}"></c:out>'><button id="logIn">Connexion</button></a>
             <a href='<c:out value="${inscription}"></c:out>'><button id="signUp">S'inscrire</button></a>
@@ -30,7 +36,6 @@
 		<span id="msgB"></span>
 		<button>Commencez dès maintenant</button>
 	</div>
-
         
         <jsp:include page="./section/_footer.jsp"/>
 </body>

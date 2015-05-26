@@ -10,17 +10,17 @@
 
 /* -------------------- ALL -------------------- */
 *{
-	margin: 0px;
-	padding: 0px;
-	border: 0px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
 
-	border-collapse: collapse;
-	box-sizing: border-box;
+    border-collapse: collapse;
+    box-sizing: border-box;
     -webkit-user-select: none;
 
-	/*font-family:"fontPerso";*/
-	font-family: "Segoe ui Light",sans-serif;
-	color: #222;
+    /*font-family:"fontPerso";*/
+    font-family: "Segoe ui Light",sans-serif;
+    color: #222;
 }
 *:focus {
     outline: none;
@@ -29,139 +29,148 @@
 
 /* -------------------- BODY -------------------- */
 body{
-	/*background-color: #fafafa;*/
-	/*background-image: url();*/
+    /*background-color: #fafafa;*/
+    /*background-image: url();*/
+    overflow-x: hidden;
 }
 /* -------------------- END BODY -------------------- */
-
+/*
 img#bg{
-	z-index: -1;
-	position: absolute;
-	top: 0%;
-	right: 0%;
-	left: 0%;
-	bottom: 0%;
-	width: 100%;
-	height: 100%;
+    z-index: -1;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+    height: 100%;
+}*/
+img.bg{
+    z-index: -1;
+    position:absolute;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+    height: 100%;
 }
 body#dashBoard header{
-  	box-shadow: 0px 5px 10px #ddd;
+    box-shadow: 0px 5px 10px #ddd;
 }
 header{
-	position: relative;
-        padding: 3px;
+    position: relative;
+    padding: 3px;
 }
 header,div#connexion {
-	text-align: center;
-	top: 0%;
-	right: 0%;
-	left: 0%;
+    text-align: center;
+    top: 0%;
+    right: 0%;
+    left: 0%;
 }
 header span#title{
-	font-weight: bold;
-	font-size: 40px;
-	/*border-bottom: 1px solid #111;*/
-	display: inline-block;
-	padding: 20px 50px;
+    font-weight: bold;
+    font-size: 40px;
+    /*border-bottom: 1px solid #111;*/
+    display: inline-block;
+    padding: 20px 50px;
 }
 
 div#connexion {
-	position: absolute;
+    position: absolute;
 }
 div#connexion button:hover{
-	background: #fafafa;
+    background: #fafafa;
 }
 div#connexion button{
-	background: #fafafa;
-	color: #222;
-	padding: 10px;
-	/*box-shadow: 0px 0px 1px #000;*/
-	width: 100px;
-	position: absolute;
-	top: 30px;
-	border:1px solid #444;
-	font-weight: bold;
-	cursor: pointer;
+    background: #fff;
+    color: #222;
+    padding: 10px;
+    /*box-shadow: 0px 0px 1px #000;*/
+    width: 100px;
+    position: absolute;
+    top: 30px;
+    border:1px solid #444;
+    font-weight: bold;
+    cursor: pointer;
 }
 div#connexion button#signUp{
-	right: 10px;
-	
+    right: 10px;
+
 }
 div#connexion button#logIn{
-	right: 130px;
+    right: 130px;
 }
 div#connexion button#logIn a{
     text-decoration: none;
-    
+
 }
 
 footer{
-	position: absolute;
-	bottom: 0%;
-	right: 0%;
-	left: 0%;
-	text-align: center;
-	border-top:1px solid #000;
-	color: #000;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    left: 0%;
+    text-align: center;
+    border-top:1px solid #000;
+    color: #000;
 }
 footer ul{
-	list-style: none;
+    list-style: none;
 }
 footer ul li:hover{
-	text-decoration: underline;
+    text-decoration: underline;
 }
 footer ul li{
-	cursor: pointer;
-	padding: 10px 20px;
-	display: inline-block;
+    cursor: pointer;
+    padding: 10px 20px;
+    display: inline-block;
 }
 
 div#filter{
-	z-index: -1;
-	opacity: 0.3;
-	background: #fff;
+    z-index: -1;
+    opacity: 0.3;
+    background: #fff;
 
-	position: absolute;
-	top: 0%;
-	right: 0%;
-	left: 0%;
-	bottom: 0%;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
 }
 
 div#message{
-	position: absolute;
-	top: 200px;
-	text-align: center;  
-	width: 50%;
-	right: 0px;
+    position: absolute;
+    top: 200px;
+    text-align: center;  
+    width: 50%;
+    right: 0px;
 }
 div#message button{
-	background: royalblue;
-	color: #fff;
-	padding: 10px 20px;
-	margin-top: 20px;
+    background: royalblue;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 20px;
 }
 div#message span{
-	padding: 10px;
-	display: block;
-	font-size: 20px;
-	font-weight: bold;
+    padding: 10px;
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 header button#bt_calendar:hover{
-background-color: #eee;
+    background-color: #eee;
 }
 header button#bt_calendar{
-background-color: #fafafa;
-color: #333;
+    background-color: #fafafa;
+    color: #333;
 
-font-weight: bold;
-   text-transform: capitalize;
+    font-weight: bold;
+    text-transform: capitalize;
 
-position: absolute;
-top: 0px;
-left: 0px;
-padding: 33px;
-font-size: 20px;
-cursor: pointer;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 33px;
+    font-size: 20px;
+    cursor: pointer;
 }
