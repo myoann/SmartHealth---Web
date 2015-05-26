@@ -49,6 +49,8 @@ public class TestServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             //les valeurs doivent Ãªtre reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
+                    + "\"nom\": \"Jauvat\","
+                    + "\"prenom\": \"Fabrice\","
                     + "\"mail\": \"fjauvat@gmail.com\","
                     + "\"dateNaissance\": \"28/04/1991\","
                     +"\"taille\":\"187\","
@@ -62,7 +64,6 @@ public class TestServlet extends HttpServlet {
         
         if(request.getParameter("useFunctionServer").equals("modificationProfil")){
             System.out.println(request.getParameter("userId"));
-            System.out.println(request.getParameter("dateDuJour"));
             System.out.println(request.getParameter("userEmail"));
             System.out.println(request.getParameter("userDateNaissance"));
             System.out.println(request.getParameter("userPoids"));
@@ -79,11 +80,9 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("longitude"));
             System.out.println(request.getParameter("rythmeCardiaque"));
             System.out.println(request.getParameter("podometre"));
-<<<<<<< HEAD
             System.out.println(request.getParameter("metres"));
             System.out.println(request.getParameter("vitesse"));
 
-=======
             DateFormat df = new SimpleDateFormat("dd:MM:yy:HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             cal.setTimeInMillis(Long.parseLong(request.getParameter("timeDebutActivite")));
@@ -113,7 +112,6 @@ public class TestServlet extends HttpServlet {
             a.setType("marche");
             a.setNombrePas(Integer.parseInt(request.getParameter("podometre")));
             a.setItineraire(itineraire);
->>>>>>> 471ac4ab1e0f6dd59fab654b9a941f81de455195
             
             Utilisateur u = new Utilisateur();
             u.setId("5549fb695465be0984fb22db");
@@ -122,7 +120,6 @@ public class TestServlet extends HttpServlet {
             
             gestionnaireUtilisateur.addActivite(utilisateur);
         }
-<<<<<<< HEAD
 
 //        Utilisateur utilisateur = new Utilisateur();
 //        utilisateur.setEmail(email);
@@ -160,7 +157,6 @@ public class TestServlet extends HttpServlet {
         
 
 //        this.getServletContext().getRequestDispatcher("/").forward(request, response);
-=======
->>>>>>> 471ac4ab1e0f6dd59fab654b9a941f81de455195
+
     }
 }
