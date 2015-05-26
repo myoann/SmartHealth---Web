@@ -24,7 +24,7 @@ import modeles.Utilisateur;
  *
  * @author EK
  */
-@WebServlet("newUser")
+@WebServlet("/inscription")
 public class InscriptionSerlvet extends HttpServlet {
 
     @EJB

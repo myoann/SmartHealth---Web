@@ -23,13 +23,13 @@
         <strong style="color: green;"><c:out
                 value="${requestScope.success}"></c:out></strong>
         </c:if>
-        <c:url value="/newUser" var="newUser"></c:url>
+        <c:url value="/inscription" var="addURL"></c:url>
 
 
 
         <%-- Add Request --%>
         <c:if test="${requestScope.utilisateur eq null}">
-            <form action='<c:out value="${newUser}"></c:out>' method="post" enctype="multipart/form-data">
+            <form action='<c:out value="${addURL}"></c:out>' method="post" enctype="multipart/form-data">
                 <div id="page_connexion">
                     <div class="filter_white"></div>
                     <h1>S'inscrire</h1>

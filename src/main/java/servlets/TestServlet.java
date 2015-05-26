@@ -49,10 +49,7 @@ public class TestServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
-<<<<<<< HEAD
                     + "\"nom\": \"Jauvat\","
-=======
->>>>>>> b526e9125c02439dbce37d8bf95824f65781bac5
                     + "\"mail\": \"fjauvat@gmail.com\","
                     + "\"dateNaissance\": \"28/04/1991\","
                     +"\"taille\":\"187\","
