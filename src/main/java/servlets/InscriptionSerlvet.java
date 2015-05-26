@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modeles.Objectif;
 import modeles.Utilisateur;
 
@@ -26,36 +27,17 @@ import modeles.Utilisateur;
  */
 @WebServlet("/inscription")
 public class InscriptionSerlvet extends HttpServlet {
+    public static final String ATT_USER         = "utilisateur";
+    public static final String ATT_FORM         = "form";
+    public static final String ATT_SESSION_USER = "sessionUtilisateur";
+    public static final String VUE              = "/inscription.jsp";
+    public static final String DASHBOARD        = "/dashboard";
 
     @EJB
     GestionnaireUtilisateur gestionnaireUtilisateur;
     @EJB
     GestionnaireObjectif gestionnaireObjectif;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet InscriptionSerlvet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet InscriptionSerlvet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+  
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -69,7 +51,15 @@ public class InscriptionSerlvet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         /* Récupération de la session depuis la requête */
+        HttpSession session = request.getSession();
+        
+        if (session.getAttribute(ATT_SESSION_USER) != null ) {
+            /* Redirection vers la page publique */
+            request.getRequestDispatcher(DASHBOARD).forward( request, response );
+        } else {
+            this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+        }
     }
 
     /**
