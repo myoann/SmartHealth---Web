@@ -81,11 +81,11 @@ public class InscriptionSerlvet extends HttpServlet {
         String email = (request.getParameter("email")).trim();
         String motdepasse = (request.getParameter("motdepasse")).trim();
         String motdepasse2 = (request.getParameter("motdepasse2")).trim();
-        String objectif = "S'entretenir";
+        String objectif = "5564d56e9ed2400b9c83950d";
         
         if (name==null || name.equals("")){
             request.setAttribute("error", "Veuillez spécifier un nom d'utilisateur.");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/inscription");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher(VUE);
             rd.forward(request, response);
         }else{
             Utilisateur u = new Utilisateur();
@@ -93,7 +93,7 @@ public class InscriptionSerlvet extends HttpServlet {
             
             if (gestionnaireUtilisateur.checkUser(u) !=null){
                 request.setAttribute("error", "Email déjà utilisé");
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/inscription");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher(VUE);
                 rd.forward(request, response);
             }else{
                 u.setName(name);
@@ -101,7 +101,9 @@ public class InscriptionSerlvet extends HttpServlet {
                 u.setPoids(poids);
                 u.setTaille(taille);
                 u.setNaissance(naissance);
-                
+                System.out.println("-------------------------");
+                System.out.println(name);
+                System.out.println("-------------------------");
                 Objectif o =new Objectif();
                 o.setId(objectif);
                 u.setObjectif(gestionnaireObjectif.readObjectif(o));
