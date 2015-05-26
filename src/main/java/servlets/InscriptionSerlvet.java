@@ -81,7 +81,10 @@ public class InscriptionSerlvet extends HttpServlet {
         String email = (request.getParameter("email")).trim();
         String motdepasse = (request.getParameter("motdepasse")).trim();
         String motdepasse2 = (request.getParameter("motdepasse2")).trim();
-        String objectif = "5564d56e9ed2400b9c83950d";
+        
+        //List<Objectif> listeObjectifs=gestionnaireObjectif.readAllObjectifs();
+        //String objectif = listeObjectifs.get(1).getId().toString();        
+        //String objectif = "5564d56e9ed2400b9c83950d";
         
         if (name==null || name.equals("")){
             request.setAttribute("error", "Veuillez spécifier un nom d'utilisateur.");
@@ -104,8 +107,11 @@ public class InscriptionSerlvet extends HttpServlet {
                 System.out.println("-------------------------");
                 System.out.println(name);
                 System.out.println("-------------------------");
-                Objectif o =new Objectif();
-                o.setId(objectif);
+                Objectif o =new Objectif(); 
+                // récupération du 1er objectif de la bd
+                List<Objectif> listeObjectifs=gestionnaireObjectif.readAllObjectifs();
+                o.setId(listeObjectifs.get(1).getId().toString());
+                
                 u.setObjectif(gestionnaireObjectif.readObjectif(o));
                 
                 gestionnaireUtilisateur.createUser(u);
