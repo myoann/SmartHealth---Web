@@ -50,7 +50,6 @@ public class TestServlet extends HttpServlet {
             //les valeurs doivent Ãªtre reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
                     + "\"nom\": \"Jauvat\","
-                    + "\"prenom\": \"Fabrice\","
                     + "\"mail\": \"fjauvat@gmail.com\","
                     + "\"dateNaissance\": \"28/04/1991\","
                     +"\"taille\":\"187\","
@@ -68,9 +67,7 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("userDateNaissance"));
             System.out.println(request.getParameter("userPoids"));
             System.out.println(request.getParameter("userTaille"));
-            System.out.println(request.getParameter("userNom"));
-            System.out.println(request.getParameter("userPrenom"));
-            
+            System.out.println(request.getParameter("userNom"));            
         }
         else if(request.getParameter("useFunctionServer").equals("sauvegardeActivitee")){
             System.out.println(request.getParameter("userId"));
