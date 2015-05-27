@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <servlet-mapping>
-        <servlet-name>InscriptionSerlvet</servlet-name>
-        <url-pattern>/InscriptionSerlvet</url-pattern>
-    </servlet-mapping>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	 version="3.1">
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <display-name>SmartWatch Health</display-name>
+     
     <context-param>
         <param-name>MONGODB_HOST</param-name>
         <param-value>localhost</param-value>
@@ -18,16 +19,14 @@
         <param-name>MONGODB_PORT</param-name>
         <param-value>27017</param-value>
     </context-param>
+     
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    
     <servlet>
         <servlet-name>Connexion</servlet-name>
         <servlet-class>servlets.ConnexionServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>InscriptionSerlvet</servlet-name>
-        <servlet-class>servlets.InscriptionSerlvet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Connexion</servlet-name>
@@ -41,6 +40,14 @@
         <servlet-name>Déconnexion</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InscriptionSerlvet</servlet-name>
+        <url-pattern>/InscriptionSerlvet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>InscriptionSerlvet</servlet-name>
+        <servlet-class>servlets.InscriptionSerlvet</servlet-class>
+    </servlet>
     <filter>
         <filter-name>UserFilter</filter-name>
         <filter-class>filters.UserFilter</filter-class>

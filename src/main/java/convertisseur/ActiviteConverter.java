@@ -30,7 +30,6 @@ public class ActiviteConverter {
                                             .append("frequenceCardiaque", a.getFrequenceCardiaque())
                                             .append("itineraire", a.getItineraire())
                                             .append("vitesse", a.getVitesse())
-                                            .append("duree", a.getDuree())
                                             .append("dateFin", a.getDateFin())
                                             .append("type", a.getType());
         return builder.get();
@@ -46,7 +45,6 @@ public class ActiviteConverter {
         a.setMetres((Integer) doc.get("metres"));
         a.setFrequenceCardiaque((Integer) doc.get("frequenceCardiaque"));
         a.setVitesse((Integer) doc.get("vitesse"));
-        a.setDuree((Integer) doc.get("duree"));
         a.setDateFin((Date) doc.get("dateFin"));
         BasicDBList listItineraire = (BasicDBList)doc.get("itineraire");
         String lat = (listItineraire.get(0).toString().replace("\"", ""));

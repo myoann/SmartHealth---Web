@@ -140,7 +140,6 @@ public class EditUserServlet extends HttpServlet {
             u.setPoids(poids);
             u.setTaille(taille);
             u.setNaissance(naissance);
-            u.setMotdepasse(motdepasse);
             
             if(objectif != null) {
                 Objectif o = new Objectif();

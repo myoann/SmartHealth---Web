@@ -5,22 +5,29 @@
  */
 package servlets;
 
+import com.mongodb.MongoClient;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modeles.Utilisateur;
+import forms.ConnexionForm;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.servlet.annotation.WebServlet;
 import gestionnaire.GestionnaireUtilisateur;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -39,14 +46,31 @@ public class TestServlet extends HttpServlet {
         System.out.println("request.getParameter(\"useFunctionServer\")"+request.getParameter("useFunctionServer"));
         
         if(request.getParameter("useFunctionServer").equals("getProfil")){
+            Utilisateur u = new Utilisateur();
+            u.setId(request.getParameter("userId"));
+            u.setId("5549fb695465be0984fb22db");
+            
+            String nom = "";
+            String email = "";
+            String dateNaissance = "";
+            String taille = "";
+            String poids = "";
+            Utilisateur util = gestionnaireUtilisateur.readUser(u);
+            if(util != null) {
+                nom = util.getName();
+                email = util.getEmail();
+                dateNaissance = (String)util.getNaissance();
+                taille = (String)util.getTaille();
+                poids = (String)util.getPoids();
+            }
             PrintWriter out = response.getWriter();
             //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
             out.print("{"
-                    + "\"nom\": \"Jauvat\","
-                    + "\"mail\": \"fjauvat@gmail.com\","
-                    + "\"dateNaissance\": \"28/04/1991\","
-                    +"\"taille\":\"187\","
-                    +"\"poids\":\"85\""
+                    + "\"nom\": \""+nom+"\","
+                    + "\"mail\": \""+email+"\","
+                    + "\"dateNaissance\": \""+dateNaissance+"\","
+                    +"\"taille\":\""+taille+"\","
+                    +"\"poids\":\""+poids+"\""
                     + "}");
         }
     }
@@ -61,7 +85,23 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("userDateNaissance"));
             System.out.println(request.getParameter("userPoids"));
             System.out.println(request.getParameter("userTaille"));
-            System.out.println(request.getParameter("userNom"));            
+            System.out.println(request.getParameter("userNom"));
+            
+            Utilisateur u = new Utilisateur();
+            u.setId(request.getParameter("userId"));
+            u.setId("5549fb695465be0984fb22db");
+            
+            Utilisateur util = gestionnaireUtilisateur.readUser(u);
+            if(util != null) {
+                u.setName(request.getParameter("userNom"));
+                u.setEmail(request.getParameter("userEmail"));
+                u.setPoids(request.getParameter("userPoids"));
+                u.setTaille(request.getParameter("userTaille"));
+                u.setNaissance(request.getParameter("userDateNaissance"));
+                u.setMotdepasse(util.getMotdepasse());
+                u.setObjectif(util.getObjectif());
+                gestionnaireUtilisateur.updateUser(u);
+            }
         }
         else if(request.getParameter("useFunctionServer").equals("sauvegardeActivitee")){
             System.out.println(request.getParameter("userId"));
@@ -71,10 +111,13 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("longitude"));
             System.out.println(request.getParameter("rythmeCardiaque"));
             System.out.println(request.getParameter("podometre"));
+            System.out.println(request.getParameter("vitesse"));
+            System.out.println(request.getParameter("metres"));
             DateFormat df = new SimpleDateFormat("dd:MM:yy:HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             cal.setTimeInMillis(Long.parseLong(request.getParameter("timeDebutActivite")));
             Activite a = new Activite();
+            long duree = 0;
             try {
                 Date date = df.parse(df.format(cal.getTime()));
                 a.setDate(date);
@@ -83,6 +126,7 @@ public class TestServlet extends HttpServlet {
                 calFin.setTimeInMillis(Long.parseLong(request.getParameter("timeFinActivite")));
                 Date dateFin = df.parse(df.format(calFin.getTime()));
                 a.setDateFin(dateFin);
+                duree = dateFin.getTime() - date.getTime();
                 
             } catch (ParseException ex) {
                 Logger.getLogger(TestServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -93,10 +137,9 @@ public class TestServlet extends HttpServlet {
             String[] longitude = longitudeS.split(",");
             String[][] itineraire= {latitude,longitude};
             a.setFrequenceCardiaque(Integer.parseInt(request.getParameter("rythmeCardiaque")));
-            a.setMetres(1200);
-            a.setMinutes(30);
-            a.setDuree(30);
-            a.setVitesse(12);
+            a.setMetres((int)Float.parseFloat(request.getParameter("metres")));
+            a.setMinutes((int)duree);
+            a.setVitesse(Integer.parseInt(request.getParameter("vitesse")));
             a.setType("marche");
             a.setNombrePas(Integer.parseInt(request.getParameter("podometre")));
             a.setItineraire(itineraire);
@@ -107,6 +150,38 @@ public class TestServlet extends HttpServlet {
             utilisateur.getActivites().add(a);
             
             gestionnaireUtilisateur.addActivite(utilisateur);
+            
+            PrintWriter out = response.getWriter();
+            //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
+            
+            out.print("{"
+                    + "\"nom\": \""+latitudeS+"\","
+                    + "\"mail\": \""+latitudeS+"\","
+                    + "\"dateNaissance\": \""+latitudeS+"\","
+                    +"\"taille\":\""+latitudeS+"\","
+                    +"\"poids\":\""+latitudeS+"\""
+                    + "}");
+            
+        }else if(request.getParameter("useFunctionServer").equals("verifLogin")){
+            System.out.println(request.getParameter("email"));
+            System.out.println(request.getParameter("password"));
+            
+            Utilisateur u = new Utilisateur();
+            u.setEmail(request.getParameter("email"));
+            Utilisateur utilisateur = gestionnaireUtilisateur.checkUser(u);
+            
+            String id = ""; 
+            if(utilisateur.getMotdepasse().equals(request.getParameter("password"))) {
+                id = utilisateur.getId();
+            }
+            
+            PrintWriter out = response.getWriter();
+            //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
+            
+            out.print("{"
+                    + "\"id\": \""+id+"\""
+                    + "}");
+            
         }
     }
 }

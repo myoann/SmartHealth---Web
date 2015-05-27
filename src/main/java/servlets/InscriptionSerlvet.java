@@ -82,10 +82,6 @@ public class InscriptionSerlvet extends HttpServlet {
         String motdepasse = (request.getParameter("motdepasse")).trim();
         String motdepasse2 = (request.getParameter("motdepasse2")).trim();
         
-        //List<Objectif> listeObjectifs=gestionnaireObjectif.readAllObjectifs();
-        //String objectif = listeObjectifs.get(1).getId().toString();        
-        //String objectif = "5564d56e9ed2400b9c83950d";
-        
         if (name==null || name.equals("")){
             request.setAttribute("error", "Veuillez spécifier un nom d'utilisateur.");
             RequestDispatcher rd = getServletContext().getRequestDispatcher(VUE);
@@ -99,47 +95,40 @@ public class InscriptionSerlvet extends HttpServlet {
                 RequestDispatcher rd = getServletContext().getRequestDispatcher(VUE);
                 rd.forward(request, response);
             }else{
-                u.setName(name);
-                u.setMotdepasse(motdepasse);
-                u.setPoids(poids);
-                u.setTaille(taille);
-                u.setNaissance(naissance);
-                System.out.println("-------------------------");
-                System.out.println(name);
-                System.out.println("-------------------------");
-                Objectif o =new Objectif(); 
-                // récupération du 1er objectif de la bd
-                List<Objectif> listeObjectifs=gestionnaireObjectif.readAllObjectifs();
-                o.setId(listeObjectifs.get(1).getId().toString());
-                
-                u.setObjectif(gestionnaireObjectif.readObjectif(o));
-                
-                gestionnaireUtilisateur.createUser(u);
-                
-                request.setAttribute("succes", "Utilisateur inscrit avec succès !");
-                
-                List<Utilisateur> utilisateurs=gestionnaireUtilisateur.readAllUsers();
-                request.setAttribute("utilisateurs", utilisateurs);
-                
-                List<Objectif> objectifs=gestionnaireObjectif.readAllObjectifs();
-                request.setAttribute("objectifs", objectifs);
-                
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard");
-                rd.forward(request, response);
+                if(!motdepasse.equals(motdepasse2)) {
+                    request.setAttribute("error", "Mots de passe différents");
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher(VUE);
+                    rd.forward(request, response);
+                }
+                else {
+                    u.setName(name);
+                    u.setMotdepasse(motdepasse);
+                    u.setPoids(poids);
+                    u.setTaille(taille);
+                    u.setNaissance(naissance);
+
+                    Objectif o =new Objectif(); 
+                    List<Objectif> listeObjectifs=gestionnaireObjectif.readAllObjectifs();
+                    o.setId(listeObjectifs.get(1).getId());
+
+                    u.setObjectif(gestionnaireObjectif.readObjectif(o));
+
+                    gestionnaireUtilisateur.createUser(u);
+
+                    request.setAttribute("succes", "Utilisateur inscrit avec succès !");
+
+                    List<Utilisateur> utilisateurs=gestionnaireUtilisateur.readAllUsers();
+                    request.setAttribute("utilisateurs", utilisateurs);
+
+                    List<Objectif> objectifs=gestionnaireObjectif.readAllObjectifs();
+                    request.setAttribute("objectifs", objectifs);
+
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard");
+                    rd.forward(request, response);
+                }
                 
                 
             }
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

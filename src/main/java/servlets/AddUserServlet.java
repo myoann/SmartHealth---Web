@@ -70,7 +70,6 @@ public class AddUserServlet extends HttpServlet {
                 u.setPoids(poids);
                 u.setTaille(taille);
                 u.setNaissance(naissance);
-                u.setMotdepasse(motdepasse);
 
                 Objectif o = new Objectif();
                 o.setId(objectif);

@@ -27,8 +27,6 @@ public class Activite {
     
     private Integer vitesse;
     
-    private Integer duree;
-    
     private String type;
     
     private String[][] itineraire;
@@ -95,14 +93,6 @@ public class Activite {
 
     public void setVitesse(Integer vitesse) {
         this.vitesse = vitesse;
-    }
-
-    public Integer getDuree() {
-        return duree;
-    }
-
-    public void setDuree(Integer duree) {
-        this.duree = duree;
     }
 
     public Date getDateFin() {
