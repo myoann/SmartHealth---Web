@@ -8,85 +8,74 @@ and open the template in the editor.
     Author     : EK
 */
 body{
-        background: url(http://img0.gtsstatic.com/wallpapers/80eb2b7d8ad1afb094af7aefa1511202_large.jpeg);
-	background-color: #eee;
+    background: url();
+    background-color: #eee;
 }
 div#page_connexion{
     color:#000;
-	position: relative;
-	padding: 20px 40px;
-	top:80px;
-	
-	width: 40%;
-        left:50%;
-        margin-left:-20%;
+    position: relative;
+    padding: 20px 40px;
+    top:20px;
+
+    width: 40%;
+    left:50%;
+    margin-left:-20%;
 }
 div#page_connexion h1{
-        color:#fff;
+    color:#fff;
 }
 span.slogan{
     color: #fff;
     padding: 20px 5px;
     display:block;
 }
-div.filter_white{
-        opacity:0.2;
-        z-index: -1;
-	background-color: #fff;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        right:0px;
-        bottom:0px;
-    
-}
 div#page_connexion input{
-	padding: 10px;
-	width: 100%;
-	background-color: #fafafa;
-	border: 1px solid #bbb;
+    padding: 10px;
+    width: 100%;
+    background-color: #fafafa;
+    border: 1px solid #bbb;
 }
 div#page_connexion button{
-	padding: 10px;
-	border-radius: 3px;
-	color: #fff;
-	font-size: 18px;
-	width: 200px;
-	color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    width: 200px;
+    color: #fff;
 }
 button.bt_fb{
-	background-color: #458;
+    background-color: #458;
 }
 button.bt_google{
-	background-color: crimson;
-	
+    background-color: crimson;
+
 }
 div.barre_vertical{
-	background-color: #444;
-	position: absolute;
-	top: 60px;
-	bottom: 60px;
-	width: 1px;
-	left: 400px;
+    background-color: #444;
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    width: 1px;
+    left: 400px;
 }
 table td{
-	padding: 5px;
+    padding: 5px;
 }
 table#tab_connect{
-	position: relative;
-	top: 10px;
-	left: 0px;
-	right: 0px;
-        width: 100%;
+    position: relative;
+    top: 10px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
 }
 table#tab_connect tr:last-child td{
     /*border-top:1px solid #458;*/
 }
 table#tab_connect button:hover{
-	background-color: #27ae60;
+    background-color: #27ae60;
 }
 table#tab_connect button{
-        cursor:pointer;
-	background-color: seagreen;
-        float:right;
+    cursor:pointer;
+    background-color: seagreen;
+    float:right;
 }

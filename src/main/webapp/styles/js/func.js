@@ -11,7 +11,7 @@ $(function () {
 
     _width = getWidthWindow();
     $('img.bg').css('width', _width);
-    console.log(_width + "px");
+    //console.log(_width + "px");
     chgBG();
     setInterval(function () {
         chgBG()

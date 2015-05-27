@@ -13,6 +13,19 @@
 
     </head>
     <body>
+        <c:url value="/connexion" var="connexion"></c:url>
+        <c:url value="/inscription" var="inscription"></c:url>
+	<img class='bg_connexion' id="bg_connexion" src="http://img0.gtsstatic.com/wallpapers/80eb2b7d8ad1afb094af7aefa1511202_large.jpeg">
+        <header class='header_accueil'>
+            <div id="filter"></div>
+            <a href="index.jsp"><span id="title">Smart Health</span></a>
+        </header>
+        
+	<div id="connexion">
+            <a href='<c:out value="${connexion}"></c:out>'><button id="logIn">Connexion</button></a>
+            <a href='<c:out value="${inscription}"></c:out>'><button id="signUp">S'inscrire</button></a>
+	</div>
+        
         <form method="post" action="inscription">
             <div id="page_connexion">
                 <div class="filter_white"></div>
@@ -38,5 +51,6 @@
             </div>
         </form>
 
+        <jsp:include page="./section/_footer.jsp"/>
     </body>
 </html>
