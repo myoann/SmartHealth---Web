@@ -8,14 +8,11 @@
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/data/logo.ico"/>
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/css.css" />
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/inscription.css" />
-
-        <script src="${pageContext.request.contextPath}/styles/js/jquery-1.11.2.min.js"></script>
-
     </head>
     <body>
         <c:url value="/connexion" var="connexion"></c:url>
         <c:url value="/inscription" var="inscription"></c:url>
-	<img class='bg_connexion' id="bg_connexion" src="http://img0.gtsstatic.com/wallpapers/80eb2b7d8ad1afb094af7aefa1511202_large.jpeg">
+	<img class='bg_connexion bg_inscription' id="bg_connexion" src="http://img0.gtsstatic.com/wallpapers/80eb2b7d8ad1afb094af7aefa1511202_large.jpeg">
         <header class='header_accueil'>
             <div id="filter"></div>
             <a href="index.jsp"><span id="title">Smart Health</span></a>

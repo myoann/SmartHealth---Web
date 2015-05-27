@@ -66,25 +66,22 @@ img.bg_connexion{
     height: 100%;
 }
 div.filter_white{
-        opacity:0.2;
-        z-index: -1;
-	background-color: #fff;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        right:0px;
-        bottom:0px;
-    
+    opacity:0.2;
+    z-index: -1;
+    background-color: #fff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right:0px;
+    bottom:0px;
+
 }
 body#dashBoard header{
     box-shadow: 0px 5px 10px #ddd;
 }
 header{
     position: relative;
-    padding: 3px;
-}
-header.header_accueil{
-    
+    /* padding: 0px; */
 }
 header,div#connexion {
     text-align: center;

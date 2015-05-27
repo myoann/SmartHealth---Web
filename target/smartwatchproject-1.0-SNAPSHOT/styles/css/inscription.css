@@ -10,7 +10,13 @@ and open the template in the editor.
 body{
     background: url();
     background-color: #eee;
+    overflow: hidden;
 }
+/*
+img.bg_inscription{
+    -webkit-transform:scale(1.5);
+    transition: 10s;
+}*/
 div#page_connexion{
     color:#000;
     position: relative;
@@ -32,8 +38,9 @@ span.slogan{
 div#page_connexion input{
     padding: 10px;
     width: 100%;
-    background-color: #fafafa;
-    border: 1px solid #bbb;
+    background-color: #fff;
+    /*border: 1px solid #458;*/
+    opacity:0.9;
 }
 div#page_connexion button{
     padding: 10px;

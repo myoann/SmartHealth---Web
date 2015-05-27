@@ -12,6 +12,12 @@ body{
     /*background:url();*/
     background-color: #ccc;
 }
+/*
+img.bg_connexion{
+    -webkit-transform:scale(1);
+    transition: 10s;
+}
+*/
 div#page_connexion h1{
    /* color:#fff;*/
 }
@@ -28,7 +34,7 @@ div#page_connexion{
 div#page_connexion input{
     padding: 10px;
     width: 100%;
-    border: 1px solid #ccc;
+    opacity:0.9;
 }
 
 div#page_connexion button{

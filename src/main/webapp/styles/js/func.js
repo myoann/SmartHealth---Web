@@ -8,7 +8,7 @@ $(function () {
     //displaySection();
 
     //setInterval(function(){ chgBG() },_speedSilde);
-
+    
     _width = getWidthWindow();
     $('img.bg').css('width', _width);
     //console.log(_width + "px");
@@ -31,6 +31,17 @@ $(function () {
     //listenMenu("menu_preference",".preference_1,.preference_2,.preference_3");
 
 });
+/*
+function dezoomImgBG(){
+    $("img.bg_inscription").css({
+        webkitTransform: "scale(1)"
+    })
+}
+function zoomImgBG(){
+    $("img.bg_connexion").css({
+        webkitTransform: "scale(1.5)"
+    })
+}*/
 function getWidthWindow() {
     return $(window).width();
 }
