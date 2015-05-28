@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -79,7 +80,6 @@ public class TestServlet extends HttpServlet {
         
         if(request.getParameter("useFunctionServer").equals("modificationProfil")){
             System.out.println(request.getParameter("userId"));
-            System.out.println(request.getParameter("dateDuJour"));
             System.out.println(request.getParameter("userEmail"));
             System.out.println(request.getParameter("userDateNaissance"));
             System.out.println(request.getParameter("userPoids"));
@@ -111,6 +111,7 @@ public class TestServlet extends HttpServlet {
             System.out.println(request.getParameter("podometre"));
             System.out.println(request.getParameter("vitesse"));
             System.out.println(request.getParameter("metres"));
+            System.out.println(request.getParameter("type"));
             DateFormat df = new SimpleDateFormat("dd:MM:yy:HH:mm:ss");
             Calendar cal = Calendar.getInstance();
             cal.setTimeInMillis(Long.parseLong(request.getParameter("timeDebutActivite")));
@@ -136,9 +137,9 @@ public class TestServlet extends HttpServlet {
             String[][] itineraire= {latitude,longitude};
             a.setFrequenceCardiaque(Integer.parseInt(request.getParameter("rythmeCardiaque")));
             a.setMetres((int)Float.parseFloat(request.getParameter("metres")));
-            a.setMinutes((int)duree);
+            a.setMinutes((int)TimeUnit.MILLISECONDS.toMinutes(duree));
             a.setVitesse(Integer.parseInt(request.getParameter("vitesse")));
-            a.setType("marche");
+            a.setType(request.getParameter("type"));
             a.setNombrePas(Integer.parseInt(request.getParameter("podometre")));
             a.setItineraire(itineraire);
             
@@ -149,17 +150,6 @@ public class TestServlet extends HttpServlet {
             
             gestionnaireUtilisateur.addActivite(utilisateur);
             
-            PrintWriter out = response.getWriter();
-            //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
-            
-            out.print("{"
-                    + "\"nom\": \""+latitudeS+"\","
-                    + "\"mail\": \""+latitudeS+"\","
-                    + "\"dateNaissance\": \""+latitudeS+"\","
-                    +"\"taille\":\""+latitudeS+"\","
-                    +"\"poids\":\""+latitudeS+"\""
-                    + "}");
-            
         }else if(request.getParameter("useFunctionServer").equals("verifLogin")){
             System.out.println(request.getParameter("email"));
             System.out.println(request.getParameter("password"));
@@ -167,12 +157,12 @@ public class TestServlet extends HttpServlet {
             Utilisateur u = new Utilisateur();
             u.setEmail(request.getParameter("email"));
             Utilisateur utilisateur = gestionnaireUtilisateur.checkUser(u);
-            
             String id = ""; 
-            if(utilisateur.getMotdepasse().equals(request.getParameter("password"))) {
-                id = utilisateur.getId();
+            if(utilisateur != null) {
+                if(utilisateur.getMotdepasse().equals(request.getParameter("password"))) {
+                    id = utilisateur.getId();
+                }
             }
-            
             PrintWriter out = response.getWriter();
             //les valeurs doivent être reprisent de la classe utilisateurs.modeles.utilisateur.java
             

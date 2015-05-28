@@ -90,8 +90,7 @@
         <div id="map_canvas"></div>
         <button id="viewMap"><span class="icon-arrow-down-3"><br>Afficher la map</span></button>       
     </div>
-	<div id='calendarFull' class='off'></div>
-
+    <div id='calendarFull' class='off'></div>
 	<table id="tab_dashBoard">
 		<tr>
 			<td class="tdPart">Objectifs du jour</td>
