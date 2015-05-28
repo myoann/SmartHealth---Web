@@ -26,8 +26,8 @@
                 <div class="filter_white"></div>
 	<h1>Se connecter</h1>
 	<table id="tab_connect">
-		<tr><td><input type="email" id="email" name="email"  placeholder="Email" /><span class="erreur">${form.erreurs['email']}</span></td></tr>
-		<tr><td><input type="password" id="motdepasse" name="motdepasse"  placeholder="Mot de passe" /><span class="erreur">${form.erreurs['motdepasse']}</span></td></tr>
+		<tr><td><input type="email" id="email" name="email"  placeholder="Email" required /><span class="erreur">${form.erreurs['email']}</span></td></tr>
+		<tr><td><input type="password" id="motdepasse" name="motdepasse"  placeholder="Mot de passe" required /><span class="erreur">${form.erreurs['motdepasse']}</span></td></tr>
 		<tr><td><button>Connexion</button></td></tr>
 	</table>
                 <br>

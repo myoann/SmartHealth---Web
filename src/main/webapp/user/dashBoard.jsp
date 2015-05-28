@@ -47,7 +47,7 @@
                 
                 viewMap("${latitude}","${longitude}");
                 
-                $('#calendar').fullCalendar({
+                $('div#calendarFull').fullCalendar({
                         lang: 'fr',
                         header: {
                                 left: 'prev,next today',
@@ -90,6 +90,7 @@
         <div id="map_canvas"></div>
         <button id="viewMap"><span class="icon-arrow-down-3"><br>Afficher la map</span></button>       
     </div>
+	<div id='calendarFull' class='off'></div>
 
 	<table id="tab_dashBoard">
 		<tr>
@@ -113,6 +114,5 @@
             <td><div id="line_poids"></div></td>
         </tr>
 	</table>
-	<div id='calendar'></div>
 </body>
 </html>

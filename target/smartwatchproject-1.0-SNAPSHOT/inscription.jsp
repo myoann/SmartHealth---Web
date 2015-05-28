@@ -30,18 +30,18 @@
                 <span class="slogan">Prêt à vous lancer ? Un nouveau départ s'offre à vous.</span>
                 <table id="tab_connect">
                     <tr>
-                        <td colspan="6"><input type="text" name="name" placeholder="Nom d'utilisateur" value="${requestScope.utilisateur.name}"></td>
+                        <td colspan="6"><input type="text" name="name" placeholder="Nom d'utilisateur" value="${requestScope.utilisateur.name}" required></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="date" name="naissance" placeholder="Naissance" value="${requestScope.utilisateur.naissance}"></td>
-                        <td colspan="2"><input type="number" name="taille" placeholder="Taille (cm)" value="${requestScope.utilisateur.taille}"></td>
-                        <td colspan="2"><input type="number" name="poids" placeholder="Poids (kg)" value="${requestScope.utilisateur.poids}"></td>
+                        <td colspan="2"><input type="date" name="naissance" placeholder="Naissance" value="${requestScope.utilisateur.naissance}" required></td>
+                        <td colspan="2"><input type="number" name="taille" placeholder="Taille (cm)" value="${requestScope.utilisateur.taille}" required></td>
+                        <td colspan="2"><input type="number" name="poids" placeholder="Poids (kg)" value="${requestScope.utilisateur.poids}" required></td>
                     </tr>
                     <%--<tr><td>Photo</td><td><input type="file" name="photo"></td></tr>--%>
-                    <tr><td colspan="6"><input type="email" name="email" placeholder="Email" value="${requestScope.utilisateur.email}"></td></tr>
+                    <tr><td colspan="6"><input type="email" name="email" placeholder="Email" value="${requestScope.utilisateur.email}" required></td></tr>
                     <tr>
-                        <td colspan="3"><input type="password" name="motdepasse" placeholder="Mot de passe" value="${requestScope.utilisateur.motdepasse}"></td>
-                        <td colspan="3"><input type="password" name="motdepasse2" placeholder="Confirmer le mot de passe" value="${requestScope.utilisateur.motdepasse}"></td>
+                        <td colspan="3"><input type="password" name="motdepasse" placeholder="Mot de passe" value="${requestScope.utilisateur.motdepasse}" required></td>
+                        <td colspan="3"><input type="password" name="motdepasse2" placeholder="Confirmer le mot de passe" value="${requestScope.utilisateur.motdepasse}" required></td>
                     </tr>
                     <tr><td colspan="6"><button type="submit"> S'inscrire</button></td></tr>
                     <c:if test="${requestScope.error ne null}">

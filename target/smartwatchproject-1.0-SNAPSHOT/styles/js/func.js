@@ -119,10 +119,10 @@ function viewMenu() {
     _view = !_view;
 }
 function viewCalendarActivities() {
-    var _calendar=$('div#calendar');
+    var _calendar=$('div#calendarFull');
     $("div#filter_dark").attr('onclick', 'viewCalendarActivities()');
     _calendar.toggleClass('off');
-    var _hasClass = $('div#calendar').hasClass('off');
+    var _hasClass = _calendar.hasClass('off');
     if (_hasClass) {
         _calendar.css({
             transition: '0.4s',
