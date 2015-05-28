@@ -4,12 +4,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Smarth Watch</title>
+        <title>Smarth Health</title>
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/data/logo.ico"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/css.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/dashBoard.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/css/menu.css" />
+	<link href='${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/fullcalendar.css' rel='stylesheet' />
+	<link href='${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/fullcalendar.print.css' rel='stylesheet' media='print' />
+	<link href='${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/calendar.css' rel='stylesheet' />
+
 
         <!-- 4> import des fichiers javascript -->
         <script src="${pageContext.request.contextPath}/styles/js/jquery-1.11.2.min.js"></script>
@@ -20,6 +24,9 @@
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-line.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-donuts.js"></script>
         <script src="${pageContext.request.contextPath}/styles/js/highcharts-bar.js"></script>
+	<script src='${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/moment.min.js'></script>
+	<script src='${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/fullcalendar.min.js'></script>
+	<script src='${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/lang-all.js'></script>
        
         <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
         <script>
@@ -39,6 +46,29 @@
                 doBar("line_dureeActivite","Durée de l'activité",${utilisateur.objectif.marcheTemps},${utilisateur.objectif.courseTemps},${utilisateur.objectif.veloTemps},${dureeMarche},${dureeCourse},${dureeVelo});
                 
                 viewMap("${latitude}","${longitude}");
+                
+                $('#calendar').fullCalendar({
+                        lang: 'fr',
+                        header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,basicWeek,basicDay'
+                        },
+                        editable: true,
+                        eventLimit: true, // allow "more" link when too many events
+                        events: [
+                                        
+                                    <c:forEach var="activite" items="${activites}">
+                                        {
+                                                title: '${activite.type}',
+                                                start: '${activite.date.toGMTString()}',
+                                                end: '${activite.date.toGMTString()}'
+                                        },
+                                    </c:forEach>
+                                ]
+
+                });
+			
             } );
         </script>
 	</head>
@@ -83,6 +113,6 @@
             <td><div id="line_poids"></div></td>
         </tr>
 	</table>
-        <iframe id='iframe_calendar' frameborder=0 class='off' src="${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/calendar.jsp"></iframe>
+	<div id='calendar'></div>
 </body>
 </html>

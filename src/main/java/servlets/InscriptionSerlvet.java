@@ -89,30 +89,46 @@ public class InscriptionSerlvet extends HttpServlet {
         }else{
             Utilisateur u = new Utilisateur();
             u.setEmail(email);
+            u.setName(name);
+            u.setMotdepasse(motdepasse);
+            u.setPoids(poids);
+            u.setTaille(taille);
+            u.setNaissance(naissance);
             
             if (gestionnaireUtilisateur.checkUser(u) !=null){
                 request.setAttribute("error", "Email déjà utilisé");
+                request.setAttribute("utilisateur", u);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher(VUE);
                 rd.forward(request, response);
             }else{
                 if(!motdepasse.equals(motdepasse2)) {
                     request.setAttribute("error", "Mots de passe différents");
+                    request.setAttribute("utilisateur", u);
                     RequestDispatcher rd = getServletContext().getRequestDispatcher(VUE);
                     rd.forward(request, response);
                 }
                 else {
-                    u.setName(name);
-                    u.setMotdepasse(motdepasse);
-                    u.setPoids(poids);
-                    u.setTaille(taille);
-                    u.setNaissance(naissance);
 
-                    Objectif o =new Objectif(); 
-                    List<Objectif> listeObjectifs=gestionnaireObjectif.readAllObjectifs();
-                    o.setId(listeObjectifs.get(1).getId());
-
-                    u.setObjectif(gestionnaireObjectif.readObjectif(o));
-
+                    Objectif o = new Objectif(); 
+                    List<Objectif> listeObjectifs = gestionnaireObjectif.readAllObjectifs();
+                    if(listeObjectifs.isEmpty()) {
+                        o.setTitre("Defaut");
+                        o.setDescription("Defaut");
+                        o.setNombrePas(10000);
+                        o.setMinutes(60);
+                        o.setMetres(3000);
+                        o.setVeloMetres(2000);
+                        o.setVeloTemps(20);
+                        o.setMarcheMetres(1000);
+                        o.setMarcheTemps(15);
+                        o.setCourseMetres(2000);
+                        o.setCourseTemps(25);
+                        u.setObjectif(gestionnaireObjectif.createObjectif(o));
+                    }
+                    else {
+                        o.setId(listeObjectifs.get(1).getId());
+                        u.setObjectif(gestionnaireObjectif.readObjectif(o));
+                    }
                     gestionnaireUtilisateur.createUser(u);
 
                     request.setAttribute("succes", "Utilisateur inscrit avec succès !");

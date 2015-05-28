@@ -48,7 +48,6 @@ public class TestServlet extends HttpServlet {
         if(request.getParameter("useFunctionServer").equals("getProfil")){
             Utilisateur u = new Utilisateur();
             u.setId(request.getParameter("userId"));
-            u.setId("5549fb695465be0984fb22db");
             
             String nom = "";
             String email = "";
@@ -89,7 +88,6 @@ public class TestServlet extends HttpServlet {
             
             Utilisateur u = new Utilisateur();
             u.setId(request.getParameter("userId"));
-            u.setId("5549fb695465be0984fb22db");
             
             Utilisateur util = gestionnaireUtilisateur.readUser(u);
             if(util != null) {
@@ -145,7 +143,7 @@ public class TestServlet extends HttpServlet {
             a.setItineraire(itineraire);
             
             Utilisateur u = new Utilisateur();
-            u.setId("5549fb695465be0984fb22db");
+            u.setId(request.getParameter("userId"));
             Utilisateur utilisateur = gestionnaireUtilisateur.readUser(u);
             utilisateur.getActivites().add(a);
             

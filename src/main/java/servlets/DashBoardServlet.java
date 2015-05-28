@@ -196,6 +196,7 @@ public class DashBoardServlet extends HttpServlet {
                     minutesParJourS += minutesParJour.get(i)+",";
                     metreParJourS += metreParJour.get(i)+",";
                     freqCardiaqueS += (freqCardiaqueParJour.get(i)/activiteParJour.get(i))+",";
+                    request.setAttribute("activites", activites);
                 }
             }
             if(!jourS.equals("")) {

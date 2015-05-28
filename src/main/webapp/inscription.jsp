@@ -30,20 +30,26 @@
                 <span class="slogan">Prêt à vous lancer ? Un nouveau départ s'offre à vous.</span>
                 <table id="tab_connect">
                     <tr>
-                        <td colspan="6"><input type="text" name="name" placeholder="Nom d'utilisateur"></td>
+                        <td colspan="6"><input type="text" name="name" placeholder="Nom d'utilisateur" value="${requestScope.utilisateur.name}"></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="date" name="naissance" placeholder="Naissance"></td>
-                        <td colspan="2"><input type="number" name="taille" placeholder="Taille (cm)"></td>
-                        <td colspan="2"><input type="number" name="poids" placeholder="Poids (kg)"></td>
+                        <td colspan="2"><input type="date" name="naissance" placeholder="Naissance" value="${requestScope.utilisateur.naissance}"></td>
+                        <td colspan="2"><input type="number" name="taille" placeholder="Taille (cm)" value="${requestScope.utilisateur.taille}"></td>
+                        <td colspan="2"><input type="number" name="poids" placeholder="Poids (kg)" value="${requestScope.utilisateur.poids}"></td>
                     </tr>
                     <%--<tr><td>Photo</td><td><input type="file" name="photo"></td></tr>--%>
-                    <tr><td colspan="6"><input type="email" name="email" placeholder="Email"></td></tr>
+                    <tr><td colspan="6"><input type="email" name="email" placeholder="Email" value="${requestScope.utilisateur.email}"></td></tr>
                     <tr>
-                        <td colspan="3"><input type="password" name="motdepasse" placeholder="Mot de passe"></td>
-                        <td colspan="3"><input type="password" name="motdepasse2" placeholder="Confirmer le mot de passe"></td>
+                        <td colspan="3"><input type="password" name="motdepasse" placeholder="Mot de passe" value="${requestScope.utilisateur.motdepasse}"></td>
+                        <td colspan="3"><input type="password" name="motdepasse2" placeholder="Confirmer le mot de passe" value="${requestScope.utilisateur.motdepasse}"></td>
                     </tr>
                     <tr><td colspan="6"><button type="submit"> S'inscrire</button></td></tr>
+                    <c:if test="${requestScope.error ne null}">
+                        <tr><td colspan="6">
+                        <strong style="color: red;"><c:out
+                                value="${requestScope.error}"></c:out></strong>
+                        </td></tr>
+                    </c:if>
                 </table>
             </div>
         </form>

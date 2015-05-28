@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,6 +20,7 @@
 	<script src='${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/fullcalendar.min.js'></script>
 	<script src='${pageContext.request.contextPath}/styles/js/fullcalendar-2.3.1/lib/lang-all.js'></script>
 	<script>
+            
 		$(document).ready(function() {
 			$('#calendar').fullCalendar({
 				lang: 'fr',
@@ -92,6 +94,5 @@
 	</script>
 </head>
 <body>
-	<div id='calendar'></div>
 </body>
 </html>
