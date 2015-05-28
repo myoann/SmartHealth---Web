@@ -16,7 +16,7 @@
         
     </head>
     <body>
-        <img src="http://flatwallpaper.com/wp-content/uploads/2015/03/Blue-Question-Mark-Flat-Minimalist-Wallpaper.jpg" class="bg_connexion" />
+        <img src="http://www.clarkedesign.co.uk/help/images/help-introduction.jpg" class="bg_connexion" />
        
         <header class='header_accueil'>
             <div id="filter"></div>

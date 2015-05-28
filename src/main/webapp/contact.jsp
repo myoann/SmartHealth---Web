@@ -29,7 +29,7 @@
          
         <table>
             <tr>
-                <td><div id="filter"></div>
+                <td>
                     <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xta1/v/t1.0-1/10478946_10204405680120010_4189912159077054952_n.jpg?oh=8672a53ae70f05ee5f94ffd3b0e79579&oe=560D7D20&__gda__=1442217738_b70ef0f91c32895abb9c7b535bc63b0c">
                     <span>JAUVAT Fabrice</span>
                     <span><a href="mailto:fjauvat@gmail.com">fjauvat@gmail.com</a></span>

@@ -114,7 +114,7 @@ div#displayMap iframe#webmap,div#map_canvas{
 	height: 500px;
 }
 
-iframe#iframe_calendar{
+div#calendar{
     z-index: 999;
     background-color: #458;
     position: absolute;
