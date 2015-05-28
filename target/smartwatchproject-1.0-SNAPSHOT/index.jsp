@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Smarth Watch</title>
+        <title>Smarth Health</title>
         <link rel="icon" type="image/png" href="./data/logo.ico"/>
         <link rel="stylesheet" href="./styles/css/css.css" />
         <!-- link rel="stylesheet" href="./styles/css/respDesign.css" / -->

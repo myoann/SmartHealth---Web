@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28 mai 2015, 12:18:10
+    Author     : EK
+*/
+
+
+body{
+    background: url(https://vecree.com/wp-content/uploads/2014/10/69773141.jpg);
+    background-color:lavender;    
+}
+
+fieldset.about{
+    font-size: 16px;
+   /* background-color:#fff;*/
+   /* box-shadow: 0px 0px 2px #888;*/
+    padding:50px;
+    position: relative;
+    top:10x;
+    left:50%;
+    width:80%;
+    margin-left:-40%;
+}
+fieldset.about legend{
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 30px;
+}
+fieldset span{
+    font-size: 22px;
+}
+div.filter_white2{
+    opacity: 0.8;
+    z-index: -1;
+    background-color: #fff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right:0px;
+    bottom:0px;
+}
+fieldset a:hover{
+    background-color:dodgerblue;
+}
+fieldset a{
+    color:dodgerblue;
+}
