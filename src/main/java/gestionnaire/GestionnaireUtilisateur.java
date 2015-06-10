@@ -144,7 +144,12 @@ public class GestionnaireUtilisateur {
         DBObject query = BasicDBObjectBuilder.start()
                 .append("_id", new ObjectId(u.getId())).get();
         DBObject data = col.findOne(query);
-        return UtilisateurConverter.toUtilisateur(data);
+        if(data == null) {
+            return null;
+        }
+        else {
+            return UtilisateurConverter.toUtilisateur(data);
+        }
     }
  
     public Utilisateur checkUser(Utilisateur u) {

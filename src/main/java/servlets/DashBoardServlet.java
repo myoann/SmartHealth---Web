@@ -107,16 +107,18 @@ public class DashBoardServlet extends HttpServlet {
                         activiteParJour.set(activiteParJour.size()-1, activiteParJour.get(pasParJour.size()-1)+1);
                         String[][] latLngTab = activites.get(i).getItineraire();
                         
-                        switch (activites.get(i).getType()) {
-                            case "marche":
-                                dureeMarcheParJour.set(dureeMarcheParJour.size()-1, dureeMarcheParJour.get(dureeMarcheParJour.size()-1)+activites.get(i).getMinutes());
-                                break;
-                            case "velo":
-                                dureeVeloParJour.set(dureeVeloParJour.size()-1, dureeVeloParJour.get(dureeVeloParJour.size()-1)+activites.get(i).getMinutes());
-                                break;
-                            case "course":
-                                dureeCourseParJour.set(dureeCourseParJour.size()-1, dureeCourseParJour.get(dureeCourseParJour.size()-1)+activites.get(i).getMinutes());
-                                break;
+                        if(activites.get(i).getType() != null) {
+                            switch (activites.get(i).getType()) {
+                                case "marche":
+                                    dureeMarcheParJour.set(dureeMarcheParJour.size()-1, dureeMarcheParJour.get(dureeMarcheParJour.size()-1)+activites.get(i).getMinutes());
+                                    break;
+                                case "velo":
+                                    dureeVeloParJour.set(dureeVeloParJour.size()-1, dureeVeloParJour.get(dureeVeloParJour.size()-1)+activites.get(i).getMinutes());
+                                    break;
+                                case "course":
+                                    dureeCourseParJour.set(dureeCourseParJour.size()-1, dureeCourseParJour.get(dureeCourseParJour.size()-1)+activites.get(i).getMinutes());
+                                    break;
+                            }
                         }
                         
                         for(int indice = 0; indice < latLngTab[0].length; indice++)
@@ -139,22 +141,29 @@ public class DashBoardServlet extends HttpServlet {
                         metreParJour.add(activites.get(i).getMetres());
                         freqCardiaqueParJour.add(activites.get(i).getFrequenceCardiaque());
                         
-                        switch (activites.get(i).getType()) {
-                            case "marche":
-                                dureeVeloParJour.add(0);
-                                dureeMarcheParJour.add(activites.get(i).getMinutes());
-                                dureeCourseParJour.add(0);
-                                break;
-                            case "velo":
-                                dureeVeloParJour.add(activites.get(i).getMinutes());
-                                dureeMarcheParJour.add(0);
-                                dureeCourseParJour.add(0);
-                                break;
-                            case "course":
-                                dureeVeloParJour.add(0);
-                                dureeMarcheParJour.add(0);
-                                dureeCourseParJour.add(activites.get(i).getMinutes());
-                                break;
+                        if(activites.get(i).getType() != null) {
+                            switch (activites.get(i).getType()) {
+                                case "marche":
+                                    dureeVeloParJour.add(0);
+                                    dureeMarcheParJour.add(activites.get(i).getMinutes());
+                                    dureeCourseParJour.add(0);
+                                    break;
+                                case "velo":
+                                    dureeVeloParJour.add(activites.get(i).getMinutes());
+                                    dureeMarcheParJour.add(0);
+                                    dureeCourseParJour.add(0);
+                                    break;
+                                case "course":
+                                    dureeVeloParJour.add(0);
+                                    dureeMarcheParJour.add(0);
+                                    dureeCourseParJour.add(activites.get(i).getMinutes());
+                                    break;
+                            }
+                        }
+                        else {
+                            dureeVeloParJour.add(0);
+                            dureeMarcheParJour.add(activites.get(i).getMinutes());
+                            dureeCourseParJour.add(0);
                         }
                         
                         String[][] latLngTab = activites.get(i).getItineraire();

@@ -76,7 +76,7 @@ div#calendarFull {
     z-index: 999;
 
     position: absolute;
-    top:-1000px;
+    top:-5000px;
     left:50%;
     width: 80%;
     margin-left: -40%;

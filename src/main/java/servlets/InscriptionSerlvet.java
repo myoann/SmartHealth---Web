@@ -126,7 +126,7 @@ public class InscriptionSerlvet extends HttpServlet {
                         u.setObjectif(gestionnaireObjectif.createObjectif(o));
                     }
                     else {
-                        o.setId(listeObjectifs.get(1).getId());
+                        o.setId(listeObjectifs.get(0).getId());
                         u.setObjectif(gestionnaireObjectif.readObjectif(o));
                     }
                     gestionnaireUtilisateur.createUser(u);
